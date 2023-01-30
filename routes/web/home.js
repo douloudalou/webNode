@@ -86,7 +86,7 @@ route.use(express.json())
 // swimperceptors page
 route.get("/", function (req, res) {
     wf('Current: swimperceptors')
-    res.render('html_index/index.html')
+    res.render('html_index')
 })
 
 // login page
