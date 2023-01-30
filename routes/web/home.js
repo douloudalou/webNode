@@ -251,7 +251,6 @@ route.post('/After/transfer_newceptees', function (req, res) {
     let dsql = `DELETE FROM \`new perceptees\` WHERE \`Parents\`='${parent}' AND \`Perceptees\`='${student}' and \`Contact number\`='${contact}' AND \`Email\`='${email}';`
     con.query(dsql, function (err, result) {
         if (err) wf(err)
-        wf(`Parent: ${parent}, Student: ${student} deleted from new perceptees`)
 
         load(req, res)
     })

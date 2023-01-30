@@ -57,10 +57,6 @@
                                     <input type="submit" class="btn btn-primary btn-sm payment" value="TRANSFER">
                                 </form>
                                 <form action="/After/transfer_newceptees" method="post">
-                                    <% let parent = JSON.stringify(Newceptees_results[i]['Parents']) %>
-                                    <% let student = JSON.stringify(Newceptees_results[i]['Perceptees']) %>
-                                    <% let contact = JSON.stringify(Newceptees_results[i]['Contact number']) %> 
-                                    <% let email = JSON.stringify(Newceptees_results[i]['Email']) %> 
                                     <input type="hidden" name="tparent" value=<%= parent.slice(1, parent.length-1) %>>
                                     <input type="hidden" name="tstudent" value=<%= student.slice(1, student.length-1) %>>
                                     <input type="hidden" name="tcontact" value=<%= contact %>>
@@ -124,9 +120,6 @@
                                     <input type="submit" class="btn btn-primary btn-sm payment" value="TRANSFER">
                                 </form>
                                 <form action="/After/drop_newceptors" method="post">
-                                    <% let perceptor = JSON.stringify(Newceptors_results[i]['Perceptors']) %>
-                                    <% let email = JSON.stringify(Newceptors_results[i]['Email']) %>
-                                    <% let contact = JSON.stringify(Newceptors_results[i]['Contact number']) %>
                                     <input type="hidden" name="tceptors" value=<%= perceptor.slice(1, perceptor.length-1) %>>
                                     <input type="hidden" name="temail" value=<%= email.slice(1, email.length-1) %>>
                                     <input type="hidden" name="tcontact" value=<%= contact %>>
