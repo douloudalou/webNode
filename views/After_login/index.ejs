@@ -45,7 +45,7 @@
                             <td> <%= JSON.stringify(Newceptees_results[i]['Contact number']) %> </td>
                             <!-- Acknowledgement -->
                             <td> 
-                                <div class="input-group ">
+                                <div class="input-group center">
                                     <form action="/After/transfer_newceptees" method="post">
                                         <% let parent = JSON.stringify(Newceptees_results[i]['Parents']) %>
                                         <% let student = JSON.stringify(Newceptees_results[i]['Perceptees']) %>
