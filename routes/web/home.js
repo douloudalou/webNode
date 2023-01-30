@@ -83,17 +83,16 @@ function wf(content) {
 route.use(express.urlencoded())
 route.use(express.json())
 
-
-
-// login page
+// Swimperceptors page
 route.get("/", function (req, res) {
-    wf('Current: Login Page')
-    res.render('After_login/login.ejs', {page: 0, error: 0})
+    wf('Current: Swimperceptors Page')
+    res.render('html_index', {page: 0, error: 0})
 })
 
-route.get('/page_not_found', function(req, res) {
-    req.flash('page', 'Error 404 Page not found! Contact admins@12345 if you expected to see the page.')
-    res.render('After_login/login.ejs', {page: req.flash('page'), error: 0})
+// login page
+route.get("/admins", function (req, res) {
+    wf('Current: Login Page')
+    res.render('After_login/login.ejs', {error: 0})
 })
 
 route.get('/error', function (req, res) {
