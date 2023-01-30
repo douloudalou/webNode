@@ -25,7 +25,7 @@ var con = sql.createConnection(
     params.SQLconnection
 )
 con.connect(function (err) {
-    if (err) throw err
+    if (err) wf(err)
     wf('Connected!')
 })
 
@@ -111,7 +111,7 @@ route.post("/login", function (req, res) {
     wf(`input: ${name}, ${pass}`)
     let sql = `Select * from admin`
     con.query(sql, function (err, result) {
-        if (err) throw err
+        if (err) wf(err)
         Admins_results = result
         for (let i = 0; i < Admins_results.length; i++) {
             let admin_name = JSON.stringify(Admins_results[i]['User_name']).slice(1, JSON.stringify(Admins_results[i]['User_name']).length-1)
@@ -139,7 +139,7 @@ route.post('/After/search', function (req, res) {
     else {
         let sql = `SELECT * FROM \`${tab}\` Where \`${title}\` like '%${item}%';`
         con.query(sql, function(err, result) {
-            if (err) throw err
+            if (err) wf(err)
             results = result
             wf(results)
             if (results.length > 0) {
@@ -165,7 +165,7 @@ route.post('/After/search/details', function(req, res) {
     if (tab=='parents'){
         let Psql = `SELECT * FROM \`${tab}\` Where \`${col}\` = '${name}';`
         con.query(Psql, function (err, result) {
-            if (err) throw err
+            if (err) wf(err)
             results = result
             wf(results)
             res.render('After_login/details/parents/parents_details.ejs', {
@@ -176,13 +176,13 @@ route.post('/After/search/details', function(req, res) {
     else if (tab == 'perceptors'){
         let Persql = `SELECT * FROM \`${tab}\` Where \`${col}\` = '${name}';`
         con.query(Persql, function (err, result) {
-            if (err) throw err
+            if (err) wf(err)
             Perceptors_results = result
             wf(Perceptors_results)
         })
         let Parent_sql = `SELECT * FROM \`parents\` Where \`Perceptors\` = '${name}';`
         con.query(Parent_sql, function (err, result) {
-            if (err) throw err
+            if (err) wf(err)
             Parents_results = result
             wf(Parents_results)
             res.render('After_login/details/perceptors/perceptors_details.ejs', {
@@ -194,11 +194,11 @@ route.post('/After/search/details', function(req, res) {
     else if (tab=='new perceptors'){
         let newceptors_sql = `SELECT * FROM \`${tab}\` Where \`${col}\` = '${name}';`
         con.query(newceptors_sql, function (err, result) {
-            if (err) throw err
+            if (err) wf(err)
             Perceptors_results = result
         })
         con.query(Parent_sql, function (err, result) {
-            if (err) throw err
+            if (err) wf(err)
             Parents_results = result
             wf(Parents_results)
             res.render('After_login/details/perceptors/perceptors_details.ejs', {
@@ -210,7 +210,7 @@ route.post('/After/search/details', function(req, res) {
     else if (tab =='new perceptees'){
         let newceptees_sql = `SELECT * FROM \`${tab}\` Where \`${col}\` = '${name}';`
         con.query(newceptees_sql, function (err, result) {
-            if (err) throw err
+            if (err) wf(err)
             results = result
             wf(results)
             res.render('After_login/details/newceptees/newceptees_details.ejs', {
@@ -229,7 +229,7 @@ route.post('/After/paid', function (req, res) {
     wf(`Parent: ${name} payment approved`)
     let sql = `UPDATE \`parents\` SET payment = 'paid' WHERE \`Parents\` = '${name}'`
     con.query(sql, function (err, result) {
-        if (err) throw err
+        if (err) wf(err)
         wf(`Parent: ${name} payment updated`)
         load(req, res)
     })
@@ -250,12 +250,12 @@ route.post('/After/transfer_newceptees', function (req, res) {
     wf(parent, student, contact)
     let tsql = `INSERT INTO \`parents\` (\`Parents\`, \`Perceptees\`, \`DOB\`, \`Venue of lesson\`, \`Contact number\`) SELECT \`Parents\`, \`Perceptees\`, \`DOB\`, \`Venue of lesson\`, \`Contact number\` FROM \`new perceptees\` WHERE \`Parents\`='${parent}' AND \`Perceptees\`='${student}' AND \`Contact number\`='${contact}' AND \`Email\`='${email}';`
     con.query(tsql, function (err, result) {
-        if (err) throw err
+        if (err) wf(err)
         wf(`Parent: ${parent}, Student: ${student} transfered from new perceptees to parents`)
     })
     let dsql = `DELETE FROM \`new perceptees\` WHERE \`Parents\`='${parent}' AND \`Perceptees\`='${student}' and \`Contact number\`='${contact}' AND \`Email\`='${email}';`
     con.query(dsql, function (err, result) {
-        if (err) throw err
+        if (err) wf(err)
         wf(`Parent: ${parent}, Student: ${student} deleted from new perceptees`)
 
         load(req, res)
@@ -269,12 +269,12 @@ route.post('/After/transfer_newceptors', function (req, res) {
     wf(perceptor, email, contact)
     let tsql = `INSERT INTO \`perceptors\` (\`Perceptors\`, \`DOB\`, \`Venue of lesson\`, \`Contact number\`, \`Remarks\`) SELECT \`Perceptors\`, \`DOB\`, \`Venue of lesson\`, \`Contact number\`, \`Remarks\` FROM \`new perceptors\` WHERE \`Perceptors\`='${perceptor}' AND \`Email\`='${email}' AND \`Contact number\`='${contact}';`
     con.query(tsql, function (err, result) {
-        if (err) throw err
+        if (err) wf(err)
         wf(`Perceptor: ${perceptor} transfered from new perceptors to perceptors`)
     })
     let dsql = `DELETE FROM \`new perceptors\` WHERE \`Perceptors\`='${perceptor}' AND \`Email\`='${email}' and \`Contact number\`='${contact}';`
     con.query(dsql, function (err, result) {
-        if (err) throw err
+        if (err) wf(err)
         wf(`Perceptor: ${perceptor} deleted from new perceptors`)
     
         load(req, res)
@@ -287,7 +287,7 @@ route.post('/After/Perceptor_NRIC', function (req, res) {
     let NRIC = req.body.NRICtors
     let sql = `UPDATE \`perceptors\` SET \`NRIC\` = '${NRIC}' WHERE \`Perceptors\`='${name}' AND \`Contact number\`='${contact}';`
     con.query(sql, function (err, result) {
-        if (err) throw err
+        if (err) wf(err)
         wf(`Perceptor: ${name} NRIC: ${NRIC} updated`)
     
         load(req, res)
@@ -300,7 +300,7 @@ route.post('/After/Perceptor_Num', function (req, res) {
     let num = req.body.Numtors
     let sql = `UPDATE \`perceptors\` SET \`Num of Perceptees\` = '${num}' WHERE \`Perceptors\`='${name}' AND \`Contact number\`='${contact}';`
     con.query(sql, function (err, result) {
-        if (err) throw err
+        if (err) wf(err)
         wf(`Perceptor: ${name} Num of Perceptees: ${num} updated`)
     
         load(req, res)
@@ -315,7 +315,7 @@ route.post('/After/parents_detail', function(req, res) {
     wf('Current: Details page')
     let sql = `SELECT * FROM \`${tab}\` Where \`${col}\` = '${name}';`
     con.query(sql, function (err, result) {
-        if (err) throw err
+        if (err) wf(err)
         results = result
         wf(results)
         res.render('After_login/details/parents/parents_details.ejs', {
@@ -340,13 +340,13 @@ route.post('/After/perceptors_detail', function(req, res) {
     wf('Current: Details page')
     let sql = `SELECT * FROM \`${tab}\` Where \`${col}\` = '${name}';`
     con.query(sql, function (err, result) {
-        if (err) throw err
+        if (err) wf(err)
         Perceptors_results = result
         wf(Perceptors_results)
     })
     let Parent_sql = `SELECT * FROM \`parents\` Where \`Perceptors\` = '${name}';`
     con.query(Parent_sql, function (err, result) {
-        if (err) throw err
+        if (err) wf(err)
         Parents_results = result
         wf(Parents_results)
         res.render('After_login/details/perceptors/perceptors_details.ejs', {
@@ -364,7 +364,7 @@ route.post('/After/admins_detail', function(req, res) {
     wf('Current: Details page')
     let sql = `SELECT * FROM \`${tab}\` Where \`${col}\` = '${name}';`
     con.query(sql, function (err, result) {
-        if (err) throw err
+        if (err) wf(err)
         results = result
         wf(results)
         res.render('After_login/details/admins/admins_details.ejs', {
@@ -398,12 +398,12 @@ route.post('/After/newceptors_detail', function(req, res) {
     wf('Current: Details page')
     let sql = `SELECT * FROM \`${tab}\` Where \`${col}\` = '${name}';`
     con.query(sql, function (err, result) {
-        if (err) throw err
+        if (err) wf(err)
         Perceptors_results = result
     })
     let Parent_sql = `SELECT * FROM \`parents\` Where \`Perceptors\` = '${name}';`
     con.query(Parent_sql, function (err, result) {
-        if (err) throw err
+        if (err) wf(err)
         Parents_results = result
         wf(Parents_results)
         res.render('After_login/details/perceptors/perceptors_details.ejs', {
