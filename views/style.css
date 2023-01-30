@@ -1,0 +1,121 @@
+#login-page {
+    padding: 10vh 40vw 10vh 40vw;
+}
+
+#Top {
+    background-color: rgb(136, 194, 212);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#img {
+    width: 10vh;
+    height: 10vh;
+}
+
+#nav {
+    margin: 0%;
+    padding-bottom: 0%;
+}
+
+#searchbar {
+    width: 30vw;
+}
+
+#NRICbar {
+    width: 13rem;
+}
+
+#Numbar {
+    width: 13rem;
+}
+
+#nav-tab {
+    border: 0px;
+}
+
+.topthings {
+    display: block;
+    margin: 0 3vw 0 3vw;
+}
+
+.tab {
+    padding: 1vw;
+    padding-top: 2vh;
+    padding-bottom: 3vh;
+    margin-top: 3vh;
+}
+
+.payment {
+    width: 10rem;
+}
+
+.details_btn {
+    width: 10rem;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+td {
+    word-break: break-all;
+}
+
+.save {
+    width: 10rem;
+}
+
+#details_content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.details_list {
+    padding: 0 8vw 0 8vw;
+}
+
+.details_box {
+    width: 20vw;
+    height: 50vh;
+}
+
+#emergency_contact {
+    background-color: crimson;
+    height: 5vh;
+}
+
+#emergency_details {
+    background-color: darkorange;
+    height: 45vh;
+}
+
+#childs_name {
+    background-color: aqua;
+    height: 5vh;
+}
+
+#childs_details {
+    background-color: rgb(72, 245, 170);
+    height: 45vh;
+}
+
+#parents_name {
+    background-color: rgb(183, 43, 244);
+    height: 5vh;
+}
+
+#parents_details {
+    background-color: rgb(154, 116, 242);
+    height: 45vh;
+}
+
+#click_details {
+    background-color: transparent;
+    border: 0ch;
+}
