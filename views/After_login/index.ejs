@@ -112,7 +112,7 @@
                             <td> <%= JSON.stringify(Newceptors_results[i]['Contact number']) %> </td>
                             <!-- Acknowledgement -->
                             <td> 
-                                <div class="input-group payment">
+                                <div class="input-group">
                                     <form action="/After/transfer_newceptors" method="post">
                                         <% let perceptor = JSON.stringify(Newceptors_results[i]['Perceptors']) %>
                                         <% let email = JSON.stringify(Newceptors_results[i]['Email']) %>
