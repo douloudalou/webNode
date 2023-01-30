@@ -27,6 +27,7 @@ function wf(content) {
 const con = sql.createConnection(params.SQLconnection)
 
 // App
+wf(`Starting server...`)
 app.set('port', process.env.PORT || 3000)
 
 app.use(session({
