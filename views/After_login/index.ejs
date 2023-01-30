@@ -62,7 +62,7 @@
                                         <input type="hidden" name="tstudent" value=<%= student.slice(1, student.length-1) %>>
                                         <input type="hidden" name="tcontact" value=<%= contact %>>
                                         <input type="hidden" name="temail" value=<%= email.slice(1, email.length-1) %>>
-                                        <input type="submit" class="btn btn-danger btn-sm form-control payment" value="TRANSFER">
+                                        <input type="submit" class="btn btn-danger btn-sm form-control payment" value="DROP">
                                     </form>    
                                 </div>
                             </td>
@@ -114,9 +114,6 @@
                             <td> 
                                 <div class="input-group">
                                     <form action="/After/transfer_newceptors" method="post">
-                                        <% let perceptor = JSON.stringify(Newceptors_results[i]['Perceptors']) %>
-                                        <% let email = JSON.stringify(Newceptors_results[i]['Email']) %>
-                                        <% let contact = JSON.stringify(Newceptors_results[i]['Contact number']) %>
                                         <input type="hidden" name="tceptors" value=<%= perceptor.slice(1, perceptor.length-1) %>>
                                         <input type="hidden" name="temail" value=<%= email.slice(1, email.length-1) %>>
                                         <input type="hidden" name="tcontact" value=<%= contact %>>
