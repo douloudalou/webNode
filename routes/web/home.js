@@ -90,7 +90,7 @@ route.get("/", function (req, res) {
 })
 
 // login page
-route.get("/", function (req, res) {
+route.get("/admins", function (req, res) {
     wf('Current: Login Page')
     res.render('After_login/login.ejs', {page: 0, error: 0})
 })
