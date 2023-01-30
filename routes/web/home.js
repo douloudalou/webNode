@@ -86,7 +86,7 @@ route.use(express.json())
 // Swimperceptors page
 route.get("/", function (req, res) {
     wf('Current: Swimperceptors Page')
-    res.render('html_index', {page: 0, error: 0})
+    res.render('html_index/index.html', {page: 0, error: 0})
 })
 
 // login page
