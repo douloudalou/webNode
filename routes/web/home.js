@@ -117,7 +117,7 @@ route.post("/admins/login", function (req, res) {
 })
 
 // main page
-route.post('/After/search', function (req, res) {
+route.post('/admins/After/search', function (req, res) {
     let tab = req.body.search_tab
     let title = req.body.search_title
     let item = req.body.search_item
