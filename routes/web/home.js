@@ -84,7 +84,7 @@ route.use(express.urlencoded())
 route.use(express.json())
 
 // login page
-route.get("/", function (req, res) {
+route.get("/admins", function (req, res) {
     wf('Current: Login Page')
     res.render('After_login/login.ejs', {error: 0})
 })
