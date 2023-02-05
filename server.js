@@ -41,7 +41,7 @@ app.set('view engine', 'handlebars')
 app.set('views', './views')
 
 app.use("/", require('./routes/web'))
-app.use("/css", express.static(__dirname + '/views'))
+app.use(express.static(__dirname + '/views'))
 
 app.listen(app.get('port'), function () {
     wf(`Server started: ${app.get('port')}`)
