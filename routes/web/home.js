@@ -89,12 +89,12 @@ route.get("/admins", function (req, res) {
     res.render('After_login/login.ejs', {error: 0})
 })
 
-route.get('/error', function (req, res) {
+route.get('/admins/error', function (req, res) {
     req.flash('error', 'Wrong Name or Password! Contact admins@12345 if you expected to see the page.')
     res.render('After_login/login.ejs', {error: req.flash('error'), page: 0})
 })
 
-route.post("/login", function (req, res) {
+route.post("/admins/login", function (req, res) {
     let name = req.body.email
     let pass = req.body.password
     wf(`input: ${name}, ${pass}`)
