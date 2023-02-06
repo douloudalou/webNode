@@ -68,6 +68,15 @@ function load(req, res) {
     })
 }
 
+function login(err) {
+    if (err == 0) {
+        res.render('After_login/login.ejs', {error: 0})
+    }
+    else {
+        res.render('After_login/login.ejs', {error: req.flash('error')})
+    }
+}
+
 function wf(content) {
     let date = new Date();
 
@@ -86,12 +95,12 @@ route.use(express.json())
 // login page
 route.get("/admins", function (req, res) {
     wf('Current: Login Page')
-    res.render('After_login/login.ejs', {error: 0})
+    login(0)
 })
 
 route.get('/admins/error', function (req, res) {
-    req.flash('error', 'Wrong Name or Password! Contact admins@12345 if you expected to see the page.')
-    res.render('After_login/login.ejs', {error: req.flash('error'), page: 0})
+    req.flash('error', 'Wrong Name or Password! Contact admins@12345 if you require assistance')
+    login(1)
 })
 
 route.post("/admins/login", function (req, res) {
