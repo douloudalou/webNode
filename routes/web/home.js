@@ -110,7 +110,7 @@ route.post("/admins/login", function (req, res) {
                 load(req, res)
             }
             else {
-                res.redirect('/error')
+                res.redirect('/admins/error')
             }
         }
     })
