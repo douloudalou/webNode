@@ -92,6 +92,13 @@ function wf(content) {
 route.use(express.urlencoded())
 route.use(express.json())
 
+
+// Swimperceptors page
+route.get('/', function (req, res) {
+    wf('Current: Swimperceptors Page')
+    res.render('After_login/index.html')
+})
+
 // login page
 route.get("/admins", function (req, res) {
     wf('Current: Login Page')
