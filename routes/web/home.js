@@ -94,10 +94,10 @@ route.use(express.json())
 
 
 // Swimperceptors page
-route.get('/', function (req, res) {
-    wf('Current: Swimperceptors Page')
-    res.render('index.ejs')
-})
+// route.get('/', function (req, res) {
+//     wf('Current: Swimperceptors Page')
+//     res.render('index.ejs')
+// })
 
 // login page
 route.get("/admins", function (req, res) {
