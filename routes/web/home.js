@@ -133,7 +133,7 @@ route.post("/admins/login", function (req, res) {
 })
 
 // main page
-route.post('/After/search', function (req, res) {
+route.post('/admins/After/search', function (req, res) {
     let tab = req.body.search_tab
     let title = req.body.search_title
     let item = req.body.search_item
@@ -161,7 +161,7 @@ route.post('/After/search', function (req, res) {
     }
 })
 
-route.post('/After/search/details', function(req, res) {
+route.post('/admins/After/search/details', function(req, res) {
     let tab = req.body.tab
     let col = req.body.title
     let name = req.body.name
@@ -173,7 +173,7 @@ route.post('/After/search/details', function(req, res) {
             if (err) wf(err)
             results = result
             wf(results)
-            res.render('After_login/details/parents/parents_details.ejs', {
+            res.render('/admins/After_login/details/parents/parents_details.ejs', {
                 results: results
             })
         })
@@ -190,7 +190,7 @@ route.post('/After/search/details', function(req, res) {
             if (err) wf(err)
             Parents_results = result
             wf(Parents_results)
-            res.render('After_login/details/perceptors/perceptors_details.ejs', {
+            res.render('/admins/After_login/details/perceptors/perceptors_details.ejs', {
                 ceptors_results: Perceptors_results,
                 rents_results: Parents_results
             })
@@ -206,7 +206,7 @@ route.post('/After/search/details', function(req, res) {
             if (err) wf(err)
             Parents_results = result
             wf(Parents_results)
-            res.render('After_login/details/perceptors/perceptors_details.ejs', {
+            res.render('/admins/After_login/details/perceptors/perceptors_details.ejs', {
                 ceptors_results: Perceptors_results,
                 rents_results: Parents_results
             })
@@ -218,7 +218,7 @@ route.post('/After/search/details', function(req, res) {
             if (err) wf(err)
             results = result
             wf(results)
-            res.render('After_login/details/newceptees/newceptees_details.ejs', {
+            res.render('/admins/After_login/details/newceptees/newceptees_details.ejs', {
                 results: results
             })
         })
@@ -229,7 +229,7 @@ route.post('/After/search/details', function(req, res) {
     }
 })
 
-route.post('/After/paid', function (req, res) {
+route.post('/admins/After/paid', function (req, res) {
     let name = req.body.fname
     wf(`Parent: ${name} payment approved`)
     let sql = `UPDATE \`parents\` SET payment = 'paid' WHERE \`Parents\` = '${name}'`
@@ -240,14 +240,14 @@ route.post('/After/paid', function (req, res) {
     })
 })
 
-route.post('/After/unpaid', function (req, res) {
+route.post('/admins/After/unpaid', function (req, res) {
     let name = req.body.fname
     wf(`Notified Parent: ${name}`)
 
     load(req, res)
 })
 
-route.post('/After/transfer_newceptees', function (req, res) {
+route.post('/admins/After/transfer_newceptees', function (req, res) {
     let parent = req.body.tparent
     let student = req.body.tstudent
     let contact = req.body.tcontact
@@ -266,7 +266,7 @@ route.post('/After/transfer_newceptees', function (req, res) {
     })
 })
 
-route.post('/After/drop_newceptees', function (req, res) {
+route.post('/admins/After/drop_newceptees', function (req, res) {
     let parent = req.body.tparent
     let student = req.body.tstudent
     let contact = req.body.tcontact
@@ -281,7 +281,7 @@ route.post('/After/drop_newceptees', function (req, res) {
     })
 })
 
-route.post('/After/transfer_newceptors', function (req, res) {
+route.post('/admins/After/transfer_newceptors', function (req, res) {
     let perceptor = req.body.tceptors
     let email = req.body.temail
     let contact = req.body.tcontact
@@ -299,7 +299,7 @@ route.post('/After/transfer_newceptors', function (req, res) {
     })
 })
 
-route.post('/After/drop_newceptors', function (req, res) {
+route.post('/admins/After/drop_newceptors', function (req, res) {
     let perceptor = req.body.tceptors
     let email = req.body.temail
     let contact = req.body.tcontact
@@ -313,7 +313,7 @@ route.post('/After/drop_newceptors', function (req, res) {
     })
 })
 
-route.post('/After/Perceptor_NRIC', function (req, res) {
+route.post('/admins/After/Perceptor_NRIC', function (req, res) {
     let name = req.body.nametors
     let contact = req.body.contactors
     let NRIC = req.body.NRICtors
@@ -326,7 +326,7 @@ route.post('/After/Perceptor_NRIC', function (req, res) {
     })
 })
 
-route.post('/After/Perceptor_Num', function (req, res) {
+route.post('/admins/After/Perceptor_Num', function (req, res) {
     let name = req.body.nametors
     let contact = req.body.contactors
     let num = req.body.Numtors
@@ -340,7 +340,7 @@ route.post('/After/Perceptor_Num', function (req, res) {
 })
 
 // parents details
-route.post('/After/parents_detail', function(req, res) {
+route.post('/admins/After/parents_detail', function(req, res) {
     let name = req.body.detailname
     let tab = req.body.tabname
     let col = req.body.colname
@@ -350,13 +350,13 @@ route.post('/After/parents_detail', function(req, res) {
         if (err) wf(err)
         results = result
         wf(results)
-        res.render('After_login/details/parents/parents_details.ejs', {
+        res.render('/admins/After_login/details/parents/parents_details.ejs', {
             results: results
         })
     })
 })
 
-route.post('/After/parents/special_remarks', function (req, res) {
+route.post('/admins/After/parents/special_remarks', function (req, res) {
     let parents_name = req.body.Rparents_name
     let child_name = req.body.Rchild_name
     let child_NRIC = req.body.Rchild_NRIC
@@ -365,7 +365,7 @@ route.post('/After/parents/special_remarks', function (req, res) {
 })
 
 // perceptors details
-route.post('/After/perceptors_detail', function(req, res) {
+route.post('/admins/After/perceptors_detail', function(req, res) {
     let name = req.body.detailname
     let tab = req.body.tabname
     let col = req.body.colname
@@ -381,7 +381,7 @@ route.post('/After/perceptors_detail', function(req, res) {
         if (err) wf(err)
         Parents_results = result
         wf(Parents_results)
-        res.render('After_login/details/perceptors/perceptors_details.ejs', {
+        res.render('/admins/After_login/details/perceptors/perceptors_details.ejs', {
             ceptors_results: Perceptors_results,
             rents_results: Parents_results
         })
@@ -389,7 +389,7 @@ route.post('/After/perceptors_detail', function(req, res) {
 })
 
 // admins details
-route.post('/After/admins_detail', function(req, res) {
+route.post('/admins/After/admins_detail', function(req, res) {
     let name = req.body.detailname
     let tab = req.body.tabname
     let col = req.body.colname
@@ -399,14 +399,14 @@ route.post('/After/admins_detail', function(req, res) {
         if (err) wf(err)
         results = result
         wf(results)
-        res.render('After_login/details/admins/admins_details.ejs', {
+        res.render('/admins/After_login/details/admins/admins_details.ejs', {
             results: results
         })
     })
 })
 
 // newceptees details
-route.post('/After/newceptees_detail', function(req, res) {
+route.post('/admins/After/newceptees_detail', function(req, res) {
     let name = req.body.detailname
     let tab = req.body.tabname
     let col = req.body.colname
@@ -416,14 +416,14 @@ route.post('/After/newceptees_detail', function(req, res) {
         if (err) throw err
         results = result
         wf(results)
-        res.render('After_login/details/newceptees/newceptees_details.ejs', {
+        res.render('/admins/After_login/details/newceptees/newceptees_details.ejs', {
             results: results
         })
     })
 })
 
 // newceptors details
-route.post('/After/newceptors_detail', function(req, res) {
+route.post('/admins/After/newceptors_detail', function(req, res) {
     let name = req.body.detailname
     let tab = req.body.tabname
     let col = req.body.colname
@@ -438,7 +438,7 @@ route.post('/After/newceptors_detail', function(req, res) {
         if (err) wf(err)
         Parents_results = result
         wf(Parents_results)
-        res.render('After_login/details/perceptors/perceptors_details.ejs', {
+        res.render('/admins/After_login/details/perceptors/perceptors_details.ejs', {
             ceptors_results: Perceptors_results,
             rents_results: Parents_results
         })
@@ -446,7 +446,7 @@ route.post('/After/newceptors_detail', function(req, res) {
 })
 
 // reload
-route.post('/After/reload', function(req, res) {
+route.post('/admins/After/reload', function(req, res) {
     load(req, res)  
 })
 
