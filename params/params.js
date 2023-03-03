@@ -2,8 +2,8 @@
 const SQLconnection = {
     host: 'localhost',
     user: 'root',
-    password: 'Aiss2017b536442.',
-    database: 'loginDB'
+    password: 'Aiss2017b.',
+    database: 'login_trailrun_db'
   }
 
   
