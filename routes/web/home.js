@@ -100,7 +100,7 @@ route.use(express.json())
 // })
 
 // login page
-route.get("/", function (req, res) {
+route.get("/admins", function (req, res) {
     wf('Current: Login Page')
     login(0, res)
 })
