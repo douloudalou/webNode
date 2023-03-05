@@ -70,7 +70,7 @@ function load(req, res) {
 
 function login(err, res) {
     if (err == 0) {
-        res.render('/views/After_login/login.ejs', {error: 0})
+        res.render('After_login/login.ejs', {error: 0})
     }
     else {
         res.render('After_login/login.ejs', {error: req.flash('error')})
