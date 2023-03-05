@@ -7,14 +7,14 @@
     <title>DashBoard</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="../style.css" type="text/css">
+    <link rel="stylesheet" href="../webNode/views/style.css" type="text/css">
 </head>
 <body>
     <div id="Top">
         <nav class="navbar sticky-top navbar-expand-md navbar-dark" id="nav">
             <div class="topthings">
-                <form action="/After/reload" method="post">
-                    <input type="image" alt="logo" src="../small lbsx.png" id="img">
+                <form action="/admins/After/reload" method="post">
+                    <input type="image" alt="logo" src="../webNode/views/small lbsx.png" id="img">
                 </form>
             </div>
             <h4><%= tab %> Search</h4>
@@ -27,7 +27,7 @@
                 <li class="list-inline-item">
                     <div class="details_box">
                         <div id="childs_name">
-                            <form action="/After/search/details" method="post">
+                            <form action="/admins/After/search/details" method="post">
                                 <input type="hidden" name="name" value="<%= JSON.stringify(results[i][title]).slice(1, JSON.stringify(results[i][title]).length-1) %>">
                                 <input type="hidden" name="tab" value='<%= tab %>'>
                                 <input type="hidden" name="title" value='<%= title %>'>
