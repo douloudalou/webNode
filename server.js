@@ -38,7 +38,7 @@ app.use(flash())
 app.set('views', path.join(__dirname, '/views'))
 app.engine('handlebars', engine())
 app.set('view engine', 'handlebars')
-app.set('views', 'webNode/views')
+app.set('views', '../webNode/views')
 
 app.use("/", require('./routes/web'))
 app.use(express.static(__dirname + '/views'))
