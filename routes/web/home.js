@@ -148,7 +148,7 @@ route.post('/admins/After/search', function (req, res) {
             results = result
             wf(results)
             if (results.length > 0) {
-                res.render('/admins/After_login/search/search.ejs', {
+                res.render('After_login/search/search.ejs', {
                     tab: tab,
                     title: title,
                     results: results
@@ -173,7 +173,7 @@ route.post('/admins/After/search/details', function(req, res) {
             if (err) wf(err)
             results = result
             wf(results)
-            res.render('/admins/After_login/details/parents/parents_details.ejs', {
+            res.render('After_login/details/parents/parents_details.ejs', {
                 results: results
             })
         })
@@ -190,7 +190,7 @@ route.post('/admins/After/search/details', function(req, res) {
             if (err) wf(err)
             Parents_results = result
             wf(Parents_results)
-            res.render('/admins/After_login/details/perceptors/perceptors_details.ejs', {
+            res.render('After_login/details/perceptors/perceptors_details.ejs', {
                 ceptors_results: Perceptors_results,
                 rents_results: Parents_results
             })
@@ -206,7 +206,7 @@ route.post('/admins/After/search/details', function(req, res) {
             if (err) wf(err)
             Parents_results = result
             wf(Parents_results)
-            res.render('/admins/After_login/details/perceptors/perceptors_details.ejs', {
+            res.render('After_login/details/perceptors/perceptors_details.ejs', {
                 ceptors_results: Perceptors_results,
                 rents_results: Parents_results
             })
@@ -218,7 +218,7 @@ route.post('/admins/After/search/details', function(req, res) {
             if (err) wf(err)
             results = result
             wf(results)
-            res.render('/admins/After_login/details/newceptees/newceptees_details.ejs', {
+            res.render('After_login/details/newceptees/newceptees_details.ejs', {
                 results: results
             })
         })
@@ -350,7 +350,7 @@ route.post('/admins/After/parents_detail', function(req, res) {
         if (err) wf(err)
         results = result
         wf(results)
-        res.render('/admins/After_login/details/parents/parents_details.ejs', {
+        res.render('After_login/details/parents/parents_details.ejs', {
             results: results
         })
     })
@@ -381,7 +381,7 @@ route.post('/admins/After/perceptors_detail', function(req, res) {
         if (err) wf(err)
         Parents_results = result
         wf(Parents_results)
-        res.render('/admins/After_login/details/perceptors/perceptors_details.ejs', {
+        res.render('After_login/details/perceptors/perceptors_details.ejs', {
             ceptors_results: Perceptors_results,
             rents_results: Parents_results
         })
@@ -399,7 +399,7 @@ route.post('/admins/After/admins_detail', function(req, res) {
         if (err) wf(err)
         results = result
         wf(results)
-        res.render('/admins/After_login/details/admins/admins_details.ejs', {
+        res.render('After_login/details/admins/admins_details.ejs', {
             results: results
         })
     })
@@ -416,7 +416,7 @@ route.post('/admins/After/newceptees_detail', function(req, res) {
         if (err) throw err
         results = result
         wf(results)
-        res.render('/admins/After_login/details/newceptees/newceptees_details.ejs', {
+        res.render('After_login/details/newceptees/newceptees_details.ejs', {
             results: results
         })
     })
@@ -438,7 +438,7 @@ route.post('/admins/After/newceptors_detail', function(req, res) {
         if (err) wf(err)
         Parents_results = result
         wf(Parents_results)
-        res.render('/admins/After_login/details/perceptors/perceptors_details.ejs', {
+        res.render('After_login/details/perceptors/perceptors_details.ejs', {
             ceptors_results: Perceptors_results,
             rents_results: Parents_results
         })
