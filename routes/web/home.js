@@ -446,7 +446,7 @@ route.post('/admins/After/newceptors_detail', function(req, res) {
 })
 
 // reload
-route.post('/admins/After/reload', function(req, res) {
+route.post('/admins/reload', function(req, res) {
     load(req, res)  
 })
 
