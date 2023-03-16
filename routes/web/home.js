@@ -137,7 +137,7 @@ route.post('/admins/After/search', function (req, res) {
     let tab = req.body.search_tab
     let title = req.body.search_title
     let item = req.body.search_item
-    if (!(tab == 'tab') || !(title == 'title') || !(item == '')) {
+    if (tab == 'tab' || title == 'title' || item == '') {
         wf(`Search error: ${tab}, ${title}, ${item}`)
         res.redirect('/admins/reload')
     }
