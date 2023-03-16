@@ -139,7 +139,7 @@ route.post('/admins/After/search', function (req, res) {
     let item = req.body.search_item
     if (tab == 'tab' || title == 'title' || item == '') {
         wf(`Search error: ${tab}, ${title}, ${item}`)
-        res.redirect('/admins/reload')
+        load(req, res)
     }
     else {
         let sql = `SELECT * FROM \`${tab}\` Where \`${title}\` like '%${item}%';`
