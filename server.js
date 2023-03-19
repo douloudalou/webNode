@@ -18,7 +18,7 @@ function wf(content) {
     let now  = (new Intl.DateTimeFormat('en-GB', { dateStyle: 'short', timeStyle: 'medium', timeZone: 'Singapore' }).format(date));
 
     writeFile(`NodeConsole.txt`, `{${now}} ${content}\n`, { flag: 'a+' }, err => {
-        if (err) throw err
+        if (err) throw `err: ${err}`
     })
 }
 
