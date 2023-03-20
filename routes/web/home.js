@@ -229,7 +229,7 @@ route.post('/admins/search/details', function(req, res) {
     }
 })
 
-route.post('/admins/After/paid', function (req, res) {
+route.post('/admins/paid', function (req, res) {
     let name = req.body.fname
     wf(`Parent: ${name} payment approved`)
     let sql = `UPDATE \`parents\` SET payment = 'paid' WHERE \`Parents\` = '${name}'`
@@ -240,14 +240,14 @@ route.post('/admins/After/paid', function (req, res) {
     })
 })
 
-route.post('/admins/After/unpaid', function (req, res) {
+route.post('/admins/unpaid', function (req, res) {
     let name = req.body.fname
     wf(`Notified Parent: ${name}`)
 
     load(req, res)
 })
 
-route.post('/admins/After/transfer_newceptees', function (req, res) {
+route.post('/admins/transfer_newceptees', function (req, res) {
     let parent = req.body.tparent
     let student = req.body.tstudent
     let contact = req.body.tcontact
@@ -266,7 +266,7 @@ route.post('/admins/After/transfer_newceptees', function (req, res) {
     })
 })
 
-route.post('/admins/After/drop_newceptees', function (req, res) {
+route.post('/admins/drop_newceptees', function (req, res) {
     let parent = req.body.tparent
     let student = req.body.tstudent
     let contact = req.body.tcontact
@@ -281,7 +281,7 @@ route.post('/admins/After/drop_newceptees', function (req, res) {
     })
 })
 
-route.post('/admins/After/transfer_newceptors', function (req, res) {
+route.post('/admins/transfer_newceptors', function (req, res) {
     let perceptor = req.body.tceptors
     let email = req.body.temail
     let contact = req.body.tcontact
@@ -299,7 +299,7 @@ route.post('/admins/After/transfer_newceptors', function (req, res) {
     })
 })
 
-route.post('/admins/After/drop_newceptors', function (req, res) {
+route.post('/admins/drop_newceptors', function (req, res) {
     let perceptor = req.body.tceptors
     let email = req.body.temail
     let contact = req.body.tcontact
@@ -313,7 +313,7 @@ route.post('/admins/After/drop_newceptors', function (req, res) {
     })
 })
 
-route.post('/admins/After/Perceptor_NRIC', function (req, res) {
+route.post('/admins/Perceptor_NRIC', function (req, res) {
     let name = req.body.nametors
     let contact = req.body.contactors
     let NRIC = req.body.NRICtors
@@ -326,7 +326,7 @@ route.post('/admins/After/Perceptor_NRIC', function (req, res) {
     })
 })
 
-route.post('/admins/After/Perceptor_Num', function (req, res) {
+route.post('/admins/Perceptor_Num', function (req, res) {
     let name = req.body.nametors
     let contact = req.body.contactors
     let num = req.body.Numtors
