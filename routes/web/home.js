@@ -262,7 +262,7 @@ route.post('/admins/transfer_newceptees', function (req, res) {
     let datasql = `SELECT \`Parents\`, \`Perceptees\`, \`Parent DOB\`, \`Parent NRIC\`, \`Relation\`, \`Venue of lesson\`, \`Contact number\`, \`Email\`, \`Preferred day and time\`, \`Address\`, \`Perceptees NRIC\`, \`Perceptees DOB\`, \`Medical Conditions\`, \`Remarks\`, \`emergency name\`, \`emergency contact\`, \`emergency relation\` FROM \`new perceptees\``
     con.query(datasql, function (err, result) {
         if (err) wf(`err(datasql): ${err}`)
-        data = result
+        data = JSON.stringify(result)
     })
     let tsql = `INSERT INTO \`parents\` (\`Parents\`, \`Perceptees\`, \`Parent DOB\`, \`Parent NRIC\`, \`Relation\`, \`Venue of lesson\`, \`Contact number\`, \`Email\`, \`Preferred day and time\`, \`Address\`, \`Perceptees NRIC\`, \`Perceptees DOB\`, \`Medical Conditions\`, \`Remarks\`, \`emergency name\`, \`emergency contact\`, \`emergency relation\`) 
     SELECT \`Parents\`, \`Perceptees\`, \`Parent DOB\`, \`Parent NRIC\`, \`Relation\`, \`Venue of lesson\`, \`Contact number\`, \`Email\`, \`Preferred day and time\`, \`Address\`, \`Perceptees NRIC\`, \`Perceptees DOB\`, \`Medical Conditions\`, \`Remarks\`, \`emergency name\`, \`emergency contact\`, \`emergency relation\` FROM \`new perceptees\` 
@@ -303,7 +303,7 @@ route.post('/admins/transfer_newceptors', function (req, res) {
     let datasql = `SELECT \`Perceptors\`, \`DOB\`, \`NRIC\`, \`register date\`, \`Address\`, \`Venue of lesson\`, \`Contact number\`, \`Email\`, \`Medical Conditions\`, \`Swimming/Coaching experience\`, \`Preferred day and time\`, \`Remarks\`, \`Emergency Contact\`, \`Emergency Name\`, \`Emergency Relation\` FROM \`new perceptors\``
     con.query(datasql, function (err, result) {
         if (err) wf(`err(datasql): ${err}`)
-        data = result
+        data = JSON.stringify(result)
     })
     let tsql = `INSERT INTO \`perceptors\` (\`Perceptors\`, \`DOB\`, \`NRIC\`, \`register date\`, \`Address\`, \`Venue of lesson\`, \`Contact number\`, \`Email\`, \`Medical Conditions\`, \`Swimming/Coaching experience\`, \`Preferred day and time\`, \`Remarks\`, \`Emergency Contact\`, \`Emergency Name\`, \`Emergency Relation\`) 
     SELECT \`Perceptors\`, \`DOB\`, \`NRIC\`, \`register date\`, \`Address\`, \`Venue of lesson\`, \`Contact number\`, \`Email\`, \`Medical Conditions\`, \`Swimming/Coaching experience\`, \`Preferred day and time\`, \`Remarks\`, \`Emergency Contact\`, \`Emergency Name\`, \`Emergency Relation\` FROM \`new perceptors\` 
