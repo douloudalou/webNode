@@ -304,7 +304,7 @@ route.post('/admins/transfer_newceptors', function (req, res) {
     SELECT \`Perceptors\`, \`DOB\`, \`NRIC\`, \`register date\`, \`Address\`, \`Venue of lesson\`, \`Contact number\`, \`Email\`, \`Medical Conditions\`, \`Swimming/Coaching experience\`, \`Preferred day and time\`, \`Remarks\`, \`Emergency Contact\`, \`Emergency Name\`, \`Emergency Relation\` FROM \`new perceptors\` 
     WHERE \`Perceptors\`='${perceptor}' AND \`Email\`='${email}' AND \`Contact number\`='${contact}';`
     con.query(tsql, function (err, result) {
-        if (err) wf(`err: ${err}`)
+        if (err) wf(`err: ${err} /n data: ${data}`)
         wf(`Perceptor: ${perceptor} transfered from new perceptors to perceptors`)
     })
     let dsql = `DELETE FROM \`new perceptors\` WHERE \`Perceptors\`='${perceptor}' AND \`Email\`='${email}' and \`Contact number\`='${contact}';`
