@@ -36,6 +36,7 @@ function load(req, res) {
     con.query(Parents_sql, function (err, result) {
         if (err) throw `err: ${err}`
         Parents_results = result
+        wf(Parents_results)
     })
     let Perceptors_sql = 'SELECT * FROM \`perceptors\`;'
     con.query(Perceptors_sql, function (err, result) {
