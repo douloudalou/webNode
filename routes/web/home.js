@@ -294,7 +294,15 @@ route.post('/admins/transfer_newceptors', function (req, res) {
     let email = req.body.temail
     let contact = req.body.tcontact
     wf(perceptor, email, contact)
-    let tsql = `INSERT INTO \`perceptors\` (\`Perceptors\`, \`DOB\`, \`Venue of lesson\`, \`Contact number\`, \`Remarks\`) SELECT \`Perceptors\`, \`DOB\`, \`Venue of lesson\`, \`Contact number\`, \`Remarks\` FROM \`new perceptors\` WHERE \`Perceptors\`='${perceptor}' AND \`Email\`='${email}' AND \`Contact number\`='${contact}';`
+    let data = ""
+    let datasql = `SELECT \`Perceptors\`, \`DOB\`, \`NRIC\`, \`register date\`, \`Address\`, \`Venue of lesson\`, \`Contact number\`, \`Email\`, \`Medical Conditions\`, \`Swimming/Coaching experience\`, \`Preferred day and time\`, \`Remarks\`, \`Emergency Contact\`, \`Emergency Name\`, \`Emergency Relation\` FROM \`new perceptors\``
+    con.query(datasql, function (err, result) {
+        if (err) wf(`err(datasql): ${err}`)
+        data = result
+    })
+    let tsql = `INSERT INTO \`perceptors\` (\`Perceptors\`, \`DOB\`, \`NRIC\`, \`register date\`, \`Address\`, \`Venue of lesson\`, \`Contact number\`, \`Email\`, \`Medical Conditions\`, \`Swimming/Coaching experience\`, \`Preferred day and time\`, \`Remarks\`, \`Emergency Contact\`, \`Emergency Name\`, \`Emergency Relation\`) 
+    SELECT \`Perceptors\`, \`DOB\`, \`NRIC\`, \`register date\`, \`Address\`, \`Venue of lesson\`, \`Contact number\`, \`Email\`, \`Medical Conditions\`, \`Swimming/Coaching experience\`, \`Preferred day and time\`, \`Remarks\`, \`Emergency Contact\`, \`Emergency Name\`, \`Emergency Relation\` FROM \`new perceptors\` 
+    WHERE \`Perceptors\`='${perceptor}' AND \`Email\`='${email}' AND \`Contact number\`='${contact}';`
     con.query(tsql, function (err, result) {
         if (err) wf(`err: ${err}`)
         wf(`Perceptor: ${perceptor} transfered from new perceptors to perceptors`)
