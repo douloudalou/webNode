@@ -36,7 +36,7 @@ function load(req, res) {
     con.query(Parents_sql, function (err, result) {
         if (err) throw `err: ${err}`
         Parents_results = result
-        // wf(JSON.stringify(Parents_results))
+        wf(JSON.stringify(Parents_results))
     })
     let Perceptors_sql = 'SELECT * FROM \`perceptors\`;'
     con.query(Perceptors_sql, function (err, result) {
@@ -54,7 +54,7 @@ function load(req, res) {
     con.query(Newceptees_sql, function (err, result) {
         if (err) throw `err: ${err}`
         Newceptees_results = result
-        wf(JSON.stringify(Newceptees_results))
+        // wf(JSON.stringify(Newceptees_results))
     })
     let Newceptors_sql = 'SELECT * FROM \`new perceptors\`;'
     con.query(Newceptors_sql, function (err, result) {
