@@ -55,7 +55,7 @@
                         <div id="childs_details">
                             Childs Name: <%= JSON.stringify(results[i]['Perceptees']).slice(1, JSON.stringify(results[i]['Perceptees']).length-1) %>
                             <br>
-                            NRIC: <%= JSON.stringify(results[i]['Perceptees NRIC']) %>
+                            NRIC: <%= JSON.stringify(results[i]['Perceptees NRIC']).slice(1, JSON.stringify(results[i]['Perceptees NRIC']).length-1) %>
                             <br>
                             DOB: <%= JSON.stringify(results[i]['Perceptees DOB']).slice(1, JSON.stringify(results[i]['Perceptees DOB']).length-15) %>
                             <br>
