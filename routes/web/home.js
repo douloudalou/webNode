@@ -42,21 +42,25 @@ function load(req, res) {
     con.query(Perceptors_sql, function (err, result) {
         if (err) throw err
         Perceptors_results = result
+        // wf(JSON.stringify(Perceptors_results))
     })
     let Admins_sql = 'SELECT * FROM \`admin\`;'
     con.query(Admins_sql, function (err, result) {
         if (err) throw `err: ${err}`
         Admins_results = result
+        // wf(JSON.stringify(Admins_results))
     })
     let Newceptees_sql = 'SELECT * FROM \`new perceptees\`;'
     con.query(Newceptees_sql, function (err, result) {
         if (err) throw `err: ${err}`
         Newceptees_results = result
+        wf(JSON.stringify(Newceptees_results))
     })
     let Newceptors_sql = 'SELECT * FROM \`new perceptors\`;'
     con.query(Newceptors_sql, function (err, result) {
         if (err) throw `err: ${err}`
         Newceptors_results = result
+        // wf(JSON.stringify(Newceptors_results))
 
         // Render
         res.render('After_login/index.ejs', {
