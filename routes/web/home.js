@@ -259,7 +259,7 @@ route.post('/admins/transfer_newceptees', function (req, res) {
     let email = req.body.temail
     wf(`${parent}, ${student}, ${contact}`)
     let data = ""
-    let datasql = `SELECT \`Parents\`, \`Perceptees\`, \`Parent DOB\`, \`Parent NRIC\`, \`Relation\`, \`Venue of lesson\`, \`Contact number\`, \`Email\`, \`Preferred day and time\`, \`Address\`, \`Perceptees NRIC\`, \`Perceptees DOB\`, \`Medical Conditions\`, \`Remarks\`, \`emergency name\`, \`emergency contact\`, \`emergency relation\` FROM \`new perceptees\`
+    let datasql = `SELECT * FROM \`new perceptees\`
     WHERE \`Parents\`='${parent}' AND \`Perceptees\`='${student}' AND \`Contact number\`='${contact}' AND \`Email\`='${email}';`
     con.query(datasql, function (err, result) {
         if (err) wf(`err(datasql): ${err}`)
