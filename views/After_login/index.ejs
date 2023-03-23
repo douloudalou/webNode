@@ -34,7 +34,7 @@
                                 </form>
                             </td>
                             <!-- Perceptees -->
-                            <td> <%= JSON.stringify(Newceptees_results[i]['Perceptees']).slice(1, JSON.stringify(Newceptees_results[i]['Perceptees']).length-1) %> </td>
+                            <td> <%= let student = JSON.stringify(Newceptees_results[i]['Perceptees']).slice(1, JSON.stringify(Newceptees_results[i]['Perceptees']).length-1) %> </td>
                             <!-- DOB -->
                             <td> <%= JSON.stringify(Newceptees_results[i]['Perceptees DOB']).slice(1, JSON.stringify(Newceptees_results[i]['Perceptees DOB']).length-15) %> </td>
                             <!-- register date -->
@@ -48,11 +48,11 @@
                                 <div class="input-group">
                                     <form action="/admins/transfer_newceptees" method="post">
                                         <% let parent = JSON.stringify(Newceptees_results[i]['Parents']) %>
-                                        <% let student = JSON.stringify(Newceptees_results[i]['Perceptees']) %>
+                                        
                                         <% let contact = JSON.stringify(Newceptees_results[i]['Contact number']) %> 
                                         <% let email = JSON.stringify(Newceptees_results[i]['Email']) %> 
                                         <input type="hidden" name="tparent" value=<%= parent.slice(1, parent.length-1) %>>
-                                        <input type="hidden" name="tstudent" value=<%= student.slice(1, student.length-1) %>>
+                                        <input type="hidden" name="tstudent" value=<%= student %>>
                                         <input type="hidden" name="tcontact" value=<%= contact %>>
                                         <input type="hidden" name="temail" value=<%= email.slice(1, email.length-1) %>>
                                         <input type="submit" class="btn btn-primary btn-sm form-control payment" value="TRANSFER">
