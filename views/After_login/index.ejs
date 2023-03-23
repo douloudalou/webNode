@@ -34,7 +34,7 @@
                                 </form>
                             </td>
                             <!-- Perceptees -->
-                            <td> <%= let student = (JSON.stringify(Newceptees_results[i]['Perceptees']).slice(1, JSON.stringify(Newceptees_results[i]['Perceptees']).length-1)) %> </td>
+                            <td> <%= let student = JSON.stringify(Newceptees_results[i]['Perceptees']).slice(1, JSON.stringify(Newceptees_results[i]['Perceptees']).length-1) %> </td>
                             <!-- DOB -->
                             <td> <%= JSON.stringify(Newceptees_results[i]['Perceptees DOB']).slice(1, JSON.stringify(Newceptees_results[i]['Perceptees DOB']).length-15) %> </td>
                             <!-- register date -->
