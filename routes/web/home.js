@@ -268,7 +268,7 @@ route.post('/admins/transfer_newceptees', function (req, res) {
     SELECT \`Parents\`, \`Perceptees\`, \`Parent DOB\`, \`Parent NRIC\`, \`Relation\`, \`Venue of lesson\`, \`Contact number\`, \`Email\`, \`Preferred day and time\`, \`Address\`, \`Perceptees NRIC\`, \`Perceptees DOB\`, \`Medical Conditions\`, \`Remarks\`, \`emergency name\`, \`emergency contact\`, \`emergency relation\` FROM \`new perceptees\` 
     WHERE \`Parents\`='${parent}' AND \`Perceptees\`='${student}' AND \`Contact number\`='${contact}' AND \`Email\`='${email}';`
     con.query(tsql, function (err, result) {
-        if (err) wf(`err: ${err} /n data: ${data}`)
+        if (err) wf(`err: ${err} \n data: ${data}`)
         wf(`Parent: ${parent}, Student: ${student} transfered from new perceptees to parents`)
     })
     let dsql = `DELETE FROM \`new perceptees\` WHERE \`Parents\`='${parent}' AND \`Perceptees\`='${student}' and \`Contact number\`='${contact}' AND \`Email\`='${email}';`
