@@ -257,7 +257,7 @@ route.post('/admins/transfer_newceptees', function (req, res) {
     let student = req.body.tstudent
     let contact = req.body.tcontact
     let email = req.body.temail
-    wf(parent, student, contact)
+    wf(`${parent}, ${student}, ${contact}`)
     let data = ""
     let datasql = `SELECT \`Parents\`, \`Perceptees\`, \`Parent DOB\`, \`Parent NRIC\`, \`Relation\`, \`Venue of lesson\`, \`Contact number\`, \`Email\`, \`Preferred day and time\`, \`Address\`, \`Perceptees NRIC\`, \`Perceptees DOB\`, \`Medical Conditions\`, \`Remarks\`, \`emergency name\`, \`emergency contact\`, \`emergency relation\` FROM \`new perceptees\``
     con.query(datasql, function (err, result) {
@@ -284,7 +284,7 @@ route.post('/admins/drop_newceptees', function (req, res) {
     let student = req.body.tstudent
     let contact = req.body.tcontact
     let email = req.body.temail
-    wf(parent, student, contact)
+    wf(`${parent}, ${student}, ${contact}`)
     let dsql = `DELETE FROM \`new perceptees\` WHERE \`Parents\`='${parent}' AND \`Perceptees\`='${student}' and \`Contact number\`='${contact}' AND \`Email\`='${email}';`
     con.query(dsql, function (err, result) {
         if (err) wf(`err: ${err}`)
@@ -298,7 +298,7 @@ route.post('/admins/transfer_newceptors', function (req, res) {
     let perceptor = req.body.tceptors
     let email = req.body.temail
     let contact = req.body.tcontact
-    wf(perceptor, email, contact)
+    wf(`${perceptor}, ${email}, ${contact}`)
     let data = ""
     let datasql = `SELECT \`Perceptors\`, \`DOB\`, \`NRIC\`, \`register date\`, \`Address\`, \`Venue of lesson\`, \`Contact number\`, \`Email\`, \`Medical Conditions\`, \`Swimming/Coaching experience\`, \`Preferred day and time\`, \`Remarks\`, \`Emergency Contact\`, \`Emergency Name\`, \`Emergency Relation\` FROM \`new perceptors\``
     con.query(datasql, function (err, result) {
@@ -324,7 +324,7 @@ route.post('/admins/drop_newceptors', function (req, res) {
     let perceptor = req.body.tceptors
     let email = req.body.temail
     let contact = req.body.tcontact
-    wf(perceptor, email, contact)
+    wf(`${perceptor}, ${email}, ${contact}`)
     let dsql = `DELETE FROM \`new perceptors\` WHERE \`Perceptors\`='${perceptor}' AND \`Email\`='${email}' and \`Contact number\`='${contact}';`
     con.query(dsql, function (err, result) {
         if (err) wf(`err: ${err}`)
