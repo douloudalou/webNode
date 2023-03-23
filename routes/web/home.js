@@ -259,7 +259,7 @@ route.post('/admins/transfer_newceptees', function (req, res) {
     let email = req.body.temail
     wf(`${parent}, ${student}, ${contact}`)
     let data = ""
-    let datasql = `SELECT \`Parents\`, \`Perceptees\`, \`Parent DOB\`, \`Parent NRIC\`, \`Relation\`, \`Venue of lesson\`, \`Contact number\`, \`Email\`, \`Preferred day and time\`, \`Address\`, \`Perceptees NRIC\`, \`Perceptees DOB\`, \`Medical Conditions\`, \`Remarks\`, \`emergency name\`, \`emergency contact\`, \`emergency relation\` FROM \`new perceptees\``
+    let datasql = `SELECT \`Parents\`, \`Perceptees\`, \`Parent DOB\`, \`Parent NRIC\`, \`Relation\`, \`Venue of lesson\`, \`Contact number\`, \`Email\`, \`Preferred day and time\`, \`Address\`, \`Perceptees NRIC\`, \`Perceptees DOB\`, \`Medical Conditions\`, \`Remarks\`, \`emergency name\`, \`emergency contact\`, \`emergency relation\` FROM \`new perceptees\`;`
     con.query(datasql, function (err, result) {
         if (err) wf(`err(datasql): ${err}`)
         data = JSON.stringify(result)
@@ -300,7 +300,7 @@ route.post('/admins/transfer_newceptors', function (req, res) {
     let contact = req.body.tcontact
     wf(`${perceptor}, ${email}, ${contact}`)
     let data = ""
-    let datasql = `SELECT \`Perceptors\`, \`DOB\`, \`NRIC\`, \`register date\`, \`Address\`, \`Venue of lesson\`, \`Contact number\`, \`Email\`, \`Medical Conditions\`, \`Swimming/Coaching experience\`, \`Preferred day and time\`, \`Remarks\`, \`Emergency Contact\`, \`Emergency Name\`, \`Emergency Relation\` FROM \`new perceptors\``
+    let datasql = `SELECT \`Perceptors\`, \`DOB\`, \`NRIC\`, \`register date\`, \`Address\`, \`Venue of lesson\`, \`Contact number\`, \`Email\`, \`Medical Conditions\`, \`Swimming/Coaching experience\`, \`Preferred day and time\`, \`Remarks\`, \`Emergency Contact\`, \`Emergency Name\`, \`Emergency Relation\` FROM \`new perceptors\`;`
     con.query(datasql, function (err, result) {
         if (err) wf(`err(datasql): ${err}`)
         data = JSON.stringify(result)
