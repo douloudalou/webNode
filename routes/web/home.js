@@ -60,7 +60,7 @@ function load(req, res) {
     con.query(Newceptors_sql, function (err, result) {
         if (err) throw `err: ${err}`
         Newceptors_results = result
-        wf(JSON.stringify(Newceptors_results))
+        // wf(JSON.stringify(Newceptors_results))
 
         // Render
         res.render('After_login/index.ejs', {
