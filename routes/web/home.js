@@ -173,9 +173,11 @@ route.post('/admins/search', function (req, res) {
                     wf(`Search details error: ${tab}, ${col}, ${name}`)
                     load(req, res)
                 }
-                res.render('After_login/details/parents/parents_details.ejs', {
-                    results: results   
-                })
+                else {
+                    res.render('After_login/details/parents/parents_details.ejs', {
+                        results: results   
+                    })
+                }
             })
         }
         else if (tab == 'perceptors'){
