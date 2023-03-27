@@ -169,7 +169,7 @@ route.post('/admins/search', function (req, res) {
                 if (err) wf(`err: ${err}`)
                 results = result
                 wf(JSON.stringify(results).length)
-                if (JSON.stringify(results).length < 1) {
+                if (JSON.stringify(results).length <= 2) {
                     wf(`Search details error: ${tab}, ${col}, ${name}`)
                     load(req, res)
                 }
