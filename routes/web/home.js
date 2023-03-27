@@ -164,7 +164,7 @@ route.post('/admins/search', function (req, res) {
         //     }
         // })
         if (tab=='parents'){
-            let Psql = `SELECT * FROM \`${tab}\` Where \`${col}\` like '${name}';`
+            let Psql = `SELECT * FROM \`${tab}\` Where \`${col}\` = '${name}';`
             con.query(Psql, function (err, result) {
                 if (err) wf(`err: ${err}`)
                 results = result
