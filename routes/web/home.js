@@ -448,9 +448,9 @@ route.post('/admins/After/parents/special_remarks', function (req, res) {
     let remarks = req.body.remarks
     wf(`${parents_name}, ${remarks}`)
     let sql = `UPDATE \`parents\` SET \`Sremarks\` = ${remarks} WHERE \`Parents\` = '${parents_name}';`
-    con.query(sql, function (err, result) {
-        if (err) wf(`err: ${err}`)
-    })
+    // con.query(sql, function (err, result) {
+    //     if (err) wf(`err: ${err}`)
+    // })
 })
 
 // perceptors details
