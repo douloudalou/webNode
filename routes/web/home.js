@@ -168,13 +168,13 @@ route.post('/admins/search', function (req, res) {
             con.query(Psql, function (err, result) {
                 if (err) wf(`err: ${err}`)
                 results = result
-                wf(JSON.stringify(results))
+                wf(JSON.stringify(results).length)
                 if (JSON.stringify(results).length < 1) {
                     wf(`Search details error: ${tab}, ${col}, ${name}`)
                     load(req, res)
                 }
                 res.render('After_login/details/parents/parents_details.ejs', {
-                results: results   
+                    results: results   
                 })
             })
         }
