@@ -61,10 +61,9 @@
                             <br>
                             DOB: <%= JSON.stringify(results[i]['Perceptees DOB']).slice(1, JSON.stringify(results[i]['Perceptees DOB']).length-15) %>
                             <br>
-                            Medical conditions: <%= JSON.stringify(results[i]['Medical conditions']) %>
+                            Medical conditions: <%= JSON.stringify(results[i]['Medical Conditions']).slice(1, JSON.stringify(results[0]['Medical Conditions']).length-1) %>
                             <br>
                             Remarks: <%= JSON.stringify(results[i]['Remarks']).slice(1, JSON.stringify(results[i]['Remarks']).length-1) %>
-                            <br>
                             <br>
                             Perceptors: <%= JSON.stringify(results[i]['Perceptors']).slice(1, JSON.stringify(results[i]['Perceptors']).length-1) %>
                             <br>
@@ -74,7 +73,7 @@
                             <br>
                             Preferred day and time: <%= JSON.stringify(results[i]['Preferred day and time']).slice(1, JSON.stringify(results[i]['Preferred day and time']).length-1) %>
                             <br>
-                            Payment status: <%= JSON.stringify(results[0]['Payment']) %>
+                            Payment status: <%= JSON.stringify(results[0]['payment']).slice(1, JSON.stringify(results[0]['payment']).length-1) %>
                             <br>
                             Password: <%= JSON.stringify(results[0]['password']).slice(1, JSON.stringify(results[0]['password']).length-1) %>
                             <br>
