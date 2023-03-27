@@ -445,10 +445,12 @@ route.post('/admins/After/parents_detail', function(req, res) {
 
 route.post('/admins/After/parents/special_remarks', function (req, res) {
     let parents_name = req.body.Rparents_name
-    let child_name = req.body.Rchild_name
-    let child_NRIC = req.body.Rchild_NRIC
     let remarks = req.body.remarks
-    wf(parents_name, child_name, child_NRIC, remarks)
+    wf(`${parents_name}, ${remarks}`)
+    let sql = `UPDATE \`parents\` SET \`Sremarks\` = ${remarks} WHERE \`Parents\` = '${parents_name}';`
+    con.query(sql, function (err, result) {
+        if (err) wf(`err: ${err}`)
+    })
 })
 
 // perceptors details
