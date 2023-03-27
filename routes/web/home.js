@@ -147,22 +147,83 @@ route.post('/admins/search', function (req, res) {
         load(req, res)
     }
     else {
-        let sql = `SELECT * FROM \`${tab}\` Where \`${title}\` like '%${item}%';`
-        con.query(sql, function(err, result) {
-            if (err) wf(`err: ${err}`)
-            results = result
-            wf(results)
-            if (results.length > 0) {
-                res.render('After_login/search/search.ejs', {
-                    tab: tab,
-                    title: title,
+        // let sql = `SELECT * FROM \`${tab}\` Where \`${title}\` like '%${item}%';`
+        // con.query(sql, function(err, result) {
+        //     if (err) wf(`err: ${err}`)
+        //     results = result
+        //     wf(results)
+        //     if (results.length > 0) {
+        //         res.render('After_login/search/search.ejs', {
+        //             tab: tab,
+        //             title: title,
+        //             results: results
+        //         })  
+        //     }
+        //     else{
+        //         load(req, res)
+        //     }
+        // })
+        if (tab=='parents'){
+            let Psql = `SELECT * FROM \`${tab}\` Where \`${col}\` = '${name}';`
+            con.query(Psql, function (err, result) {
+                if (err) wf(`err: ${err}`)
+                results = result
+                wf(JSON.stringify(results))
+                res.render('After_login/details/parents/parents_details.ejs', {
                     results: results
-                })  
-            }
-            else{
-                load(req, res)
-            }
-        })
+                })
+            })
+        }
+        else if (tab == 'perceptors'){
+            let Persql = `SELECT * FROM \`${tab}\` Where \`${col}\` = '${name}';`
+            con.query(Persql, function (err, result) {
+                if (err) wf(`err: ${err}`)
+                Perceptors_results = result
+                wf(JSON.stringify(Perceptors_results))
+            })
+            let Parent_sql = `SELECT * FROM \`parents\` Where \`Perceptors\` = '${name}';`
+            con.query(Parent_sql, function (err, result) {
+                if (err) wf(`err: ${err}`)
+                Parents_results = result
+                wf(JSON.stringify(Parents_results))
+                res.render('After_login/details/perceptors/perceptors_details.ejs', {
+                    ceptors_results: Perceptors_results,
+                    rents_results: Parents_results
+                })
+            })
+        }
+        else if (tab=='new perceptors'){
+            let newceptors_sql = `SELECT * FROM \`${tab}\` Where \`${col}\` = '${name}';`
+            con.query(newceptors_sql, function (err, result) {
+                if (err) wf(`err: ${err}`)
+                Perceptors_results = result
+                wf(JSON.stringify(Perceptors_results))
+            })
+            con.query(Parent_sql, function (err, result) {
+                if (err) wf(`err: ${err}`)
+                Parents_results = result
+                wf(JSON.stringify(Parents_results))
+                res.render('After_login/details/perceptors/perceptors_details.ejs', {
+                    ceptors_results: Perceptors_results,
+                    rents_results: Parents_results
+                })
+            })
+        }
+        else if (tab =='new perceptees'){
+            let newceptees_sql = `SELECT * FROM \`${tab}\` Where \`${col}\` = '${name}';`
+            con.query(newceptees_sql, function (err, result) {
+                if (err) wf(`err: ${err}`)
+                results = result
+                wf(JSON.stringify(results))
+                res.render('After_login/details/newceptees/newceptees_details.ejs', {
+                    results: results
+                })
+            })
+        }
+        else{
+            wf(`Search details error: ${tab}, ${col}, ${name}`)
+            load(req, res)
+        }
     }
 })
 
