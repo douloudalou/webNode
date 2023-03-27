@@ -90,11 +90,11 @@
                         Emergency Contact
                     </div>
                     <div id="emergency_details">
-                        Name: <%= JSON.stringify(results[i]['emergency name']).slice(1, JSON.stringify(results[i]['emergency name']).length-1) %>
+                        Name: <%= JSON.stringify(results[0]['emergency name']).slice(1, JSON.stringify(results[0]['emergency name']).length-1) %>
                         <br>
-                        Contact: <%= JSON.stringify(results[i]['emergency contact']).slice(1, JSON.stringify(results[i]['emergency contact']).length-1) %>
+                        Contact: <%= JSON.stringify(results[0]['emergency contact']).slice(1, JSON.stringify(results[0]['emergency contact']).length-1) %>
                         <br>
-                        Relation: <%= JSON.stringify(results[i]['emergency relation']).slice(1, JSON.stringify(results[i]['emergency relation']).length-1) %>
+                        Relation: <%= JSON.stringify(results[0]['emergency relation']).slice(1, JSON.stringify(results[0]['emergency relation']).length-1) %>
                         <br><br><br><br><br><br>
                     </div>
                 </div>
