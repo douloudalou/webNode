@@ -169,8 +169,12 @@ route.post('/admins/search', function (req, res) {
                 if (err) wf(`err: ${err}`)
                 results = result
                 wf(JSON.stringify(results))
+                if (JSON.stringify(results).length < 1) {
+                    wf(`Search details error: ${tab}, ${col}, ${name}`)
+                    load(req, res)
+                }
                 res.render('After_login/details/parents/parents_details.ejs', {
-                    results: results
+                results: results   
                 })
             })
         }
@@ -180,12 +184,20 @@ route.post('/admins/search', function (req, res) {
                 if (err) wf(`err: ${err}`)
                 Perceptors_results = result
                 wf(JSON.stringify(Perceptors_results))
+                if (JSON.stringify(Perceptors_results).length < 1) {
+                    wf(`Search details error: ${tab}, ${col}, ${name}`)
+                    load(req, res)
+                }
             })
             let Parent_sql = `SELECT * FROM \`parents\` Where \`Perceptors\` = '${name}';`
             con.query(Parent_sql, function (err, result) {
                 if (err) wf(`err: ${err}`)
                 Parents_results = result
                 wf(JSON.stringify(Parents_results))
+                if (JSON.stringify(Parents_results).length < 1) {
+                    wf(`Search details error: ${tab}, ${col}, ${name}`)
+                    load(req, res)
+                }
                 res.render('After_login/details/perceptors/perceptors_details.ejs', {
                     ceptors_results: Perceptors_results,
                     rents_results: Parents_results
@@ -198,11 +210,19 @@ route.post('/admins/search', function (req, res) {
                 if (err) wf(`err: ${err}`)
                 Perceptors_results = result
                 wf(JSON.stringify(Perceptors_results))
+                if (JSON.stringify(Perceptors_results).length < 1) {
+                    wf(`Search details error: ${tab}, ${col}, ${name}`)
+                    load(req, res)
+                }
             })
             con.query(Parent_sql, function (err, result) {
                 if (err) wf(`err: ${err}`)
                 Parents_results = result
                 wf(JSON.stringify(Parents_results))
+                if (JSON.stringify(Parents_results).length < 1) {
+                    wf(`Search details error: ${tab}, ${col}, ${name}`)
+                    load(req, res)
+                }
                 res.render('After_login/details/perceptors/perceptors_details.ejs', {
                     ceptors_results: Perceptors_results,
                     rents_results: Parents_results
@@ -215,14 +235,14 @@ route.post('/admins/search', function (req, res) {
                 if (err) wf(`err: ${err}`)
                 results = result
                 wf(JSON.stringify(results))
+                if (JSON.stringify(results).length < 1) {
+                    wf(`Search details error: ${tab}, ${col}, ${name}`)
+                    load(req, res)
+                }
                 res.render('After_login/details/newceptees/newceptees_details.ejs', {
                     results: results
                 })
             })
-        }
-        else{
-            wf(`Search details error: ${tab}, ${col}, ${name}`)
-            load(req, res)
         }
     }
 })
