@@ -317,8 +317,7 @@
                                     <form action="/admins/paid" method="post">
                                         <% let user = JSON.stringify(Parents_results[i]['Parents']) %>
                                         <input type="hidden" name="fname" value=<%= user.slice(1, user.length-1) %>>
-                                        <% let transferred = 'JUST TRANSFERRED \n FROM LEADS' %>
-                                        <input type="submit" class="btn btn-primary btn-sm payment" value=<%= transferred %> disabled>
+                                        <input type="submit" class="btn btn-primary btn-sm payment" value=<%= 'JUST TRANSFERRED \n FROM LEADS' %> disabled>
                                     </form>
                                 <% }else { %>
                                     <form action="/admins/unpaid" method="post">
