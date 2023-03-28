@@ -227,7 +227,8 @@ route.post('/admins/search', function (req, res) {
                 }
             })
         }
-        else if (tab =='new perceptees'){
+        else if (tab =='leads'){
+            let tab = 'new perceptees'
             let newceptees_sql = `SELECT * FROM \`${tab}\` Where \`${col}\` = '${name}';`
             con.query(newceptees_sql, function (err, result) {
                 if (err) wf(`err: ${err}`)
