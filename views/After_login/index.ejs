@@ -216,9 +216,9 @@
                                 <div>
                                     <%= JSON.stringify(Perceptors_results[i]['Num of Perceptees']) %>
                                 </div>
-                                <div>
+                                <div class="form-inline input-group">
                                     <div class="ceptors_up">
-                                        <form action="/admins/Perceptors_up" method="post">
+                                        <form action="/admins/Perceptors_up" method="post" class="form-control">
                                             <input type="hidden" name="nametors" value=<%= JSON.stringify(Perceptors_results[i]['Perceptors']).slice(1, JSON.stringify(Perceptors_results[i]['Perceptors']).length-1) %>>
                                             <input type="hidden" name="contactors" value=<%= JSON.stringify(Perceptors_results[i]['Contact number']) %>>
                                             <input type="hidden" name="num" value=<%= JSON.stringify(Perceptors_results[i]['Num of Perceptees']) %>>
@@ -226,7 +226,7 @@
                                         </form>
                                     </div>
                                     <div>
-                                        <form action="/admins/Perceptors_down" method="post">
+                                        <form action="/admins/Perceptors_down" method="post" class="form-control">
                                             <input type="hidden" name="nametors" value=<%= JSON.stringify(Perceptors_results[i]['Perceptors']).slice(1, JSON.stringify(Perceptors_results[i]['Perceptors']).length-1) %>>
                                             <input type="hidden" name="contactors" value=<%= JSON.stringify(Perceptors_results[i]['Contact number']) %>>
                                             <input type="hidden" name="num" value=<%= JSON.stringify(Perceptors_results[i]['Num of Perceptees']) %>>
