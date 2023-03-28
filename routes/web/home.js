@@ -363,20 +363,20 @@ route.post('/admins/transfer_newceptees', function (req, res) {
     })
 })
 
-route.post('/admins/drop_newceptees', function (req, res) {
-    let parent = req.body.tparent
-    let student = req.body.tstudent
-    let contact = req.body.tcontact
-    let email = req.body.temail
-    wf(`${parent}, ${student}, ${contact}`)
-    let dsql = `DELETE FROM \`new perceptees\` WHERE \`Parents\`='${parent}' AND \`Perceptees\`='${student}' and \`Contact number\`='${contact}' AND \`Email\`='${email}';`
-    con.query(dsql, function (err, result) {
-        if (err) wf(`err: ${err}`)
-        wf(`Parent: ${parent}, Student: ${student} deleted from new perceptees`)
+// route.post('/admins/drop_newceptees', function (req, res) {
+//     let parent = req.body.tparent
+//     let student = req.body.tstudent
+//     let contact = req.body.tcontact
+//     let email = req.body.temail
+//     wf(`${parent}, ${student}, ${contact}`)
+//     let dsql = `DELETE FROM \`new perceptees\` WHERE \`Parents\`='${parent}' AND \`Perceptees\`='${student}' and \`Contact number\`='${contact}' AND \`Email\`='${email}';`
+//     con.query(dsql, function (err, result) {
+//         if (err) wf(`err: ${err}`)
+//         wf(`Parent: ${parent}, Student: ${student} deleted from new perceptees`)
 
-        load(req, res)
-    })
-})
+//         load(req, res)
+//     })
+// })
 
 route.post('/admins/transfer_newceptors', function (req, res) {
     let perceptor = req.body.tceptors
