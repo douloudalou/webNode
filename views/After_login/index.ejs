@@ -212,11 +212,11 @@
                             <!-- DOB-->
                             <td> <%= JSON.stringify(Perceptors_results[i]['DOB']).slice(1, JSON.stringify(Perceptors_results[i]['DOB']).length-15) %> </td>
                             <!-- Num of Perceptees-->
-                            <td>
+                            <td  class="form-inline input-group">
                                 <div>
                                     <%= JSON.stringify(Perceptors_results[i]['Num of Perceptees']) %>
                                 </div>
-                                <div class="form-inline input-group">
+                                <div>
                                     <div class="ceptors_up">
                                         <form action="/admins/Perceptors_up" method="post" class="form-control">
                                             <input type="hidden" name="nametors" value=<%= JSON.stringify(Perceptors_results[i]['Perceptors']).slice(1, JSON.stringify(Perceptors_results[i]['Perceptors']).length-1) %>>
