@@ -433,16 +433,29 @@ route.post('/admins/Perceptor_NRIC', function (req, res) {
     })
 })
 
-route.post('/admins/Perceptor_Num', function (req, res) {
+route.post('/admins/Perceptors_up', function (req, res) {
     let name = req.body.nametors
     let contact = req.body.contactors
-    let num = req.body.Numtors
+    let num = (req.body.num)+1
     let sql = `UPDATE \`perceptors\` SET \`Num of Perceptees\` = '${num}' WHERE \`Perceptors\`='${name}' AND \`Contact number\`='${contact}';`
     con.query(sql, function (err, result) {
         if (err) wf(`err: ${err}`)
         wf(`Perceptor: ${name} Num of Perceptees: ${num} updated`)
     
-        load(req, res)
+        // load(req, res)
+    })
+})
+
+route.post('/admins/Perceptors_down', function (req, res) {
+    let name = req.body.nametors
+    let contact = req.body.contactors
+    let num = (req.body.num)-1
+    let sql = `UPDATE \`perceptors\` SET \`Num of Perceptees\` = '${num}' WHERE \`Perceptors\`='${name}' AND \`Contact number\`='${contact}';`
+    con.query(sql, function (err, result) {
+        if (err) wf(`err: ${err}`)
+        wf(`Perceptor: ${name} Num of Perceptees: ${num} updated`)
+    
+        // load(req, res)
     })
 })
 
