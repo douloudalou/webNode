@@ -1,3 +1,7 @@
+body {
+    word-wrap: normal;
+}
+
 #login-page {
     margin: 10vh 40vw 10vh 40vw;
     padding: 3vw;
