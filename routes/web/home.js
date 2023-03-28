@@ -442,7 +442,7 @@ route.post('/admins/Perceptors_up', function (req, res) {
         if (err) wf(`err: ${err}`)
         wf(`Perceptor: ${name} Num of Perceptees: ${num} updated`)
     
-        // load(req, res)
+        load(req, res)
     })
 })
 
@@ -455,7 +455,7 @@ route.post('/admins/Perceptors_down', function (req, res) {
         if (err) wf(`err: ${err}`)
         wf(`Perceptor: ${name} Num of Perceptees: ${num} updated`)
     
-        // load(req, res)
+        load(req, res)
     })
 })
 
