@@ -626,9 +626,9 @@ route.post('/admins/invoice', function(req, res) {
         "bottomNotice": "Kindly pay your invoice within 15 days."
     };
 
-    easyinvoice.createInvoice(data, function (result) {
+    easyinvoice.createInvoice(data, async function (result) {
         //The response will contain a base64 encoded PDF file
-        fs.writeFileSync("invoice.pdf", result.pdf, 'base64');
+        await fs.writeFileSync("invoice.pdf", result.pdf, 'base64');
     });
 
     load(req, res)
