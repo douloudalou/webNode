@@ -11,6 +11,45 @@
     <script src="https://unpkg.com/easyinvoice/dist/easyinvoice.min.js"></script>
 </head>
 <body>
+    <script>
+        function downloadInvoice() {
+            var data = {
+                //"documentTitle": "RECEIPT", //Defaults to INVOICE
+                "currency": "SGD",
+                "taxNotation": "gst", //or gst
+                "marginTop": 25,
+                "marginRight": 25,
+                "marginLeft": 25,
+                "marginBottom": 25,
+                "logoExtension": "../../webNode/views/small lbsx.png", //or base64
+                //"logoExtension": "png", //only when logo is base64
+                "sender": {
+                    "company": "SwimPerceptors",
+                    "country": "Singapore"
+                },
+                "client": {
+                    "Parent": `${document.getElementsByName('parents_name')}`,
+                    "Perceptees": `${document.getElementsByName('ceptees_name')}`,
+                    "Address": `${document.getElementsByName('address')}`
+                },
+                "invoiceNumber": "2020.0001",
+                "invoiceDate": "05-01-2020",
+                "products": [
+                    {
+                        "quantity": "4",
+                        "description": "Lessons completed",
+                        "price": 50
+                    }
+                ],
+                "bottomNotice": "Kindly pay your invoice within 15 days."
+            };
+
+            easyinvoice.createInvoice(data, function (result) {
+                //The response will contain a base64 encoded PDF file
+                easyinvoice.download("Invoice.pdf")
+            });
+        }
+    </script>
     <div id="Top">
         <nav class="navbar sticky-top navbar-expand-md navbar-dark" id="nav">
             <div class="topthings">
@@ -95,7 +134,7 @@
                             </form>
                         </div>
                         <div class="Invoice">
-                            <form action="/admins/invoice" method="post">
+                            <form onsubmit="downloadInvoice()">
                                 <input type="hidden" name="parents_name" value=<%= JSON.stringify(results[i]['Parents']).slice(1, JSON.stringify(results[i]['Parents']).length-1) %>>
                                 <input type="hidden" name="ceptees_name" value=<%= JSON.stringify(results[i]['Perceptees']).slice(1, JSON.stringify(results[i]['Perceptees']).length-1) %>>
                                 <input type="hidden" name="address" value=<%= JSON.stringify(results[i]['Address']).slice(1, JSON.stringify(results[i]['Address']).length-1) %>> 
