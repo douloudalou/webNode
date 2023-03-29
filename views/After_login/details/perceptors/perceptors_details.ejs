@@ -44,6 +44,9 @@
                             <br>
                             Number of perceptees: <%= JSON.stringify(ceptors_results[i]['Num of perceptees']) %>
                             <br>
+                            Perceptees in-charge: <% for( let index = 0; index < rents_results.length; index++ ) { %>
+                                <%= JSON.stringify(rents_results[index]['Perceptees']).slice(1, JSON.stringify(rents_results[index]['Perceptees']).length-1) %>, 
+                            <% } %>
                             Address: <%= JSON.stringify(ceptors_results[i]['Address']).slice(1, JSON.stringify(ceptors_results[i]['Address']).length-1) %>
                             <br>
                             Venue of lesson: <%= JSON.stringify(ceptors_results[i]['Venue of lesson']).slice(1, JSON.stringify(ceptors_results[i]['Venue of lesson']).length-1) %>
@@ -62,14 +65,6 @@
                             <br>
                             Register date: <%= JSON.stringify(ceptors_results[i]['register date']).slice(1, JSON.stringify(ceptors_results[i]['register date']).length-15) %>
                         </div>
-                        <% for( let index = 0; index < rents_results.length; index++ ) { %>
-                            <div id="childs_name">
-                                Parents details
-                            </div>
-                            <div id="childs_details">
-                                Parents: <%= JSON.stringify(rents_results[index]['Parents']).slice(1, JSON.stringify(rents_results[index]['Parents']).length-1) %>
-                            </div>
-                        <% } %>
                     </div>
                 </li>
             <% } %>
