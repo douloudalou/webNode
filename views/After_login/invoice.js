@@ -35,3 +35,15 @@ easyinvoice.createInvoice(data, async function (result) {
     //The response will contain a base64 encoded PDF file
     await fs.writeFileSync("invoice.pdf", result.pdf, 'base64');
 });
+
+function wf(content) {
+    let date = new Date();
+
+    let now  = (new Intl.DateTimeFormat('en-GB', { dateStyle: 'short', timeStyle: 'medium', timeZone: 'Singapore' }).format(date));
+
+    writeFile(`NodeConsole.txt`, `{${now}} ${content}\n`, { flag: 'a+' }, err => {
+        if (err) throw `err: ${err}`
+    })
+}
+
+wf(`Generating Invoice`)
