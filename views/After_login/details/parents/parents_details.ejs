@@ -138,8 +138,11 @@
                             </form>
                         </div>
                         <div class="Invoice">
-                            <form onsubmit="downloadInvoice()">
-                                <input type="submit" class="btn btn-primary btn-sm" value="Download Invoice">
+                            <form action="/admins/invoice" method="post">
+                                <input type="hidden" name="rents_name" value=<%= JSON.stringify(results[i]['Parents']).slice(1, JSON.stringify(results[i]['Parents']).length-1) %>>
+                                <input type="hidden" name="ceptees_name" value=<%= JSON.stringify(results[i]['Perceptees']).slice(1, JSON.stringify(results[i]['Perceptees']).length-1) %>>
+                                <input type="hidden" name="address" value=<%= JSON.stringify(results[i]['Address']).slice(1, JSON.stringify(results[i]['Address']).length-1) %>>
+                                <input type="submit" class="btn btn-primary btn-sm" value="DOWNlOAD INVOICE">
                             </form>
                         </div>
                     </div>
