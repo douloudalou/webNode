@@ -490,7 +490,7 @@ route.post('/admins/special_remarks', function (req, res) {
     load(req, res)
 })
 
-route.post('/admins/special_remarks(leads)', function (req, res) {
+route.post('/admins/special_remarks_leads', function (req, res) {
     let parents_name = req.body.Rparents_name
     let ceptees_name = req.body.Rceptees_name
     let remarks = req.body.remarks
