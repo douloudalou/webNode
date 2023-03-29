@@ -28,9 +28,9 @@
                     "country": "Singapore"
                 },
                 "client": {
-                    "Parent": `${document.getElementsByName('parents_name').value}`,
-                    "Perceptees": `${document.getElementsByName('ceptees_name').value}`,
-                    "Address": `${document.getElementsByName('address').value}`
+                    "Parent": `${document.getElementById('rents_name').value}`,
+                    "Perceptees": `${document.getElementsById('ceptees_name').value}`,
+                    "Address": `${document.getElementsById('address').value}`
                 },
                 "invoiceNumber": "2020.0001",
                 "invoiceDate": "05-01-2020",
@@ -70,7 +70,7 @@
                             Parents details
                         </div>
                         <div id="parents_details">
-                            Parents: <h5 id="parents_name"> <%= JSON.stringify(results[i]['Parents']).slice(1, JSON.stringify(results[i]['Parents']).length-1) %> </h5>
+                            Parents: <h5 id="rents_name"> <%= JSON.stringify(results[i]['Parents']).slice(1, JSON.stringify(results[i]['Parents']).length-1) %> </h5>
                             <br>
                             Email: <%= JSON.stringify(results[i]['Email']).slice(1, JSON.stringify(results[i]['Email']).length-1) %>
                             <br>
