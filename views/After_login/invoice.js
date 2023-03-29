@@ -17,8 +17,8 @@ var data = {
 },
 "client": {
     "Parent": `${details.rents_name}`,
-    "Perceptees": `${document.getElementsById('ceptees_name').value}`,
-    "Address": `${document.getElementsById('address').value}`
+    "Perceptees": `${details.ceptees_name}`,
+    "Address": `${details.address}`
 },
 "invoiceNumber": "2020.0001",
 "invoiceDate": "05-01-2020",
