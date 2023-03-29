@@ -584,6 +584,22 @@ route.post('/admins/After/newceptors_detail', function(req, res) {
     })
 })
 
+// Invoice
+route.post('/admins/invoice', function(req, res) {
+    // details
+    invoice_details = {
+        parents_name: req.body.parents_name,
+        ceptees_name: req.body.ceptees_name,
+        address: req.body.address
+    }
+    // Exports
+    module.exports = {
+        invoice_details
+    }
+    // invoice url
+    res.redirect('After_login/invoice.js')
+})
+
 // reload
 route.post('/admins/reload', function(req, res) {
     load(req, res)  
