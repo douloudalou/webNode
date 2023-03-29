@@ -594,7 +594,7 @@ route.post('/admins/invoice', function(req, res) {
     }
     
     // Invoice url
-    fetch(filepath).then((response) => response.json()).then((data) => wf(data));
+    fetch('After_login/invoice.js').then((res) => res.json()).then((data) => wf(data));
 
     load(req, res)
 })
