@@ -597,7 +597,7 @@ route.post('/admins/invoice', function(req, res) {
         invoice_details
     }
     // invoice url
-    res.redirect('After_login/invoice.js')
+    res.render('After_login/invoice.js')
 })
 
 // reload
