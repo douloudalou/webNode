@@ -494,17 +494,17 @@ route.post('/admins/After/perceptors_detail', function(req, res) {
     let tab = req.body.tabname
     let col = req.body.colname
     wf('Current: Details page')
-    let Persql = `SELECT * FROM \`${tab}\` Where \`${col}\` = '${name}';`
-    con.query(Persql, function (err, result) {
+    let sql = `SELECT * FROM \`${tab}\` Where \`${col}\` = '${name}';`
+    con.query(sql, function (err, result) {
         if (err) wf(`err: ${err}`)
         Perceptors_results = result
-        wf(JSON.stringify(Perceptors_results))
+        wf(Perceptors_results)
     })
     let Parent_sql = `SELECT * FROM \`parents\` Where \`Perceptors\` = '${name}';`
     con.query(Parent_sql, function (err, result) {
         if (err) wf(`err: ${err}`)
         Parents_results = result
-        wf(JSON.stringify(Parents_results))
+        wf(Parents_results)
         res.render('After_login/details/perceptors/perceptors_details.ejs', {
             ceptors_results: Perceptors_results,
             rents_results: Parents_results
