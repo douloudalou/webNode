@@ -22,53 +22,68 @@
     </div>
     <nav id="details_content">
         <ul class="details_list list-inline">
-            <li class="list-inline-item">
-                <div class="details_box">
-                    <div id="parents_name">
-                        Parents details
-                    </div>
-                    <div id="parents_details">
-                        Parents: <%= JSON.stringify(results[0]['Parents']).slice(1, JSON.stringify(results[0]['Parents']).length-1) %> 
-                        <br><br><br>
-                    </div>
-                </div>
-            </li>
             <% for( let i = 0; i < results.length; i++ ) { %>
                 <li class="list-inline-item">
                     <div class="details_box">
+                        <div id="parents_name">
+                            Parents details
+                        </div>
+                        <div id="parents_details">
+                            Parents: <%= JSON.stringify(results[i]['Parents']).slice(1, JSON.stringify(results[i]['Parents']).length-1) %> 
+                            <br>
+                            Email: <%= JSON.stringify(results[i]['Email']).slice(1, JSON.stringify(results[i]['Email']).length-1) %>
+                            <br>
+                            DOB: <%= JSON.stringify(results[i]['Parent DOB']).slice(1, JSON.stringify(results[i]['Parent DOB']).length-15) %>
+                            <br>
+                            Contact number: <%= JSON.stringify(results[i]['Contact number']) %>
+                            <br>
+                            Venue of lesson: <%= JSON.stringify(results[i]['Venue of lesson']).slice(1, JSON.stringify(results[i]['Venue of lesson']).length-1) %>
+                            <br>
+                            Address: <%= JSON.stringify(results[i]['Address']).slice(1, JSON.stringify(results[i]['Address']).length-1) %>
+                            <br>
+                            NRIC: <%= JSON.stringify(results[i]['Parent NRIC']).slice(1, JSON.stringify(results[i]['Parent NRIC']).length-1) %>
+                            <br>
+                            Relation: <%= JSON.stringify(results[i]['Relation']).slice(1, JSON.stringify(results[i]['Relation']).length-1) %>
+                        </div>
                         <div id="childs_name">
                             Childs details
                         </div>
                         <div id="childs_details">
                             Childs Name: <%= JSON.stringify(results[i]['Perceptees']).slice(1, JSON.stringify(results[i]['Perceptees']).length-1) %>
-                            <br><br><br>
+                            <br>
+                            NRIC: <%= JSON.stringify(results[i]['Perceptees NRIC']).slice(1, JSON.stringify(results[i]['Perceptees NRIC']).length-1) %>
+                            <br>
+                            DOB: <%= JSON.stringify(results[i]['Perceptees DOB']).slice(1, JSON.stringify(results[i]['Perceptees DOB']).length-15) %>
+                            <br>
+                            Medical conditions: <%= JSON.stringify(results[i]['Medical Conditions']).slice(1, JSON.stringify(results[i]['Medical Conditions']).length-1) %>
+                            <br>
+                            Remarks: <%= JSON.stringify(results[i]['Remarks']).slice(1, JSON.stringify(results[i]['Remarks']).length-1) %>
+                            <br>
+                            Preferred day and time: <%= JSON.stringify(results[i]['Preferred day and time']).slice(1, JSON.stringify(results[i]['Preferred day and time']).length-1) %>
+                        </div>
+                        <div id="emergency_contact">
+                            Emergency Contact
+                        </div>
+                        <div id="emergency_details">
+                            Name: <%= JSON.stringify(results[i]['emergency name']).slice(1, JSON.stringify(results[i]['emergency name']).length-1) %>
+                            <br>
+                            Contact: <%= JSON.stringify(results[i]['emergency contact']).slice(1, JSON.stringify(results[i]['emergency contact']).length-1) %>
+                            <br>
+                            Relation: <%= JSON.stringify(results[i]['emergency relation']).slice(1, JSON.stringify(results[i]['emergency relation']).length-1) %>
+                        </div>
+                        <div class="Special Remarks">
+                            Special Remarks: <%= JSON.stringify(results[i]['Sremarks']).slice(1, JSON.stringify(results[i]['Sremarks']).length-1) %>
+                            <br>
+                            <form action="/admins/special_remarks" method="post">
+                                <input type="hidden" name="Rparents_name" value=<%= JSON.stringify(results[i]['Parents']).slice(1, JSON.stringify(results[i]['Parents']).length-1) %>>
+                                <input type="hidden" name="Rceptees_name" value=<%= JSON.stringify(results[i]['Perceptees']).slice(1, JSON.stringify(results[i]['Perceptees']).length-1) %>>
+                                <input class="form-control" type="text" placeholder="Special Remarks" name="remarks" id="remarks">
+                                <input type="submit" class="btn btn-primary btn-sm save" value="SAVE">
+                            </form>
                         </div>
                     </div>
                 </li>
             <% } %>
-            <li class="list-inline-item">
-                <div class="details_box">
-                    <div id="emergency_contact">
-                        Emergency Contact
-                    </div>
-                    <div id="emergency_details">
-                        Name: 
-                        <br>
-                        Contact: 
-                        <br>
-                        Relation:
-                    </div>
-                </div>
-            </li>
-            <div class="Specail Remarks">
-                <form action="/admins/special_remarks(leads)" method="post">
-                    <label for="remarks">Special Remarks: </label>
-                    <input type="hidden" name="Rparents_name" value=<%= JSON.stringify(results[i]['Parents']).slice(1, JSON.stringify(results[i]['Parents']).length-1) %>>
-                    <input type="hidden" name="Rceptees_name" value=<%= JSON.stringify(results[i]['Perceptees']).slice(1, JSON.stringify(results[i]['Perceptees']).length-1) %>>
-                    <input class="form-control" type="text" name="remarks" id="remarks">
-                    <input type="submit" class="btn btn-primary btn-sm save" value="SAVE">
-                </form>
-            </div>
         </ul>
     </nav>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
