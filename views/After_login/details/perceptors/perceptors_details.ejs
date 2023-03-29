@@ -62,12 +62,14 @@
                             <br>
                             Register date: <%= JSON.stringify(ceptors_results[i]['register date']).slice(1, JSON.stringify(ceptors_results[i]['register date']).length-15) %>
                         </div>
-                        <div id="childs_name">
-                            Parents details
-                        </div>
-                        <div id="childs_details">
-                            Parents: <%= JSON.stringify(rents_results[i]['Parents']).slice(1, JSON.stringify(rents_results[i]['Parents']).length-1) %>
-                        </div>
+                        <% for( let index = 0; index < rents_results.length; index++ ) { %>
+                            <div id="childs_name">
+                                Parents details
+                            </div>
+                            <div id="childs_details">
+                                Parents: <%= JSON.stringify(rents_results[index]['Parents']).slice(1, JSON.stringify(rents_results[index]['Parents']).length-1) %>
+                            </div>
+                        <% } %>
                     </div>
                 </li>
             <% } %>
