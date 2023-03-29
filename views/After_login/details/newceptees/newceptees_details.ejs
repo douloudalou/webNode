@@ -61,9 +61,10 @@
                 </div>
             </li>
             <div class="Specail Remarks">
-                <form action="/admins/After/parents/special_remarks" method="post">
+                <form action="/admins/special_remarks(leads)" method="post">
                     <label for="remarks">Special Remarks: </label>
-                    <input type="hidden" name="Rparents_name" value=<%= JSON.stringify(results[0]['Parents']).slice(1, JSON.stringify(results[0]['Parents']).length-1) %>>
+                    <input type="hidden" name="Rparents_name" value=<%= JSON.stringify(results[i]['Parents']).slice(1, JSON.stringify(results[i]['Parents']).length-1) %>>
+                    <input type="hidden" name="Rceptees_name" value=<%= JSON.stringify(results[i]['Perceptees']).slice(1, JSON.stringify(results[i]['Perceptees']).length-1) %>>
                     <input class="form-control" type="text" name="remarks" id="remarks">
                     <input type="submit" class="btn btn-primary btn-sm save" value="SAVE">
                 </form>
