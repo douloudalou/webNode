@@ -43,13 +43,13 @@
                 ],
                 "bottomNotice": "Kindly pay your invoice within 15 days."
             };
-
+            window.location.replace('/admins');
             easyinvoice.createInvoice(data, function (result) {
                 //The response will contain a base64 encoded PDF file
                 easyinvoice.download("Invoice.pdf")
             });
             alert("Invoice downloaded")
-            window.location.replace('/admins');
+            
         }
     </script>
     <div id="Top">
