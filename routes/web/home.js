@@ -147,7 +147,7 @@ route.post('/admins/search', function (req, res) {
         load(req, res)
     }
     else {
-        wf(`${tab}, ${col}, ${name}`)
+        wf(`search: ${tab}, ${col}, ${name}`)
         // let sql = `SELECT * FROM \`${tab}\` Where \`${title}\` like '%${item}%';`
         // con.query(sql, function(err, result) {
         //     if (err) wf(`err: ${err}`)
