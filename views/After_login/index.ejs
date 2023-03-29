@@ -47,7 +47,7 @@
                             <td> 
                                 <div class="input-group">
                                     <form action="/admins/transfer_newceptees" method="post">
-                                        <% let parent = `${JSON.stringify(Newceptees_results[i]['Parents'])}` %>
+                                        <% let parent = JSON.stringify(Newceptees_results[i]['Parents']) %>
                                         <% let student = JSON.stringify(Newceptees_results[i]['Perceptees']).slice(1, JSON.stringify(Newceptees_results[i]['Perceptees']).length-1) %>
                                         <% let contact = JSON.stringify(Newceptees_results[i]['Contact number']) %> 
                                         <% let email = JSON.stringify(Newceptees_results[i]['Email']) %> 
@@ -114,7 +114,7 @@
                             <td> 
                                 <div class="input-group">
                                     <form action="/admins/transfer_newceptors" method="post">
-                                        <% let perceptor = JSON.stringify(Newceptors_results[i]['Perceptors']) %>
+                                        <% let perceptor = `${JSON.stringify(Newceptors_results[i]['Perceptors'])}` %>
                                         <% let email = JSON.stringify(Newceptors_results[i]['Email']) %>
                                         <% let contact = JSON.stringify(Newceptors_results[i]['Contact number']) %>
                                         <input type="hidden" name="tceptors" value=<%= perceptor.slice(1, perceptor.length-1) %>>
