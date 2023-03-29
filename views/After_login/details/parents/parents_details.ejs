@@ -14,6 +14,7 @@
     <script>
         function downloadInvoice() {
             alert("Invoice downloaded")
+            window.location = '/admins'
             var data = {
                 //"documentTitle": "RECEIPT", //Defaults to INVOICE
                 "currency": "SGD",
@@ -50,7 +51,7 @@
             });
             
             
-            window.location = '/admins'
+            
         }
     </script>
     <div id="Top">
