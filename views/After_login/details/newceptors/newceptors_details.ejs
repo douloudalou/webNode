@@ -23,43 +23,48 @@
 
     <nav id="details_content">
         <ul class="details_list list-inline">
-            <li class="list-inline-item">
-                <div class="details_box">
-                    <div id="parents_name">
-                        Perceptors details
-                    </div>
-                    <div id="parents_details">
-                        Perceptors Name: <%= JSON.stringify(ceptors_results[0]['Perceptors']).slice(1, JSON.stringify(ceptors_results[0]['Perceptors']).length-1) %>
-                    </div>
-                </div>
-            </li>
-            <% for( let i = 0; i < rents_results.length; i++ ) { %>
+            <% for( let i = 0; i < ceptors_results.length; i++ ) { %>
                 <li class="list-inline-item">
                     <div class="details_box">
-                        <div id="childs_name">
-                            Parents details
+                        <div id="parents_name">
+                            Perceptors details
                         </div>
-                        <div id="childs_details">
-                            Parents: <%= JSON.stringify(rents_results[i]['Parents']).slice(1, JSON.stringify(rents_results[i]['Parents']).length-1) %>
+                        <div id="parents_details">
+                            Perceptors Name: <%= JSON.stringify(ceptors_results[i]['Perceptors']).slice(1, JSON.stringify(ceptors_results[i]['Perceptors']).length-1) %>
+                            <br>
+                            Contact number: <%= JSON.stringify(ceptors_results[i]['Contact number']) %>
+                            <br>
+                            Email: <%= JSON.stringify(ceptors_results[i]['Email']).slice(1, JSON.stringify(ceptors_results[i]['Email']).length-1) %>
+                            <br>
+                            DOB: <%= JSON.stringify(ceptors_results[i]['DOB']).slice(1, JSON.stringify(ceptors_results[i]['DOB']).length-15) %>
+                            <br>
+                            NRIC: <%= JSON.stringify(ceptors_results[i]['NRIC']).slice(1, JSON.stringify(ceptors_results[i]['NRIC']).length-1) %>
+                            <br>
+                            Address: <%= JSON.stringify(ceptors_results[i]['Address']).slice(1, JSON.stringify(ceptors_results[i]['Address']).length-1) %>
+                            <br>
+                            Venue of lesson: <%= JSON.stringify(ceptors_results[i]['Venue of lesson']).slice(1, JSON.stringify(ceptors_results[i]['Venue of lesson']).length-1) %>
+                            <br>
+                            Medical Conditions: <%= JSON.stringify(ceptors_results[i]['Medical Conditions']).slice(1, JSON.stringify(ceptors_results[i]['Medical Conditions']).length-1) %>
+                            <br>
+                            Swimming/Coaching experience: <%= JSON.stringify(ceptors_results[i]['Swimming/Coaching experience']).slice(1, JSON.stringify(ceptors_results[i]['Swimming/Coaching experience']).length-1) %>
+                            <br>
+                            Preferred day and time: <%= JSON.stringify(ceptors_results[i]['Preferred day and time']).slice(1, JSON.stringify(ceptors_results[i]['Preferred day and time']).length-1) %>
+                            <br>
+                            Remarks: <%= JSON.stringify(ceptors_results[i]['Remarks']).slice(1, JSON.stringify(ceptors_results[i]['Remarks']).length-1) %>
+                        </div>
+                        <div id="emergency_contact">
+                            Emergency Contact
+                        </div>
+                        <div id="emergency_details">
+                            Name: <%= JSON.stringify(ceptors_results[i]['Emergency Name']).slice(1, JSON.stringify(ceptors_results[i]['Emergency Name']).length-1) %>
+                            <br>
+                            Contact: <%= JSON.stringify(ceptors_results[i]['Emergency Contact']).slice(1, JSON.stringify(ceptors_results[i]['Emergency Contact']).length-1) %>
+                            <br>
+                            Relation: <%= JSON.stringify(ceptors_results[i]['Emergency Relation']).slice(1, JSON.stringify(ceptors_results[i]['Emergency Relation']).length-1) %>
                         </div>
                     </div>
                 </li>
             <% } %>
-            <li class="list-inline-item">
-                <div class="details_box">
-                    <div id="emergency_contact">
-                        Emergency Contact
-                    </div>
-                    <div id="emergency_details">
-                        Name: 
-                        <br>
-                        Contact: 
-                        <br>
-                        Relation:
-                        <br><br><br><br><br><br>
-                    </div>
-                </div>
-            </li>
         </ul>
     </nav>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
