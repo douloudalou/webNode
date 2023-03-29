@@ -484,9 +484,9 @@ route.post('/admins/special_remarks', function (req, res) {
     let remarks = req.body.remarks
     wf(`${parents_name}, ${ceptees_name}, ${remarks}`)
     let sql = `UPDATE \`parents\` SET \`Sremarks\` = ${remarks} WHERE \`Parents\` = '${parents_name}' AND \`Perceptees\` = '${ceptees_name}';`
-    // con.query(sql, function (err, result) {
-    //     if (err) wf(`err: ${err}`)
-    // })
+    con.query(sql, function (err, result) {
+        if (err) wf(`err: ${err}`)
+    })
     load(req, res)
 })
 
@@ -496,9 +496,9 @@ route.post('/admins/special_remarks(leads)', function (req, res) {
     let remarks = req.body.remarks
     wf(`${parents_name}, ${ceptees_name}, ${remarks}`)
     let sql = `UPDATE \`new perceptees\` SET \`Sremarks\` = ${remarks} WHERE \`Parents\` = '${parents_name}' AND \`Perceptees\` = '${ceptees_name}';`
-    // con.query(sql, function (err, result) {
-    //     if (err) wf(`err: ${err}`)
-    // })
+    con.query(sql, function (err, result) {
+        if (err) wf(`err: ${err}`)
+    })
     load(req, res)
 })
 
