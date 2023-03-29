@@ -594,7 +594,6 @@ route.post('/admins/invoice', function(req, res) {
     }
     // Invoice data
     var easyinvoice = require('easyinvoice');
-    let details = require('../../routes/web/home.js')
     let fs = require('fs')
     var data = {
         //"documentTitle": "RECEIPT", //Defaults to INVOICE
