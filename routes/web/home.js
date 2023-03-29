@@ -577,7 +577,7 @@ route.post('/admins/After/newceptors_detail', function(req, res) {
         if (err) wf(`err: ${err}`)
         Parents_results = result
         wf(Parents_results)
-        res.render('After_login/details/perceptors/perceptors_details.ejs', {
+        res.render('After_login/details/newceptors/newceptors_details.ejs', {
             ceptors_results: Perceptors_results,
             rents_results: Parents_results
         })
