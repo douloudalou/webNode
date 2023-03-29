@@ -28,9 +28,9 @@
                     "country": "Singapore"
                 },
                 "client": {
-                    "Parent": `${document.getElementsByName('parents_name')}`,
-                    "Perceptees": `${document.getElementsByName('ceptees_name')}`,
-                    "Address": `${document.getElementsByName('address')}`
+                    "Parent": `${document.getElementsByName('parents_name').value}`,
+                    "Perceptees": `${document.getElementsByName('ceptees_name').value}`,
+                    "Address": `${document.getElementsByName('address').value}`
                 },
                 "invoiceNumber": "2020.0001",
                 "invoiceDate": "05-01-2020",
@@ -49,7 +49,6 @@
                 easyinvoice.download("Invoice.pdf")
             });
             alert("Invoice downloaded")
-            window.location.href = "/admins/reload";
         }
     </script>
     <div id="Top">
@@ -139,6 +138,7 @@
                             <form onsubmit="downloadInvoice()">
                                 <input type="hidden" name="parents_name" value=<%= JSON.stringify(results[i]['Parents']).slice(1, JSON.stringify(results[i]['Parents']).length-1) %>>
                                 <input type="hidden" name="ceptees_name" value=<%= JSON.stringify(results[i]['Perceptees']).slice(1, JSON.stringify(results[i]['Perceptees']).length-1) %>>
+                                <%- let address = <%= JSON.stringify(results[i]['Address']).slice(1, JSON.stringify(results[i]['Address']).length-1) %> %>
                                 <input type="hidden" name="address" value=<%= JSON.stringify(results[i]['Address']).slice(1, JSON.stringify(results[i]['Address']).length-1) %>> 
                                 <input type="submit" class="btn btn-primary btn-sm" value="Download Invoice">
                             </form>
