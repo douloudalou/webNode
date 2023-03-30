@@ -5,7 +5,6 @@ const express = require('express')
 const sql = require('mysql')
 const params = require('../../params/params')
 const url = require('url')
-const { title } = require('process')
 const {writeFile} = require('fs')
 const fetch = require('node-fetch')
 
