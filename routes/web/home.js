@@ -7,6 +7,7 @@ const params = require('../../params/params')
 const url = require('url')
 const {writeFile} = require('fs')
 // const fetch = require('node-fetch')
+const easyinvoice = require('easyinvoice');
 
 // Var
 const route = express.Router()
