@@ -36,14 +36,14 @@ easyinvoice.createInvoice(data, async function (result) {
     await fs.writeFileSync("invoice.pdf", result.pdf, 'base64');
 });
 
-function wf(content) {
-    let date = new Date();
+// function wf(content) {
+//     let date = new Date();
 
-    let now  = (new Intl.DateTimeFormat('en-GB', { dateStyle: 'short', timeStyle: 'medium', timeZone: 'Singapore' }).format(date));
+//     let now  = (new Intl.DateTimeFormat('en-GB', { dateStyle: 'short', timeStyle: 'medium', timeZone: 'Singapore' }).format(date));
 
-    writeFile(`NodeConsole.txt`, `{${now}} ${content}\n`, { flag: 'a+' }, err => {
-        if (err) throw `err: ${err}`
-    })
-}
+//     writeFile(`NodeConsole.txt`, `{${now}} ${content}\n`, { flag: 'a+' }, err => {
+//         if (err) throw `err: ${err}`
+//     })
+// }
 
 wf(`Generating Invoice`)
