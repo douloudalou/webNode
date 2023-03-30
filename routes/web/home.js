@@ -591,6 +591,7 @@ route.post('/admins/invoice', function(req, res) {
         ceptees_name: req.body.ceptees_name,
         address: req.body.address
     }
+    wf(`${parents_name}, ${ceptees_name}, ${address}`)
     // details export
     module.exports = {
         invoice_details
@@ -598,6 +599,7 @@ route.post('/admins/invoice', function(req, res) {
 
     // Invoice url
     // fetch('After_login/invoice.js').then((res) => res.json()).then((data) => wf(data));
+
 
     load(req, res)
 })
