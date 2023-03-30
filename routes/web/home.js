@@ -6,7 +6,7 @@ const sql = require('mysql')
 const params = require('../../params/params')
 const url = require('url')
 const {writeFile} = require('fs')
-const fetch = require('node-fetch')
+// const fetch = require('node-fetch')
 
 // Var
 const route = express.Router()
@@ -597,7 +597,7 @@ route.post('/admins/invoice', function(req, res) {
     }
 
     // Invoice url
-    fetch('After_login/invoice.js').then((res) => res.json()).then((data) => wf(data));
+    // fetch('After_login/invoice.js').then((res) => res.json()).then((data) => wf(data));
 
     load(req, res)
 })
