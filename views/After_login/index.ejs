@@ -114,7 +114,7 @@
                             <td> 
                                 <div class="input-group">
                                     <form action="/admins/transfer_newceptors" method="post">
-                                        <% let perceptor = JSON.stringify(Newceptors_results[i])['Perceptors'] %>
+                                        <% let perceptor = JSON.stringify(Newceptors_results) %>
                                         <% let email = JSON.stringify(Newceptors_results[i]['Email']) %>
                                         <% let contact = JSON.stringify(Newceptors_results[i]['Contact number']) %>
                                         <input type="hidden" name="tceptors" value=<%= perceptor %>>
