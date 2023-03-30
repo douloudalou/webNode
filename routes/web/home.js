@@ -591,7 +591,7 @@ route.post('/admins/invoice', function(req, res) {
         ceptees_name: req.body.ceptees_name,
         address: req.body.address
     }
-    wf(`${invoice_details}`)
+    wf(`${JSON.stringify(invoice_details)}`)
     // details export
     module.exports = {
         invoice_details
