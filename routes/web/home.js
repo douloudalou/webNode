@@ -614,9 +614,9 @@ route.post('/admins/invoice', function(req, res) {
             "country": "Singapore"
         },
         "client": {
-            "Parent": `${details.rents_name}`,
-            "Perceptees": `${details.ceptees_name}`,
-            "Address": `${details.address}`
+            "Parent": `${invoice_details.rents_name}`,
+            "Perceptees": `${invoice_details.ceptees_name}`,
+            "Address": `${invoice_details.address}`
         },
         "invoiceNumber": "2020.0001",
         "invoiceDate": "05-01-2020",
