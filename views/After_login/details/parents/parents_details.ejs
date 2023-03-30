@@ -131,17 +131,17 @@
                             Special Remarks: <%= JSON.stringify(results[i]['Sremarks']).slice(1, JSON.stringify(results[i]['Sremarks']).length-1) %>
                             <br>
                             <form action="/admins/special_remarks" method="post">
-                                <input type="hidden" name="Rparents_name" value=<%= JSON.stringify(results[i]['Parents']).slice(1, JSON.stringify(results[i]['Parents']).length-1) %>>
-                                <input type="hidden" name="Rceptees_name" value=<%= JSON.stringify(results[i]['Perceptees']).slice(1, JSON.stringify(results[i]['Perceptees']).length-1) %>>
+                                <input type="hidden" name="Rparents_name" value='<%= JSON.stringify(results[i]['Parents']).slice(1, JSON.stringify(results[i]['Parents']).length-1) %>'>
+                                <input type="hidden" name="Rceptees_name" value='<%= JSON.stringify(results[i]['Perceptees']).slice(1, JSON.stringify(results[i]['Perceptees']).length-1) %>'>
                                 <input class="form-control" type="text" placeholder="Special Remarks" name="remarks" id="remarks">
                                 <input type="submit" class="btn btn-primary btn-sm" value="SAVE">
                             </form>
                         </div>
                         <div class="Invoice">
                             <form action="/admins/invoice" method="post">
-                                <input type="hidden" name="rents_name" value=<%= JSON.stringify(results[i]['Parents']).slice(1, JSON.stringify(results[i]['Parents']).length-1) %>>
-                                <input type="hidden" name="ceptees_name" value=<%= JSON.stringify(results[i]['Perceptees']).slice(1, JSON.stringify(results[i]['Perceptees']).length-1) %>>
-                                <input type="hidden" name="address" value=<%= JSON.stringify(results[i]['Address']).slice(1, JSON.stringify(results[i]['Address']).length-1) %>>
+                                <input type="hidden" name="rents_name" value='<%= JSON.stringify(results[i]['Parents']).slice(1, JSON.stringify(results[i]['Parents']).length-1) %>'>
+                                <input type="hidden" name="ceptees_name" value='<%= JSON.stringify(results[i]['Perceptees']).slice(1, JSON.stringify(results[i]['Perceptees']).length-1) %>'>
+                                <input type="hidden" name="address" value='<%= JSON.stringify(results[i]['Address']).slice(1, JSON.stringify(results[i]['Address']).length-1) %>'>
                                 <input type="submit" class="btn btn-primary btn-sm" value="DOWNlOAD INVOICE">
                             </form>
                         </div>
