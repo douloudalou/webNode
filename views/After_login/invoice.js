@@ -32,11 +32,6 @@ var data = {
 "bottomNotice": "Kindly pay your invoice within 15 days."
 };
 
-// easyinvoice.createInvoice(data, function (result) {
-//     //The response will contain a base64 encoded PDF file
-//     fs.writeFileSync("invoice.pdf", result.pdf, 'base64');
-// });
-
 function wf(content) {
     let date = new Date();
 
