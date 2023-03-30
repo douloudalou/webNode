@@ -587,11 +587,11 @@ route.post('/admins/After/newceptors_detail', function(req, res) {
 route.post('/admins/invoice', function(req, res) {
     // details
     invoice_details = {
-        parents_name: req.body.parents_name,
+        rents_name: req.body.rents_name,
         ceptees_name: req.body.ceptees_name,
         address: req.body.address
     }
-    wf(`${parents_name}, ${ceptees_name}, ${address}`)
+    wf(`${rents_name}, ${ceptees_name}, ${address}`)
     // details export
     module.exports = {
         invoice_details
