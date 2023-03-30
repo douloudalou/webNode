@@ -596,10 +596,7 @@ route.post('/admins/invoice', function(req, res) {
         invoice_details
     }
 
-    // Invoice url
-    // fetch('After_login/invoice.js').then((res) => res.json()).then((data) => wf(data));
-
-    // 
+    // download invoice 
     let easyinvoice = require('easyinvoice')
     let data = require('../../views/After_login/invoice')
     easyinvoice.createInvoice(data, function (result) {
