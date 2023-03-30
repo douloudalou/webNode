@@ -591,7 +591,6 @@ route.post('/admins/invoice', function(req, res) {
         ceptees_name: req.body.ceptees_name,
         address: req.body.address
     }
-    wf(`${JSON.stringify(invoice_details)}`)
     // details export
     module.exports = {
         invoice_details
@@ -602,6 +601,7 @@ route.post('/admins/invoice', function(req, res) {
 
 
     load(req, res)
+    wf(`${JSON.stringify(invoice_details)}`)
 })
 
 // reload
