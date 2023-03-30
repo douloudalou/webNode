@@ -599,6 +599,14 @@ route.post('/admins/invoice', function(req, res) {
     // Invoice url
     // fetch('After_login/invoice.js').then((res) => res.json()).then((data) => wf(data));
 
+    // 
+    let easyinvoice = require('easyinvoice')
+    let data = require('../../views/After_login/invoice')
+    easyinvoice.createInvoice(data, function (result) {
+        //The response will contain a base64 encoded PDF file
+        fs.writeFileSync("invoice.pdf", result.pdf, 'base64');
+    });
+
     load(req, res)
     wf(`${JSON.stringify(invoice_details)}`)
 })
