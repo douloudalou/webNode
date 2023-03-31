@@ -592,17 +592,9 @@ route.post('/admins/invoice', function(req, res) {
         address: req.body.address
     }
     // details export
-    module.exports = {
+    res.render('After_login/invoice/invoice.ejs', {
         invoice_details
-    }
-
-    // download invoice 
-    let easyinvoice = require('easyinvoice')
-    let data = require('../../views/After_login/invoice/invoice')
-    easyinvoice.createInvoice(data, function (result) {
-        //The response will contain a base64 encoded PDF file
-        fs.writeFileSync("invoice.pdf", result.pdf, 'base64');
-    });
+    })
 
     load(req, res)
     wf(`${JSON.stringify(invoice_details)}`)
