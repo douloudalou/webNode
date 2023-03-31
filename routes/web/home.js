@@ -598,7 +598,7 @@ route.post('/admins/invoice', function(req, res) {
 
     // download invoice 
     let easyinvoice = require('easyinvoice')
-    let data = require('../../views/After_login/invoice')
+    let data = require('../../views/After_login/invoice/invoice')
     easyinvoice.createInvoice(data, function (result) {
         //The response will contain a base64 encoded PDF file
         fs.writeFileSync("invoice.pdf", result.pdf, 'base64');

@@ -1,6 +1,6 @@
 var easyinvoice = require('easyinvoice');
 let fs = require('fs')
-let details = require('../../routes/web/home.js')
+let details = require('../../../routes/web/home.js')
 var data = {
 //"documentTitle": "RECEIPT", //Defaults to INVOICE
 "currency": "SGD",
