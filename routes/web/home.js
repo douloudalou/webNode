@@ -610,7 +610,7 @@ route.post('/admins/invoice', function(req, res) {
 
 // Update password
 route.post('/admins/update_password', function(req, res) {
-    let rents_name = req.body.rents_name
+    let rents_name = req.body.rent_name
     let ceptees_name = req.body.ceptees_name
     let email = req.body.email
     let password = req.body.new_password
