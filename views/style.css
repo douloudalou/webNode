@@ -66,6 +66,10 @@ td {
     word-break: break-all;
 }
 
+.plus-minus{
+    padding:0 0.75rem;
+}
+
 #details_content {
     width: 100%;
     display: flex;
