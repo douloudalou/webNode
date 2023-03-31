@@ -68,7 +68,7 @@ td {
 
 .plus-minus{
     display:grid;
-    grid-template-columns:auto 0.5fr auto;
+    grid-template-columns:auto 0.2fr 0.2fr;
 }
 
 #details_content {
