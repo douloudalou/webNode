@@ -212,12 +212,12 @@
                             <!-- DOB-->
                             <td> <%= JSON.stringify(Perceptors_results[i]['DOB']).slice(1, JSON.stringify(Perceptors_results[i]['DOB']).length-15) %> </td>
                             <!-- Num of Perceptees-->
-                            <td class="plus-minus">
+                            <td >
                                 <div>
                                     <%= JSON.stringify(Perceptors_results[i]['Num of Perceptees']) %>
                                 </div>
-                                <div>
-                                    <div class="ceptors_up">
+                                <div class="plus-minus">
+                                    <div>
                                         <form action="/admins/Perceptors_up" method="post">
                                             <input type="hidden" name="nametors" value='<%= JSON.stringify(Perceptors_results[i]['Perceptors']).slice(1, JSON.stringify(Perceptors_results[i]['Perceptors']).length-1) %>'>
                                             <input type="hidden" name="contactors" value='<%= JSON.stringify(Perceptors_results[i]['Contact number']) %>'>
