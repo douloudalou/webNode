@@ -6,7 +6,6 @@ const sql = require('mysql')
 const params = require('../../params/params')
 const url = require('url')
 const {writeFile} = require('fs')
-// const fetch = require('node-fetch')
 
 // Var
 const route = express.Router()
@@ -607,7 +606,7 @@ route.post('/admins/update_password', function(req, res) {
     let email = req.body.email
     let password = req.body.new_password
     wf(`Update Password: ${parent_name}, ${perceptees_name}, ${email}, ${password}`)
-    sql = `Update \`parents\` set \`password\` = '${password}' where \`Parents\` = '${parent_name}' AND \`Perceptees\` = '${perceptees_name}' AND \`Email\` = '${email}';`
+    let sql = `Update \`parents\` set \`password\` = '${password}' where \`Parents\` = '${parent_name}' AND \`Perceptees\` = '${perceptees_name}' AND \`Email\` = '${email}';`
     con.query(sql, function(err, result) {
         if(err) wf(`err: ${err}`)
     })
