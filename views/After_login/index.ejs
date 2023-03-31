@@ -112,7 +112,7 @@
                             <td> <%= JSON.stringify(Newceptors_results[i]['Contact number']) %> </td>
                             <!-- Acknowledgement -->
                             <td> 
-                                <div class="input-group">
+                                <div>
                                     <form action="/admins/transfer_newceptors" method="post">
                                         <% let perceptor = JSON.stringify(Newceptors_results[i]['Perceptors']) %>
                                         <% let email = JSON.stringify(Newceptors_results[i]['Email']) %>
@@ -120,13 +120,13 @@
                                         <input type="hidden" name="tceptors" value='<%= perceptor.slice(1, perceptor.length-1) %>'>
                                         <input type="hidden" name="temail" value='<%= email.slice(1, email.length-1) %>''>
                                         <input type="hidden" name="tcontact" value=<%= contact %>>
-                                        <input type="submit" class="btn btn-primary btn-sm form-control payment" value="TRANSFER">
+                                        <input type="submit" class="btn btn-primary btn-sm payment" value="TRANSFER">
                                     </form>
                                     <form action="/admins/drop_newceptors" method="post">
                                         <input type="hidden" name="tceptors" value='<%= perceptor.slice(1, perceptor.length-1) %>'>
                                         <input type="hidden" name="temail" value='<%= email.slice(1, email.length-1) %>''>
                                         <input type="hidden" name="tcontact" value=<%= contact %>>
-                                        <input type="submit" class="btn btn-danger btn-sm form-control payment" value="DROP">
+                                        <input type="submit" class="btn btn-danger btn-sm payment" value="DROP">
                                     </form>
                                 </div>
                             </td>
