@@ -67,7 +67,7 @@ td {
 }
 
 .plus-minus{
-    padding:0 3rem;
+    display:inline-block;
 }
 
 #details_content {
