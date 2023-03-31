@@ -618,7 +618,7 @@ route.post('/admins/update_password_perceptors', function(req, res) {
     let email = req.body.email
     let password = req.body.new_password
     wf(`Update Password: ${perceptors_name}, ${email}, ${password}`)
-    let sql = `Update \`perceptors\` set \`password\` = '${password}' where \`Perceptees\` = '${perceptors_name}' AND \`Email\` = '${email}';`
+    let sql = `Update \`perceptors\` set \`password\` = '${password}' where \`Perceptors\` = '${perceptors_name}' AND \`Email\` = '${email}';`
     con.query(sql, function(err, result) {
         if(err) wf(`err: ${err}`)
     })
