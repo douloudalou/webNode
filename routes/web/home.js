@@ -615,7 +615,7 @@ route.post('/admins/update_password', function(req, res) {
     let email = req.body.email
     let password = req.body.new_password
 
-    sql = `Update \`parents\` set \`password\` = '${password}' where \`Parents\` = '${rents_name}' AND \`Perceptees\` = '${ceptees_name}' AND \`Email\` = '${email}'`
+    sql = `Update \`parents\` set \`password\` = '${password}' where \`Parents\` = '${rents_name}' AND \`Perceptees\` = '${ceptees_name}' AND \`Email\` = '${email}';`
     con.query(sql, function(err, result) {
         if(err) wf(`err: ${err}`)
     })
