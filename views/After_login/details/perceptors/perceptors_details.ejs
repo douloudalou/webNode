@@ -37,7 +37,7 @@
                             Password: <%= JSON.stringify(ceptors_results[i]['password']).slice(1, JSON.stringify(ceptors_results[i]['password']).length-1) %>
                             <form action="/admins/update_password_perceptors" method="post">
                                 <input type="hidden" name="ceptors_name" value="<%= JSON.stringify(ceptors_results[i]['Perceptors']).slice(1, JSON.stringify(ceptors_results[i]['Perceptors']).length-1) %>">
-                                <input type="hidden" name="email" value="<%= JSON.stringify(results[i]['Email']).slice(1, JSON.stringify(results[i]['Email']).length-1) %>">
+                                <input type="hidden" name="email" value="<%= JSON.stringify(ceptors_results[i]['Email']).slice(1, JSON.stringify(ceptors_results[i]['Email']).length-1) %>">
                                 <input type="text" name="new_password" placeholder="New password">
                                 <input type="submit" value="Update">
                             </form>
