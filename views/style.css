@@ -67,8 +67,8 @@ td {
 }
 
 .plus-minus{
-    display:inline-block;
-    padding:0 3rem;
+    display:grid;
+    grid-template-columns:auto auto auto;
 }
 
 #details_content {
