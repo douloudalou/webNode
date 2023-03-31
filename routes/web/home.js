@@ -610,12 +610,12 @@ route.post('/admins/invoice', function(req, res) {
 
 // Update password
 route.post('/admins/update_password', function(req, res) {
-    let rents_name = req.body.rent_name
-    let ceptees_name = req.body.ceptees_name
+    let parent_name = req.body.rent_name
+    let perceptees_name = req.body.ceptees_name
     let email = req.body.email
     let password = req.body.new_password
-    wf(`Update Password: ${rents_name}, ${ceptees_name}, ${email}, ${password}`)
-    sql = `Update \`parents\` set \`password\` = '${password}' where \`Parents\` = '${rents_name}' AND \`Perceptees\` = '${ceptees_name}' AND \`Email\` = '${email}';`
+    wf(`Update Password: ${parent_name}, ${perceptees_name}, ${email}, ${password}`)
+    sql = `Update \`parents\` set \`password\` = '${password}' where \`Parents\` = '${parent_name}' AND \`Perceptees\` = '${perceptees_name}' AND \`Email\` = '${email}';`
     con.query(sql, function(err, result) {
         if(err) wf(`err: ${err}`)
     })
