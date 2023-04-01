@@ -187,7 +187,7 @@
                     <tr>
                         <th scope="col">Perceptors</th>
                         <th scope="col">DOB (dates are -1)</th>
-                        <th scope="col">Num of Perceptees</th>
+                        <!-- <th scope="col">Num of Perceptees</th> -->
                         <th scope="col">Location</th>
                         <th scope="col">Contact number</th>
                         <th scope="col">NRIC</th>
@@ -212,7 +212,7 @@
                             <!-- DOB-->
                             <td> <%= JSON.stringify(Perceptors_results[i]['DOB']).slice(1, JSON.stringify(Perceptors_results[i]['DOB']).length-15) %> </td>
                             <!-- Num of Perceptees-->
-                            <td >
+                            <!-- <td>
                                 <div class="plus-minus">
                                     <%= JSON.stringify(Perceptors_results[i]['Num of Perceptees']) %>
                                     <div>
@@ -232,7 +232,7 @@
                                         </form>
                                     </div>
                                 </div>
-                            </td>
+                            </td> -->
                             <!-- Location -->
                             <td> <%= JSON.stringify(Perceptors_results[i]['Venue of lesson']).slice(1, JSON.stringify(Perceptors_results[i]['Venue of lesson']).length-1) %> </td>
                             <!-- Contact number -->
