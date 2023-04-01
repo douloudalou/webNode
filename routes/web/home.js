@@ -6,6 +6,7 @@ const sql = require('mysql')
 const params = require('../../params/params')
 const url = require('url')
 const {writeFile} = require('fs')
+const { json } = require('body-parser')
 
 // Var
 const route = express.Router()
@@ -403,7 +404,7 @@ route.post('/admins/After/parents_detail', function(req, res) {
     con.query(sql, function (err, result) {
         if (err) wf(`err: ${err}`)
         results = result
-        wf(results)
+        wf(json.stringify(results))
         res.render('After_login/details/parents/parents_details.ejs', {
             results: results
         })
@@ -444,13 +445,13 @@ route.post('/admins/After/perceptors_detail', function(req, res) {
     con.query(sql, function (err, result) {
         if (err) wf(`err: ${err}`)
         Perceptors_results = result
-        wf(Perceptors_results)
+        wf(JSON.stringify(Perceptors_results))
     })
     let Parent_sql = `SELECT * FROM \`parents\` Where \`Perceptors\` = '${name}';`
     con.query(Parent_sql, function (err, result) {
         if (err) wf(`err: ${err}`)
         Parents_results = result
-        wf(Parents_results)
+        wf(JSON.stringify(Parents_results))
         res.render('After_login/details/perceptors/perceptors_details.ejs', {
             ceptors_results: Perceptors_results,
             rents_results: Parents_results
@@ -469,7 +470,7 @@ route.post('/admins/After/admins_detail', function(req, res) {
     con.query(sql, function (err, result) {
         if (err) wf(`err: ${err}`)
         results = result
-        wf(results)
+        wf(JSON.stringify(results))
         res.render('After_login/details/admins/admins_details.ejs', {
             results: results
         })
@@ -486,7 +487,7 @@ route.post('/admins/After/newceptees_detail', function(req, res) {
     con.query(sql, function (err, result) {
         if (err) throw `err: ${err}`
         results = result
-        wf(results)
+        wf(JSON.stringify(results))
         res.render('After_login/details/newceptees/newceptees_details.ejs', {
             results: results
         })
@@ -503,12 +504,13 @@ route.post('/admins/After/newceptors_detail', function(req, res) {
     con.query(sql, function (err, result) {
         if (err) wf(`err: ${err}`)
         Perceptors_results = result
+        wf(JSON.stringify(Perceptors_results))
     })
     let Parent_sql = `SELECT * FROM \`parents\` Where \`Perceptors\` = '${name}';`
     con.query(Parent_sql, function (err, result) {
         if (err) wf(`err: ${err}`)
         Parents_results = result
-        wf(Parents_results)
+        wf(JSON.stringify(Parents_results))
         res.render('After_login/details/newceptors/newceptors_details.ejs', {
             ceptors_results: Perceptors_results,
             rents_results: Parents_results
