@@ -586,17 +586,20 @@ route.post('/admins/After/newceptors_detail', function(req, res) {
 // Invoice
 route.post('/admins/invoice', function(req, res) {
     // details
+    let n=0
+    var invoice_num = `SP${n}`
     invoice_details = {
         rents_name: req.body.rents_name,
         ceptees_name: req.body.ceptees_name,
         address: req.body.address,
+        invoice_num: invoice_num,
         DOI: now
     }
     // details export
     res.render('After_login/invoice/invoice.ejs', {
         invoice_details
     })
-
+    n += 1
     load(req, res)
     wf(`${JSON.stringify(invoice_details)}`)
 })

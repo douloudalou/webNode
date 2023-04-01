@@ -21,7 +21,7 @@
             <h3>TO:<span style="color:black"> <%= JSON.stringify(invoice_details.rents_name).slice(1, JSON.stringify(invoice_details.rents_name).length-1) %></span></h3>
         </div>
         <div class="container1"></div>
-            <h3>INVOICE NO.<span style="color:black"> SP2465</span></h3>
+            <h3>INVOICE NO.<span style="color:black"> <%= JSON.stringify(invoice_details.invoice_num).slice(1, JSON.stringify(invoice_details.invoice_num).length-1) %></span></h3>
         </div>
         <h5 class="header5">DATE ISSUED:<span style="color:black"> <%= JSON.stringify(invoice_details.DOI).slice(1, JSON.stringify(invoice_details.DOI).length-1) %> </span></h5>
     </div>
