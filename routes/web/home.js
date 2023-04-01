@@ -193,7 +193,7 @@ route.post('/admins/search', function (req, res) {
                 if (err) wf(`err: ${err}`)
                 Parents_results = result
                 wf(JSON.stringify(Parents_results))
-                if (JSON.stringify(Parents_results).length <= 2) {
+                if (!JSON.stringify(Parents_results)) {
                     wf(`Search details error: ${tab}, ${col}, ${name}`)
                     load(req, res)
                 }
