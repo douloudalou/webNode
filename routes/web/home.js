@@ -565,6 +565,19 @@ route.post('/admins/update_password_perceptors', function(req, res) {
     load(req, res)
 })
 
+route.post('/admins/update_perceptor', function(req, res) {
+    let parent_name = req.body.rent_name
+    let perceptees_name = req.body.ceptees_name
+    let email = req.body.email
+    let password = req.body.new_password
+    wf(`Update Password: ${parent_name}, ${perceptees_name}, ${email}, ${password}`)
+    let sql = `Update \`parents\` set \`Perceptors\` = '${password}' where \`Parents\` = '${parent_name}' AND \`Perceptees\` = '${perceptees_name}' AND \`Email\` = '${email}';`
+    con.query(sql, function(err, result) {
+        if(err) wf(`err: ${err}`)
+    })
+    load(req, res)
+})
+
 // reload
 route.post('/admins/reload', function(req, res) {
     load(req, res)  
