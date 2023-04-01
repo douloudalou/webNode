@@ -188,7 +188,7 @@ route.post('/admins/search', function (req, res) {
                 Perceptors_results = result
                 wf(JSON.stringify(Perceptors_results))
             })
-            let Parent_sql = `SELECT * FROM \`parents\` Where \`Perceptors\` = '${JSON.stringify(Perceptors_results['Perceptors'])}';`
+            let Parent_sql = `SELECT * FROM \`parents\` Where \`Perceptors\` = '${JSON.stringify(Perceptors_results[0]['Perceptors'])}';`
             con.query(Parent_sql, function (err, result) {
                 if (err) wf(`err: ${err}`)
                 Parents_results = result
