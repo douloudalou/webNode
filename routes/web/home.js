@@ -319,8 +319,10 @@ route.post('/admins/search', function (req, res) {
 
 route.post('/admins/paid', function (req, res) {
     let name = req.body.fname
+    let student = req.body.fstudent
+    let contact = req.body.fcontact
     wf(`Parent: ${name} payment approved`)
-    let sql = `UPDATE \`parents\` SET payment = 'paid' WHERE \`Parents\` = '${name}'`
+    let sql = `UPDATE \`parents\` SET payment = 'paid' WHERE \`Parents\` = '${name}' AND \`Perceptees\` = '${student}' AND \`Contact number\` = '${contact}'`
     con.query(sql, function (err, result) {
         if (err) wf(`err: ${err}`)
         wf(`Parent: ${name} payment updated`)
