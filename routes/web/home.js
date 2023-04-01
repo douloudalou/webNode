@@ -584,9 +584,10 @@ route.post('/admins/After/newceptors_detail', function(req, res) {
 })
 
 // Invoice
+let n=0
 route.post('/admins/invoice', function(req, res) {
     // details
-    let n=0
+    
     var invoice_num = `SP${n}`
     invoice_details = {
         rents_name: req.body.rents_name,
