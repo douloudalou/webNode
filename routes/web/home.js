@@ -186,7 +186,7 @@ route.post('/admins/search', function (req, res) {
             con.query(Persql, function (err, result) {
                 if (err) wf(`err: ${err}`)
                 Perceptors_results = result
-                wf(JSON.stringify(Perceptors_results))
+                wf(JSON.stringify(Perceptors_results.Perceptors))
             })
             let Parent_sql = `SELECT * FROM \`parents\` Where \`Perceptors\` = '${JSON.stringify(Perceptors_results).Perceptors}';`
             con.query(Parent_sql, function (err, result) {
