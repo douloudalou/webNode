@@ -404,7 +404,7 @@ route.post('/admins/After/parents_detail', function(req, res) {
     con.query(sql, function (err, result) {
         if (err) wf(`err: ${err}`)
         results = result
-        wf(json.stringify(results))
+        wf(JSON.stringify(results))
         res.render('After_login/details/parents/parents_details.ejs', {
             results: results
         })
