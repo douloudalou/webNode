@@ -80,11 +80,11 @@ function login(err, res) {
     }
 }
 
-let date = ''
+let now = ''
 function wf(content) {
-    date = new Date();
+    let date = new Date();
 
-    let now  = (new Intl.DateTimeFormat('en-GB', { dateStyle: 'short', timeStyle: 'medium', timeZone: 'Singapore' }).format(date));
+    now  = (new Intl.DateTimeFormat('en-GB', { dateStyle: 'short', timeStyle: 'medium', timeZone: 'Singapore' }).format(date));
 
     writeFile(`NodeConsole.txt`, `{${now}} ${content}\n`, { flag: 'a+' }, err => {
         if (err) throw `err: ${err}`
@@ -590,7 +590,7 @@ route.post('/admins/invoice', function(req, res) {
         rents_name: req.body.rents_name,
         ceptees_name: req.body.ceptees_name,
         address: req.body.address,
-        DOI: date
+        DOI: now
     }
     // details export
     res.render('After_login/invoice/invoice.ejs', {
