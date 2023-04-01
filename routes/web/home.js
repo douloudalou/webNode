@@ -80,8 +80,9 @@ function login(err, res) {
     }
 }
 
+let date = ''
 function wf(content) {
-    let date = new Date();
+    date = new Date();
 
     let now  = (new Intl.DateTimeFormat('en-GB', { dateStyle: 'short', timeStyle: 'medium', timeZone: 'Singapore' }).format(date));
 
@@ -588,7 +589,8 @@ route.post('/admins/invoice', function(req, res) {
     invoice_details = {
         rents_name: req.body.rents_name,
         ceptees_name: req.body.ceptees_name,
-        address: req.body.address
+        address: req.body.address,
+        DOI: date
     }
     // details export
     res.render('After_login/invoice/invoice.ejs', {
