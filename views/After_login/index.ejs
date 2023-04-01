@@ -329,7 +329,7 @@
                                         <input type="hidden" name="fconstact" value="<%= contact %>">
                                         <input type="submit" class="btn btn-danger btn-sm payment" value="NOT PAID!!!">
                                     </form>
-                                <% } else if ((JSON.stringify(Parents_results[i]['payment']).slice(1, JSON.stringify(Parents_results[i]['payment']).length-1)) == 'TRANSFERRED FROM LEAD'){ %>
+                                <% } else if (JSON.stringify(Parents_results[i]['payment']).slice(1, JSON.stringify(Parents_results[i]['payment']).length-1) == 'TRANSFERRED FROM LEAD'){ %>
                                     <form action="/admins/paid" method="post">
                                         <% let user = JSON.stringify(Parents_results[i]['Parents']) %>
                                         <% let student = JSON.stringify(Parents_results[i]['Perceptees']) %>
@@ -337,7 +337,7 @@
                                         <input type="hidden" name="fname" value='<%= user.slice(1, user.length-1) %>'>
                                         <input type="hidden" name="fstudent" value="<%= student.slice(1, student.length-1) %>">
                                         <input type="hidden" name="fconstact" value="<%= contact %>">
-                                        <input type="submit" class="btn btn-primary btn-sm payment" value='TRANSFERRED FROM LEADS' disabled>
+                                        <input type="submit" class="btn btn-primary btn-sm payment" value='TRANSFERRED FROM LEAD' disabled>
                                     </form>
                                 <% } else { %>
                                     NO STATUS     
