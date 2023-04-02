@@ -24,6 +24,7 @@ body{
     text-align:center;
 } 
 h1{ font-size: 50px; line-height:100px;}
+h2{ font-size: 35px;}
 h3{ color:rgb(0, 74, 173);}
 h4{ font-size:18px;}
 .header5{
@@ -58,7 +59,7 @@ h4{ font-size:18px;}
 .container2{
     display:grid;
     grid-template-columns:auto auto auto auto;
-    column-gap:105px;
+    column-gap:95px;
     padding:15px 0;
     justify-items:center;
     font-weight:bold;
@@ -76,6 +77,9 @@ h4{ font-size:18px;}
     display:grid;
     grid-template-columns:auto auto auto auto;
 }
+.forpdf{
+    padding-left:10px;
+}
 .title-gap{
     padding-left:125px;
     padding-right:120px;
@@ -90,7 +94,7 @@ h4{ font-size:18px;}
     line-height:25px;
 }
 .name{font-size:15px} .ins{font-size:15px}
-img{
+.icon{
     margin-left:700px;
 }
 .container6{
@@ -109,4 +113,45 @@ img{
 }
 .main4-gap{
     line-height:30px;
+}
+.main5{
+    position:relative;
+    top:250px;
+    margin-left:calc((100% - 780px) * 0.5);
+    width:780px;
+    display:grid;
+    grid-template-columns:auto auto;
+}
+.container7{
+    text-align:end;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+.main6{
+    position:relative;
+    top:250px;
+    text-align:center;
+}
+#button{
+    display:block;
+    background:rgb(253, 0 ,95);
+    color:white;
+    font-size:30px;
+    font-weight:bold;
+    padding:5px 60px;
+    border-radius:5px;
+    margin-left:calc((100% - 450px) * 0.5);
+    margin-top:8px;
+    width:450px;
+}
+.main7{
+    position:relative;
+    top:260px;
+    margin-left:calc((100% - 780px) * 0.5);
+    width:780px;
+    left:20px;
+}
+.banklogo{
+    background:transparent;
 }
