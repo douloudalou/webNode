@@ -47,7 +47,9 @@
                             <br>
                             NRIC: <%= JSON.stringify(ceptors_results[i]['NRIC']).slice(1, JSON.stringify(ceptors_results[i]['NRIC']).length-1) %>
                             <br>
-                            Number of perceptees: <%= rents_results.length %>
+                            Number of perceptees: <% if (rents_results.length > 0) { %>
+                                <%= JSON.stringify(rents_results.length) %>
+                            <% } %>>
                             <br>
                             Perceptees in-charge: <% for( let index = 0; index < rents_results.length; index++ ) { %>
                                 <%= JSON.stringify(rents_results[index]['Perceptees']).slice(1, JSON.stringify(rents_results[index]['Perceptees']).length-1) %>, 
