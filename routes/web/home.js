@@ -532,11 +532,13 @@ route.post('/admins/invoice', function(req, res) {
         invoice_num: invoice_num,
         DOI: now
     }
+    // details export
+    html = res.render('After_login/invoice/invoice.ejs', {
+        invoice_details
+    })
+
     var document = {
         html: html,
-        data: {
-          users: users,
-        },
         path: "./output.pdf",
         type: "",
       };
@@ -551,11 +553,6 @@ route.post('/admins/invoice', function(req, res) {
     }).catch((error) => {
         console.error(error);
     });
-
-    // details export
-    res.render('After_login/invoice/invoice.ejs', {
-        invoice_details
-    })
     n += 1
     load(req, res)
     wf(`${JSON.stringify(invoice_details)}`)
