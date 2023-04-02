@@ -571,6 +571,7 @@ route.post('/admins/invoice', function(req, res) {
     }).catch((error) => {
         wf(`${error}`);
     });
+    
     n += 1
     load(req, res)
     wf(`${JSON.stringify(invoice_details)}`)
