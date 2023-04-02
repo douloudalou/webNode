@@ -521,6 +521,8 @@ route.post('/admins/After/newceptors_detail', function(req, res) {
 // Invoice
 let n=0
 route.post('/admins/invoice', function(req, res) {
+    // import
+    let pdf = require('pdf-creator-node')
     // details
     var invoice_num = `SP${n}`
     invoice_details = {
@@ -530,6 +532,26 @@ route.post('/admins/invoice', function(req, res) {
         invoice_num: invoice_num,
         DOI: now
     }
+    var document = {
+        html: html,
+        data: {
+          users: users,
+        },
+        path: "./output.pdf",
+        type: "",
+      };
+      var options = {
+        format: "A3",
+        orientation: "portrait",
+        border: "10mm"
+      }
+    // testing
+    pdf.create(document, options).then((res) => {
+        console.log(res);
+    }).catch((error) => {
+        console.error(error);
+    });
+
     // details export
     res.render('After_login/invoice/invoice.ejs', {
         invoice_details
