@@ -532,13 +532,17 @@ route.post('/admins/invoice', function(req, res) {
         invoice_num: invoice_num,
         DOI: now
     }
+    // res.render('After_login/invoice/invoice.ejs', {
+    //     invoice_details
+    // })
     // details export
-    html = res.render('After_login/invoice/invoice.ejs', {
-        invoice_details
-    })
+    html = fs.readFileSync("After_login/invoice/invoice.ejs", "utf8");
 
     var document = {
         html: html,
+        data: {
+            invoice_details
+        },
         path: "./output.pdf",
         type: "",
       };
