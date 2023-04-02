@@ -523,6 +523,7 @@ let n=0
 route.post('/admins/invoice', function(req, res) {
     // import
     let pdf = require('pdf-creator-node')
+    let fs = require('fs')
     // details
     var invoice_num = `SP${n}`
     invoice_details = {
