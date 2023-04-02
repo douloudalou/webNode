@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice</title>
+    <title>Olivia (Swim Preceptors)</title>
     <link rel="stylesheet" href="../webNode/views/After_login/invoice/style.css" />
 </head>
 <body>
+    <!--First Page-->
     <div class="main0">
         <h1><span>
             SWIM PRECEPTORS
@@ -23,7 +24,7 @@
         <div class="container1"></div>
             <h3>INVOICE NO.<span style="color:black"> <%= JSON.stringify(invoice_details.invoice_num).slice(1, JSON.stringify(invoice_details.invoice_num).length-1) %></span></h3>
         </div>
-        <h5 class="header5">DATE ISSUED:<span style="color:black"> <%= JSON.stringify(invoice_details.DOI).slice(1, JSON.stringify(invoice_details.DOI).length-1) %> </span></h5>
+        <h5 class="header5">DATE ISSUED:<span style="color:black"> <%= JSON.stringify(invoice_details.DOI).slice(1, JSON.stringify(invoice_details.DOI).length-1) %></span></h5>
     </div>
     <div class="main2">
         <div class="container2">
@@ -35,28 +36,28 @@
     </div>
     <div class="main3">
         <div class="container3">
-            <span><%= JSON.stringify(invoice_details.ceptees_name).slice(1, JSON.stringify(invoice_details.ceptees_name).length-1) %></span>
+            <span class="forpdf"><%= JSON.stringify(invoice_details.ceptees_name).slice(1, JSON.stringify(invoice_details.ceptees_name).length-1) %></span>
             <span style="margin-left:200px">01</span>
             <span class="title-gap">$150</span>
             <span>$150</span>
         </div>
-        <div>Pair Lesson</div>
-        <div>(4 lessons, 45mins)</div><br>
-        <div>Starting on 1 April 2022</div>
+        <div class="forpdf">Pair Lesson</div>
+        <div class="forpdf">(4 lessons, 45mins)</div><br>
+        <div class="forpdf">Starting on 1 April 2022</div>
         <div class="container4">
             <div class="line"></div>
         </div>
         <div class="container5">
             <div class="container6">
                 <h3>PAYABLE BY:</h3>
-                <h3 style="margin-left:370px">Total:<span style="color:black"> $150 </span></h3>
+                <h3 style="margin-left:370px">Total:<span style="color:black"> $150</span></h3>
             </div>
             <p class="name"><%= JSON.stringify(invoice_details.rents_name).slice(1, JSON.stringify(invoice_details.rents_name).length-1) %></p><br>
             <h3>PAYMENT INSTRUCTIONS:</h3>
             <p class="ins">PLEASE TRANSFER TO <strong>UEN T21LL0750B</strong></p>
             <p class="ins">OR USING THE <strong>SGQR CODE</strong> BELOW :)</p>
         </div>
-        <img src="../webNode/views/After_login/invoice/preceptors.jpg" alt="preceptors.jpg" width="55" height="65">
+        <img src="../webNode/views/After_login/invoice/preceptors.jpg" alt="preceptors.jpg" class="icon" width="55" height="65">
     </div>
     <div class="main4">
         <div>
@@ -88,7 +89,7 @@
     </div>
     <div class="main6">
         <h2>SWIM PRECEPTORS LLP</h2>
-        <img src="qrcode.jpg" alt="qrcode" width="450" height="450">
+        <img src="../webNode/views/After_login/invoice/qrcode.jpg" alt="qrcode" width="450" height="450">
         <button type="button" id="button">SCAN TO PAY</button>
     </div>
     <div class="main7">
