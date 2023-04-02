@@ -537,7 +537,7 @@ route.post('/admins/invoice', function(req, res) {
     //     invoice_details
     // })
     // details export
-    html = fs.readFileSync('After_login/invoice/invoice.ejs', "utf8");
+    html = fs.readFileSync('After_login/invoice/invoice.html', "utf8");
 
     var document = {
         html: html,
