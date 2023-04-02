@@ -549,9 +549,9 @@ route.post('/admins/invoice', function(req, res) {
       }
     // testing
     pdf.create(document, options).then((res) => {
-        console.log(res);
+        wf(`${res}`);
     }).catch((error) => {
-        console.error(error);
+        wf(`${error}`);
     });
     n += 1
     load(req, res)
