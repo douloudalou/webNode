@@ -533,45 +533,46 @@ route.post('/admins/invoice', function(req, res) {
         invoice_num: invoice_num,
         DOI: now
     }
-    // res.render('After_login/invoice/invoice.ejs', {
-    //     invoice_details
-    // })
-    // details export
-    html = fs.readFileSync('../../webNode/views/After_login/invoice/invoice.ejs', "utf8");
-
-    var document = {
-        html: html,
-        data: {
-            invoice_details
-        },
-        path: "./output.pdf",
-        type: "",
-      };
-    var options = {
-        format: "A3",
-        orientation: "portrait",
-        border: "10mm",
-        header: {
-            height: "45mm",
-            contents: '<div style="text-align: center;">Author: Shyam Hajare</div>'
-        },
-        footer: {
-            height: "28mm",
-            contents: {
-                first: 'Cover page',
-                2: 'Second page', // Any page number is working. 1-based index
-                default: '<span style="color: #444;">{{page}}</span>/<span>{{pages}}</span>', // fallback value
-                last: 'Last Page'
-            }
-        }
-    };
-    // testing
-    pdf.create(document, options).then((res) => {
-        wf(`${res}`);
-    }).catch((error) => {
-        wf(`${error}`);
-    });
+    res.render('After_login/invoice/invoice.ejs', {
+        invoice_details
+    })
     
+    // details export
+    // html = fs.readFileSync('../../webNode/views/After_login/invoice/invoice.ejs', "utf8");
+
+    // var document = {
+    //     html: html,
+    //     data: {
+    //         invoice_details
+    //     },
+    //     path: "./output.pdf",
+    //     type: "",
+    //   };
+    // var options = {
+    //     format: "A3",
+    //     orientation: "portrait",
+    //     border: "10mm",
+    //     header: {
+    //         height: "45mm",
+    //         contents: '<div style="text-align: center;">Author: Shyam Hajare</div>'
+    //     },
+    //     footer: {
+    //         height: "28mm",
+    //         contents: {
+    //             first: 'Cover page',
+    //             2: 'Second page', // Any page number is working. 1-based index
+    //             default: '<span style="color: #444;">{{page}}</span>/<span>{{pages}}</span>', // fallback value
+    //             last: 'Last Page'
+    //         }
+    //     }
+    // };
+    // // testing
+    // pdf.create(document, options).then((res) => {
+    //     wf(`${res}`);
+    // }).catch((error) => {
+    //     wf(`${error}`);
+    // });
+
     n += 1
     load(req, res)
     wf(`${JSON.stringify(invoice_details)}`)
