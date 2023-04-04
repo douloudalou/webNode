@@ -306,7 +306,7 @@
                                         <% let contact = JSON.stringify(Parents_results[i]['Contact number']) %>
                                         <input type="hidden" name="fname" value='<%= user.slice(1, user.length-1) %>'>
                                         <input type="hidden" name="fstudent" value="<%= student.slice(1, student.length-1) %>">
-                                        <input type="hidden" name="fconstact" value=<%= contact %>>
+                                        <input type="hidden" name="fcontact" value="<%= contact %>">
                                         <input type="submit" class="btn btn-primary btn-sm payment" value="PAID" disabled>
                                     </form>
                                 <% } else if (JSON.stringify(Parents_results[i]['payment']).slice(1, JSON.stringify(Parents_results[i]['payment']).length-1) == 'pending') { %>
@@ -316,7 +316,7 @@
                                         <% let contact = JSON.stringify(Parents_results[i]['Contact number']) %>
                                         <input type="hidden" name="fname" value='<%= user.slice(1, user.length-1) %>'>
                                         <input type="hidden" name="fstudent" value="<%= student.slice(1, student.length-1) %>">
-                                        <input type="hidden" name="fconstact" value=<%= contact %>>
+                                        <input type="hidden" name="fcontact" value="<%= contact %>">
                                         <input type="submit" class="btn btn-warning btn-sm payment" value="PENDING...">
                                     </form>
                                 <% }else if (JSON.stringify(Parents_results[i]['payment']).slice(1, JSON.stringify(Parents_results[i]['payment']).length-1) == 'not paid'){ %>
@@ -326,7 +326,7 @@
                                         <% let contact = JSON.stringify(Parents_results[i]['Contact number']) %>
                                         <input type="hidden" name="fname" value='<%= user.slice(1, user.length-1) %>'>
                                         <input type="hidden" name="fstudent" value="<%= student.slice(1, student.length-1) %>">
-                                        <input type="hidden" name="fconstact" value=<%= contact %>>
+                                        <input type="hidden" name="fcontact" value="<%= contact %>">
                                         <input type="submit" class="btn btn-danger btn-sm payment" value="NOT PAID!!!">
                                     </form>
                                 <% } else if (JSON.stringify(Parents_results[i]['payment']).slice(1, JSON.stringify(Parents_results[i]['payment']).length-1) == "TRANSFERRED FROM LEAD "){ %>
@@ -336,7 +336,7 @@
                                         <% let contact = JSON.stringify(Parents_results[i]['Contact number']) %>
                                         <input type="hidden" name="fname" value='<%= user.slice(1, user.length-1) %>'>
                                         <input type="hidden" name="fstudent" value="<%= student.slice(1, student.length-1) %>">
-                                        <input type="hidden" name="fconstact" value=<%= contact %>>
+                                        <input type="hidden" name="fcontact" value="<%= contact %>">
                                         <input type="submit" class="btn btn-primary btn-sm payment" value='TRANSFERRED FROM LEAD' disabled>
                                     </form>
                                 <% } else { %>
