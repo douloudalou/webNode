@@ -216,7 +216,7 @@ route.post('/admins/search', function (req, res) {
                     load(req, res)
                 }
                 else {
-                    res.render('After_login/details/perceptors/newceptors_details.ejs', {
+                    res.render('After_login/details/newceptors/newceptors_details.ejs', {
                         ceptors_results: Perceptors_results,
                     })
                 }
