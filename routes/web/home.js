@@ -211,19 +211,13 @@ route.post('/admins/search', function (req, res) {
                 if (err) wf(`err: ${err}`)
                 Perceptors_results = result
                 wf(JSON.stringify(Perceptors_results))
-            })
-            con.query(Parent_sql, function (err, result) {
-                if (err) wf(`err: ${err}`)
-                Parents_results = result
-                wf(JSON.stringify(Parents_results))
-                if (JSON.stringify(Parents_results).length <=2 || JSON.stringify(Perceptors_results).length <= 2) {
+                if (JSON.stringify(Perceptors_results).length < 1) {
                     wf(`Search details error: ${tab}, ${col}, ${name}`)
                     load(req, res)
                 }
                 else {
-                    res.render('After_login/details/perceptors/perceptors_details.ejs', {
+                    res.render('After_login/details/perceptors/newceptors_details.ejs', {
                         ceptors_results: Perceptors_results,
-                        rents_results: Parents_results
                     })
                 }
             })
