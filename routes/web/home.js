@@ -341,6 +341,11 @@ route.post('/admins/drop_newceptors', function (req, res) {
     let email = req.body.temail
     let contact = req.body.tcontact
     wf(`${perceptor}, ${email}, ${contact}`)
+    let datasql = `Select * from \`new perceptors\` where \`Perceptors\`='${perceptor}' AND \`Email\`='${email}' and \`Contact number\`='${contact}';`
+    con.query(datasql, function (err, result) {
+        if(err) wf(`err: ${err}`)
+        wf(JSON.stringify(result))
+    })
     let dsql = `DELETE FROM \`new perceptors\` WHERE \`Perceptors\`='${perceptor}' AND \`Email\`='${email}' and \`Contact number\`='${contact}';`
     con.query(dsql, function (err, result) {
         if (err) wf(`err: ${err}`)
