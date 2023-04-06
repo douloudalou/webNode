@@ -522,8 +522,8 @@ route.post('/admins/After/newceptors_detail', function(req, res) {
 let n=0
 route.post('/admins/invoice', function(req, res) {
     // import
-    let pdf = require('pdf-creator-node')
-    let fs = require('fs')
+    let puppeteer = require('puppeteer')
+    let {savePageAsPDF} = require('./invoice.js')
     // details
     var invoice_num = `SP${n}`
     invoice_details = {
@@ -536,45 +536,15 @@ route.post('/admins/invoice', function(req, res) {
     res.render('After_login/invoice/invoice.ejs', {
         invoice_details
     })
-    
-    // details export
-    // html = fs.readFileSync('../../webNode/views/After_login/invoice/invoice.ejs', "utf8");
-
-    // var document = {
-    //     html: html,
-    //     data: {
-    //         invoice_details
-    //     },
-    //     path: "./output.pdf",
-    //     type: "",
-    //   };
-    // var options = {
-    //     format: "A3",
-    //     orientation: "portrait",
-    //     border: "10mm",
-    //     header: {
-    //         height: "45mm",
-    //         contents: '<div style="text-align: center;">Author: Shyam Hajare</div>'
-    //     },
-    //     footer: {
-    //         height: "28mm",
-    //         contents: {
-    //             first: 'Cover page',
-    //             2: 'Second page', // Any page number is working. 1-based index
-    //             default: '<span style="color: #444;">{{page}}</span>/<span>{{pages}}</span>', // fallback value
-    //             last: 'Last Page'
-    //         }
-    //     }
-    // };
-    // // testing
-    // pdf.create(document, options).then((res) => {
-    //     wf(`${res}`);
-    // }).catch((error) => {
-    //     wf(`${error}`);
-    // });
+    // Wait for the page to finish rendering
+    new Promise(resolve => setTimeout(resolve, 500));
+    // Retrieve the rendered HTML content
+    const html = res.locals.html;
+    // Generate the PDF and save it to disk
+    savePageAsPDF(html, 'invoice.pdf');
 
     n += 1
-    load(req, res)
+
     wf(`${JSON.stringify(invoice_details)}`)
 })
 

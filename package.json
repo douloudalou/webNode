@@ -19,6 +19,7 @@
         "express-handlebars": "^6.0.6",
         "express-session": "^1.17.3",
         "mysql": "^2.18.1",
-        "pdf-creator-node": "^2.3.5"
+        "pdf-creator-node": "^2.3.5",
+        "puppeteer": "^19.8.3"
     }
 }
