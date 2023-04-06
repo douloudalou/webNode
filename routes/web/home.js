@@ -541,7 +541,6 @@ route.post('/admins/invoice', function(req, res) {
     new Promise(resolve => setTimeout(resolve, 500));
     // Retrieve the rendered HTML content
     const html = res.locals.html;
-    wf(html)
     // Generate the PDF and save it to disk
     savePageAsPDF(html, 'invoice.pdf');
 
