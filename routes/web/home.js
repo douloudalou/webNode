@@ -522,8 +522,8 @@ route.post('/admins/After/newceptors_detail', function(req, res) {
 let n=0
 route.post('/admins/invoice', function(req, res) {
     // import
-    // let {savePageAsPDF} = require('./invoice.js')
-    // const fs = require('fs').promises;
+    let {savePageAsPDF} = require('./invoice.js')
+    const fs = require('fs').promises;
 
     // details
     var invoice_num = `SP${n}`
@@ -537,12 +537,12 @@ route.post('/admins/invoice', function(req, res) {
     res.render('After_login/invoice/invoice.ejs', {
         invoice_details
     })
-    // // Wait for the page to finish rendering
-    // new Promise(resolve => setTimeout(resolve, 500));
-    // // Retrieve the rendered HTML content
-    // const html = res.locals.html;
-    // // Generate the PDF and save it to disk
-    // savePageAsPDF(html, 'invoice.pdf');
+    // Wait for the page to finish rendering
+    new Promise(resolve => setTimeout(resolve, 500));
+    // Retrieve the rendered HTML content
+    const html = res.locals.html;
+    // Generate the PDF and save it to disk
+    savePageAsPDF(html, 'invoice.pdf');
 
     n += 1
 
