@@ -355,44 +355,44 @@ route.post('/admins/drop_newceptors', function (req, res) {
     })
 })
 
-route.post('/admins/Perceptor_NRIC', function (req, res) {
-    let name = req.body.nametors
-    let contact = req.body.contactors
-    let NRIC = req.body.NRICtors
-    let sql = `UPDATE \`perceptors\` SET \`NRIC\` = '${NRIC}' WHERE \`Perceptors\`='${name}' AND \`Contact number\`='${contact}';`
-    con.query(sql, function (err, result) {
-        if (err) wf(`err: ${err}`)
-        wf(`Perceptor: ${name} NRIC: ${NRIC} updated`)
+// route.post('/admins/Perceptor_NRIC', function (req, res) {
+//     let name = req.body.nametors
+//     let contact = req.body.contactors
+//     let NRIC = req.body.NRICtors
+//     let sql = `UPDATE \`perceptors\` SET \`NRIC\` = '${NRIC}' WHERE \`Perceptors\`='${name}' AND \`Contact number\`='${contact}';`
+//     con.query(sql, function (err, result) {
+//         if (err) wf(`err: ${err}`)
+//         wf(`Perceptor: ${name} NRIC: ${NRIC} updated`)
     
-        load(req, res)
-    })
-})
+//         load(req, res)
+//     })
+// })
 
-route.post('/admins/Perceptors_up', function (req, res) {
-    let name = req.body.nametors
-    let contact = req.body.contactors
-    let num = parseInt(req.body.num)+1
-    let sql = `UPDATE \`perceptors\` SET \`Num of Perceptees\` = '${num}' WHERE \`Perceptors\`='${name}' AND \`Contact number\`='${contact}';`
-    con.query(sql, function (err, result) {
-        if (err) wf(`err: ${err}`)
-        wf(`Perceptor: ${name} Num of Perceptees: ${num} updated`)
+// route.post('/admins/Perceptors_up', function (req, res) {
+//     let name = req.body.nametors
+//     let contact = req.body.contactors
+//     let num = parseInt(req.body.num)+1
+//     let sql = `UPDATE \`perceptors\` SET \`Num of Perceptees\` = '${num}' WHERE \`Perceptors\`='${name}' AND \`Contact number\`='${contact}';`
+//     con.query(sql, function (err, result) {
+//         if (err) wf(`err: ${err}`)
+//         wf(`Perceptor: ${name} Num of Perceptees: ${num} updated`)
     
-        load(req, res)
-    })
-})
+//         load(req, res)
+//     })
+// })
 
-route.post('/admins/Perceptors_down', function (req, res) {
-    let name = req.body.nametors
-    let contact = req.body.contactors
-    let num = parseInt(req.body.num)-1
-    let sql = `UPDATE \`perceptors\` SET \`Num of Perceptees\` = '${num}' WHERE \`Perceptors\`='${name}' AND \`Contact number\`='${contact}';`
-    con.query(sql, function (err, result) {
-        if (err) wf(`err: ${err}`)
-        wf(`Perceptor: ${name} Num of Perceptees: ${num} updated`)
+// route.post('/admins/Perceptors_down', function (req, res) {
+//     let name = req.body.nametors
+//     let contact = req.body.contactors
+//     let num = parseInt(req.body.num)-1
+//     let sql = `UPDATE \`perceptors\` SET \`Num of Perceptees\` = '${num}' WHERE \`Perceptors\`='${name}' AND \`Contact number\`='${contact}';`
+//     con.query(sql, function (err, result) {
+//         if (err) wf(`err: ${err}`)
+//         wf(`Perceptor: ${name} Num of Perceptees: ${num} updated`)
     
-        load(req, res)
-    })
-})
+//         load(req, res)
+//     })
+// })
 
 // parents details
 route.post('/admins/After/parents_detail', function(req, res) {
