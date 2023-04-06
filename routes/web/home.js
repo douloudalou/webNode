@@ -6,7 +6,6 @@ const sql = require('mysql')
 const params = require('../../params/params')
 const url = require('url')
 const {writeFile} = require('fs')
-const { json } = require('body-parser')
 
 // Var
 const route = express.Router()
