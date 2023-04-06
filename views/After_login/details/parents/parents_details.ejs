@@ -141,8 +141,7 @@
                             Relation: <%= JSON.stringify(results[i]['emergency relation']).slice(1, JSON.stringify(results[i]['emergency relation']).length-1) %>
                         </div>
                         <div class="Special Remarks">
-                            Special Remarks: <%= JSON.stringify(results[i]['Sremarks']).slice(1, JSON.stringify(results[i]['Sremarks']).length-1) %>
-                            <br>
+                            Special Remarks: 
                             <form action="/admins/special_remarks" method="post">
                                 <input type="hidden" name="Rparents_name" value='<%= JSON.stringify(results[i]['Parents']).slice(1, JSON.stringify(results[i]['Parents']).length-1) %>'>
                                 <input type="hidden" name="Rceptees_name" value='<%= JSON.stringify(results[i]['Perceptees']).slice(1, JSON.stringify(results[i]['Perceptees']).length-1) %>'>
