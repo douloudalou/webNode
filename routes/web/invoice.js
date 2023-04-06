@@ -11,12 +11,12 @@ function wf(content) {
     })
 }
 
-async function savePageAsPDF(html, path) {
-  const browser = await puppeteer.launch();
-  const pdfPage = await browser.newPage();
-  await pdfPage.setContent(html);
-  await pdfPage.pdf({ path: path, format: 'A4' });
-  await browser.close();
+function savePageAsPDF(html, path) {
+  const browser = puppeteer.launch();
+  const pdfPage = browser.newPage();
+  pdfPage.setContent(html);
+  pdfPage.pdf({ path: path, format: 'A4' });
+  browser.close();
   wf(`done generating invoice`)
 }
 
