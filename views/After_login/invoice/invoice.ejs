@@ -37,13 +37,13 @@
     <div class="main3">
         <div class="container3">
             <span class="forpdf"><%= JSON.stringify(invoice_details.ceptees_name).slice(1, JSON.stringify(invoice_details.ceptees_name).length-1) %></span>
-            <span style="margin-left:200px">01</span>
-            <span class="title-gap">$150</span>
-            <span>$150</span>
+            <span style="margin-left:200px">$<input type="text" class="invoice_input" placeholder="value"></span>
+            <span class="title-gap">$<input type="text" class="invoice_input" placeholder="value"></span>
+            <span>$<input type="text" class="invoice_input" placeholder="value"></span>
         </div>
         <div class="forpdf">Pair Lesson</div>
         <div class="forpdf">(4 lessons, 45mins)</div><br>
-        <div class="forpdf">Starting on 1 April 2022</div>
+        <div class="forpdf">Starting on $<input type="text" class="invoice_input" placeholder="date"></div>
         <div class="container4">
             <div class="line"></div>
         </div>
