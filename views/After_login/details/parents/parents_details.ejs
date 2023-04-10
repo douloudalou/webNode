@@ -77,6 +77,15 @@
                             <br>
                             Email: <%= JSON.stringify(results[i]['Email']).slice(1, JSON.stringify(results[i]['Email']).length-1) %>
                             <br>
+                            Password: <%= JSON.stringify(results[i]['password']).slice(1, JSON.stringify(results[i]['password']).length-1) %>
+                            <br>
+                            <form action="/admins/update_password" method="post">
+                                <input type="hidden" name="rent_name" value="<%= JSON.stringify(results[i]['Parents']).slice(1, JSON.stringify(results[i]['Parents']).length-1) %>">
+                                <input type="hidden" name="ceptees_name" value="<%= JSON.stringify(results[i]['Perceptees']).slice(1, JSON.stringify(results[i]['Perceptees']).length-1) %>">
+                                <input type="hidden" name="email" value="<%= JSON.stringify(results[i]['Email']).slice(1, JSON.stringify(results[i]['Email']).length-1) %>">
+                                <input type="text" name="new_password" placeholder="New password">
+                                <input type="submit" value="Update">
+                            </form>
                             DOB: <%= JSON.stringify(results[i]['Parent DOB']).slice(1, JSON.stringify(results[i]['Parent DOB']).length-15) %>
                             <br>
                             Contact number: <%= JSON.stringify(results[i]['Contact number']) %>
@@ -119,15 +128,6 @@
                             <br>
                             Payment status: <%= JSON.stringify(results[i]['payment']).slice(1, JSON.stringify(results[i]['payment']).length-1) %>
                             <br>
-                            Password: <%= JSON.stringify(results[i]['password']).slice(1, JSON.stringify(results[i]['password']).length-1) %>
-                            <br>
-                            <form action="/admins/update_password" method="post">
-                                <input type="hidden" name="rent_name" value="<%= JSON.stringify(results[i]['Parents']).slice(1, JSON.stringify(results[i]['Parents']).length-1) %>">
-                                <input type="hidden" name="ceptees_name" value="<%= JSON.stringify(results[i]['Perceptees']).slice(1, JSON.stringify(results[i]['Perceptees']).length-1) %>">
-                                <input type="hidden" name="email" value="<%= JSON.stringify(results[i]['Email']).slice(1, JSON.stringify(results[i]['Email']).length-1) %>">
-                                <input type="text" name="new_password" placeholder="New password">
-                                <input type="submit" value="Update">
-                            </form>
                             Register date: <%= JSON.stringify(results[i]['register date']).slice(1, JSON.stringify(results[i]['register date']).length-15) %>
                         </div>
                         <div id="emergency_contact">
