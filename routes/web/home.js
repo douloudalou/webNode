@@ -128,9 +128,7 @@ route.post("/admins/login", function (req, res) {
             let admin_password = JSON.stringify(Admins_results[i]['Password']).slice(1, JSON.stringify(Admins_results[i]['Password']).length-1)
             wf(`admin: ${admin_name}, ${admin_password}`)
             if (name == admin_name && pass == admin_password) {
-                req.session.user = {
-                    username: name
-                }
+                req.session.user = name
                 load(req, res)
             }
             else {
