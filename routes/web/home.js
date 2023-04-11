@@ -100,6 +100,7 @@ route.use(express.json())
 // session 
 // middleware to set session timeout
 const setSessionTimeout = (req) => {
+    wf(`${req.session.cookie.expires}`)
     req.session.cookie.expires = new Date(Date.now() + 60000); // extend session timeout by 1 minute
   };
   
