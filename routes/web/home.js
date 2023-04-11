@@ -102,7 +102,8 @@ const timezone = 'Asia/Singapore';
 // middleware to set session timeout
 const setSessionTimeout = (req) => {
     let expiration = moment().tz(timezone).add(30, 'minutes')
-    req.session.cookie.expires = expiration
+    const expires = expiration.format('ddd, DD MMM YYYY HH:mm:ss [GMT]');
+    req.session.cookie.expires = expires;
     req.session.cookie.maxAge = 30 * 60 * 1000; // 30min
     wf(`${expiration}, ${req.session.cookie.expires}, ${moment().tz(timezone)}`)
 };
