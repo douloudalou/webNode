@@ -105,6 +105,7 @@ const setSessionTimeout = (req) => {
   
 // middleware to check session timeout
 const checkSessionTimeout = (req, res, next) => {
+    wf(`${req.session.cookie.expires}`)
     if (req.session.cookie.expires < new Date()) {
         req.session.destroy(); // destroy session and log user out
         wf(`${req.session.user} Timed Out`)
