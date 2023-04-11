@@ -97,30 +97,6 @@ function wf(content) {
 route.use(express.urlencoded())
 route.use(express.json())
 
-// session 
-function setSessionTimeout(req) {
-    // Clear any existing timeout
-    if (req.session.timeout) {
-      clearTimeout(req.session.timeout);
-    }
-    
-    // Set new timeout for 5 minutes
-    req.session.timeout = setTimeout(() => {
-      // Destroy the session and redirect to login page
-        req.session.destroy((err) => {
-            if (err) {
-            wf(`err: ${err}`);
-            } else {
-                wf(`${req.session.user} timed out`)
-                res.redirect('/admins');
-            }
-        });
-    }, 5 * 60 * 1000); // 5 minutes in milliseconds
-}
-route.use((req, res, next) => {
-    setSessionTimeout(req);
-    next();
-  });
 
 // Swimperceptors page
 // route.get('/', function (req, res) {
