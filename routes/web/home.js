@@ -116,8 +116,8 @@ const checkSessionTimeout = (req, res, next) => {
   
 // middleware to apply setSessionTimeout and checkSessionTimeout for each incoming request
 route.use((req, res, next) => {
-    setSessionTimeout(req);
     checkSessionTimeout(req, res, next);
+    setSessionTimeout(req);
 });
 
 // Swimperceptors page
