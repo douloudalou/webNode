@@ -125,12 +125,12 @@ route.use(function(req, res, next) {
 // login page
 route.get("/admins", function (req, res) {
     wf('Current: Login Page')
-    login(0, res)
+    login(0, req, res)
 })
 
 route.get('/admins/error', function (req, res) {
     req.flash('error', 'Wrong Name or Password! Contact admins@12345 if you require assistance')
-    login(1, res)
+    login(1, req, res)
 })
 
 route.post("/admins/login", function (req, res) {
