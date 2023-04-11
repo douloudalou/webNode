@@ -139,28 +139,28 @@ route.post("/admins/login", function (req, res) {
 })
 
 // session 
-route.use(function(req, res, next) {
-    if (req.session && req.session.user) {
-        var now = new Date().getTime();
-        var expiresIn = req.session.cookie.maxAge;
-        var lastActivity = req.session.lastActivity || now;
-        wf(`${expiresIn}`)
-        if (now - lastActivity > expiresIn) {
-            req.session.destroy(function(err) {
-            if (err) console.log(err);
-            wf(`${req.session.user} session timed out`)
-            res.redirect('/admins');
-            });
-        } 
-        else {
-            req.session.lastActivity = now;
-            next();
-        }
-    } 
-    else {
-        next();
+function setSessionTimeout(req) {
+    // Clear any existing timeout
+    if (req.session.timeout) {
+      clearTimeout(req.session.timeout);
     }
-});
+    
+    // Set new timeout for 5 minutes
+    req.session.timeout = setTimeout(() => {
+      // Destroy the session and redirect to login page
+        req.session.destroy((err) => {
+            if (err) {
+            wf(`err: ${err}`);
+            } else {
+            res.redirect('/admins');
+            }
+        });
+    }, 5 * 60 * 1000); // 5 minutes in milliseconds
+}
+route.use((req, res, next) => {
+    setSessionTimeout(req);
+    next();
+  });
 
 // main page
 route.post('/admins/search', function (req, res) {
