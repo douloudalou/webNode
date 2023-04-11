@@ -104,12 +104,12 @@ const setSessionTimeout = (req) => {
     const expiration = moment().tz(timezone).add(30, 'minutes'); // set session timeout to 30 minutes from now
     wf(`${expiration}`)
     req.session.cookie.expires = expiration.toDate(); // set expiration time to Singapore timezone
+    wf(`${req.session.cookie.expires}`)
     req.session.cookie.maxAge = 30 * 60 * 1000;
 };
 
 // middleware to check session timeout
 const checkSessionTimeout = (req, res, next) => {
-    wf(`${req.session.cookie.expires}`)
     if (req.session.cookie.expires < new Date()) {
         wf(`Timed Out, Expire Timing: ${req.session.cookie.expires}`, req.session.user)
         req.session.destroy(); // destroy session and log user out
