@@ -6,6 +6,7 @@ const sql = require('mysql')
 const params = require('../../params/params')
 const url = require('url')
 const {writeFile} = require('fs')
+const moment = require('moment-timezone')
 
 // Var
 const route = express.Router()
@@ -99,8 +100,12 @@ route.use(express.json())
 // session 
 // middleware to set session timeout
 const setSessionTimeout = (req) => {
-    req.session.cookie.expires = (new Intl.DateTimeFormat('en-GB', { dateStyle: 'short', timeStyle: 'medium', timeZone: 'Singapore' }).format(new Date(Date.now() + 60000))); // extend session timeout by 1 minute
-  };
+	const timezone = 'Asia/Singapore';
+	const now = moment.tz(new Date(), timezone);
+	const expiration = now.add(30, 'minutes'); // set session timeout to 30 minutes from now
+	req.session.cookie.expires = expiration.toDate(); // convert to Date object
+	req.session.cookie.maxAge = 1800000; // set session timeout to 30 minutes (1800000 milliseconds)
+};
   
 // middleware to check session timeout
 const checkSessionTimeout = (req, res, next) => {
