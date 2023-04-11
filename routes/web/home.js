@@ -104,7 +104,7 @@ const setSessionTimeout = (req) => {
     const expiration = moment().tz(timezone).add(30, 'minutes'); 
     req.session.cookie.expires = expiration
     req.session.cookie.maxAge = 30 * 60 * 1000; // 30min
-    wf(`${expiration}`)
+    wf(`${expiration}, ${req.session.cookie.expires}`)
 };
 
 // middleware to check session timeout
