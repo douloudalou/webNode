@@ -108,8 +108,7 @@ const setSessionTimeout = (req) => {
 
 // middleware to check session timeout
 const checkSessionTimeout = (req, res, next) => {
-    wf(`new date: ${new Date}`)
-    if (req.session.cookie.expires < new Date()) {
+    if (req.session.cookie.expires < new Date(ts).toLocaleString("en-US", { timeZone: "Singapore" })) {
         wf(`Timed Out, Expire Timing: ${req.session.cookie.expires}`, req.session.user)
         req.session.destroy(); // destroy session and log user out
         return res.redirect('/admins');
