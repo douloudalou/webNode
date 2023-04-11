@@ -31,8 +31,15 @@ wf(`Starting server...`)
 app.set('port', process.env.PORT || 3000)
 
 app.use(session({
-    secret: 'Aiss2017b'
-}))
+    secret: 'Aiss2017b536442.',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { 
+        // 1800000
+        maxAge: 6000, // 30 minutes
+        rolling: true 
+    }
+}));
 app.use(flash())
 
 app.set('views', path.join(__dirname, '/views'))
