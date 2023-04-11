@@ -138,6 +138,28 @@ route.post("/admins/login", function (req, res) {
     })
 })
 
+// session 
+route.use(function(req, res, next) {
+    if (req.session && req.session.user) {
+        var now = new Date().getTime();
+        var expiresIn = req.session.cookie.maxAge;
+        var lastActivity = req.session.lastActivity || now;
+        if (now - lastActivity > expiresIn) {
+            req.session.destroy(function(err) {
+            if (err) console.log(err);
+            res.redirect('/admins');
+            });
+        } 
+        else {
+            req.session.lastActivity = now;
+            next();
+        }
+    } 
+    else {
+        next();
+    }
+});
+
 // main page
 route.post('/admins/search', function (req, res) {
     let tab = req.body.search_tab
