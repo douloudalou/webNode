@@ -81,12 +81,12 @@ function login(err, req, res) {
 }
 
 let now = ''
-function wf(content) {
+function wf(content, user) {
     let date = new Date();
 
     now  = (new Intl.DateTimeFormat('en-GB', { dateStyle: 'short', timeStyle: 'medium', timeZone: 'Singapore' }).format(date));
 
-    writeFile(`NodeConsole.txt`, `{${now}} {} ${content}\n`, { flag: 'a+' }, err => {
+    writeFile(`NodeConsole.txt`, `{${now}} {${user||""}} ${content}\n`, { flag: 'a+' }, err => {
         if (err) throw `err: ${err}`
     })
 }
@@ -104,10 +104,9 @@ const setSessionTimeout = (req) => {
   
 // middleware to check session timeout
 const checkSessionTimeout = (req, res, next) => {
-    wf(`${req.session.cookie.expires}`)
     if (req.session.cookie.expires < new Date()) {
         req.session.destroy(); // destroy session and log user out
-        wf(`${req.session.user} Timed Out`)
+        wf(`Timed Out, Expire Timing: ${req.session.cookie.expires}`, req.session.user)
         return res.redirect('/admins');
     }
     next(); // session is still active, continue with request processing
