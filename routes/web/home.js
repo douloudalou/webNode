@@ -106,8 +106,8 @@ const setSessionTimeout = (req) => {
 const checkSessionTimeout = (req, res, next) => {
     wf(`${req.session.cookie.expires}`)
     if (req.session.cookie.expires < new Date()) {
-        req.session.destroy(); // destroy session and log user out
         wf(`Timed Out, Expire Timing: ${req.session.cookie.expires}`, req.session.user)
+        req.session.destroy(); // destroy session and log user out
         return res.redirect('/admins');
     }
     next(); // session is still active, continue with request processing
