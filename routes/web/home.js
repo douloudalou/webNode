@@ -152,6 +152,7 @@ function setSessionTimeout(req) {
             if (err) {
             wf(`err: ${err}`);
             } else {
+                wf(`${req.session.user} timed out`)
             res.redirect('/admins');
             }
         });
