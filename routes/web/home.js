@@ -101,16 +101,13 @@ route.use(express.json())
 const timezone = 'Asia/Singapore';
 // middleware to set session timeout
 const setSessionTimeout = (req) => {
-    let expiration = moment().tz(timezone).add(30, 'minutes').toDate()
-    let formattedExpiration = expiration.toUTCString();
-    req.session.cookie.expires = formattedExpiration;
+    req.session.cookie.expires = moment().tz(timezone).add(30, 'minutes').toDate()
     req.session.cookie.maxAge = 30 * 60 * 1000; // 30min
-    wf(`${expiration}, ${req.session.cookie.expires}, ${moment().tz(timezone)}`)
 };
 
 // middleware to check session timeout
 const checkSessionTimeout = (req, res, next) => {
-    if (req.session.cookie.expires < moment().tz(timezone)) {
+    if (req.session.cookie.expires < moment().tz(timezone).toDate()) {
         wf(`Timed Out, Expire Timing: ${req.session.cookie.expires}`, req.session.user)
         req.session.destroy(); // destroy session and log user out
         return res.redirect('/admins');
