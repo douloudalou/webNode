@@ -59,7 +59,8 @@ function load(req, res) {
         if (err) throw `err: ${err}`
         Newceptors_results = result
         // wf(JSON.stringify(Newceptors_results))
-
+    
+    wf(`${req.session.user}`)
         // Render
         res.render('After_login/index.ejs', {
             Newceptees_results: Newceptees_results,
