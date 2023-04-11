@@ -100,7 +100,6 @@ route.use(express.json())
 // session 
 // middleware to set session timeout
 const setSessionTimeout = (req) => {
-    wf(`${req.session.cookie.expires}`)
     req.session.cookie.expires = new Date(Date.now() + 60000); // extend session timeout by 1 minute
   };
   
@@ -108,6 +107,7 @@ const setSessionTimeout = (req) => {
 const checkSessionTimeout = (req, res, next) => {
     if (req.session.cookie.expires < new Date()) {
         req.session.destroy(); // destroy session and log user out
+        wf(`${req.session.user} Timed Out`)
         return res.redirect('/admins');
     }
     next(); // session is still active, continue with request processing
