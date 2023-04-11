@@ -103,7 +103,7 @@ function setSessionTimeout(req) {
     if (req.session.timeout) {
       clearTimeout(req.session.timeout);
     }
-    
+    wf(`${req.sesson.user} setSessionTimedOut`)
     // Set new timeout for 5 minutes
     req.session.timeout = setTimeout(() => {
       // Destroy the session and redirect to login page
