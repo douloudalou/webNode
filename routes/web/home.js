@@ -98,25 +98,25 @@ route.use(express.urlencoded())
 route.use(express.json())
 
 // session 
-function setSessionTimeout(req) {
-    // Clear any existing timeout
-    if (req.session.timeout) {
-      clearTimeout(req.session.timeout);
+// middleware to set session timeout
+const setSessionTimeout = (req) => {
+    req.session.cookie.expires = new Date(Date.now() + 60000); // extend session timeout by 1 minute
+  };
+  
+// middleware to check session timeout
+const checkSessionTimeout = (req, res, next) => {
+    if (req.session.cookie.expires < new Date()) {
+        req.session.destroy(); // destroy session and log user out
+        return res.redirect('/admins');
     }
-    wf(`${req.sesson.user} setSessionTimedOut`)
-    // Set new timeout for 5 minutes
-    req.session.timeout = setTimeout(() => {
-      // Destroy the session and redirect to login page
-        req.session.destroy((err) => {
-            if (err) {
-            wf(`err: ${err}`);
-            } else {
-                wf(`${req.session.user} timed out`)
-                res.redirect('/admins');
-            }
-        });
-    }, 5 * 60 * 1000); // 5 minutes in milliseconds
-}
+    next(); // session is still active, continue with request processing
+};
+  
+// middleware to apply setSessionTimeout and checkSessionTimeout for each incoming request
+route.use((req, res, next) => {
+    setSessionTimeout(req);
+    checkSessionTimeout(req, res, next);
+});
 
 // Swimperceptors page
 // route.get('/', function (req, res) {
@@ -149,7 +149,6 @@ route.post("/admins/login", function (req, res) {
             wf(`admin: ${admin_name}, ${admin_password}`)
             if (name == admin_name && pass == admin_password) {
                 req.session.user = name
-                // setSessionTimeout(req)
                 load(req, res)
             }
             else {
