@@ -71,7 +71,7 @@ function load(req, res) {
     })
 }
 
-function login(err, res) {
+function login(err, req, res) {
     if (err == 0) {
         res.render('After_login/login.ejs', {error: 0})
     }
