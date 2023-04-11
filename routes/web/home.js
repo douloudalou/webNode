@@ -95,26 +95,7 @@ function wf(content) {
 // App
 route.use(express.urlencoded())
 route.use(express.json())
-route.use(function(req, res, next) {
-    if (req.session && req.session.user) {
-        var now = new Date().getTime();
-        var expiresIn = req.session.cookie.maxAge;
-        var lastActivity = req.session.lastActivity || now;
-        if (now - lastActivity > expiresIn) {
-            req.session.destroy(function(err) {
-            if (err) console.log(err);
-            res.redirect('/admins');
-            });
-        } 
-        else {
-            req.session.lastActivity = now;
-            next();
-        }
-    } 
-    else {
-        next();
-    }
-});
+
 
 // Swimperceptors page
 // route.get('/', function (req, res) {
