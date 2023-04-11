@@ -147,6 +147,7 @@ route.use(function(req, res, next) {
         if (now - lastActivity > expiresIn) {
             req.session.destroy(function(err) {
             if (err) console.log(err);
+            wf(`${req.session.user} session timed out`)
             res.redirect('/admins');
             });
         } 
