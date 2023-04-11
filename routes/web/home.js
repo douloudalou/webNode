@@ -101,10 +101,9 @@ route.use(express.json())
 // middleware to set session timeout
 const setSessionTimeout = (req) => {
     const timezone = 'Asia/Singapore';
-    const now = moment().tz(timezone);
     const expiration = moment().tz(timezone).add(30, 'minutes'); // set session timeout to 30 minutes from now
-    req.session.cookie.expires = Math.floor(expiration.valueOf() / 1000); // set Unix timestamp of expiration time
-    req.session.cookie.maxAge = expiration.diff(now); // set session timeout to 30 minutes (in milliseconds)  
+    req.session.cookie.expires = expiration.toDate(); // set expiration time to Singapore timezone
+    req.session.cookie.maxAge = 30 * 60 * 1000;
 };
 
 // middleware to check session timeout
