@@ -102,7 +102,6 @@ const timezone = 'Asia/Singapore';
 // middleware to set session timeout
 const setSessionTimeout = (req) => {
     req.session.cookie.expires = new Date(Date.now() + 60000)
-    req.session.cookie.maxAge = 30 * 60 * 1000; // 30min
 };
 
 // middleware to check session timeout
