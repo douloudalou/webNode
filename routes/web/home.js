@@ -101,7 +101,7 @@ route.use(express.json())
 const timezone = 'Asia/Singapore';
 // middleware to set session timeout
 const setSessionTimeout = (req) => {
-    req.session.cookie.expires = moment().tz(timezone).add(1, 'minutes').toDate()
+    req.session.cookie.expires = new Date(Date.now() + 60000)
     req.session.cookie.maxAge = 30 * 60 * 1000; // 30min
 };
 
