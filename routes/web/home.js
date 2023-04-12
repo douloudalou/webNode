@@ -139,7 +139,7 @@ route.get('/admins/error', function (req, res) {
 })
 
 route.post('/admins/logout', function (req, res) {
-    res.redirect('/admins')
+    res.redirect('/admins/')
 })
 
 route.post("/admins/login", function (req, res) {
