@@ -101,7 +101,7 @@ route.use(express.json())
 const timezone = 'Asia/Singapore';
 // middleware to set session timeout
 const setSessionTimeout = (req) => {
-    wf(`setSessionTimeout: ${req.session.cookie.expires}`, req.session.user)
+    wf(`setSessionTimeout: ${req.session.cookie.expires}`, `${req.session.user}`)
 };
 
 // middleware to check session timeout
