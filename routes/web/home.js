@@ -97,29 +97,29 @@ function wf(content, user) {
 route.use(express.urlencoded())
 route.use(express.json())
 
-// session 
-const timezone = 'Asia/Singapore';
-// middleware to set session timeout
-const setSessionTimeout = (req) => {
-    wf(`setSessionTimeout: ${req.session.cookie.expires}`)
-};
+// // session 
+// const timezone = 'Asia/Singapore';
+// // middleware to set session timeout
+// const setSessionTimeout = (req) => {
+//     wf(`setSessionTimeout: ${req.session.cookie.expires}`)
+// };
 
-// middleware to check session timeout
-const checkSessionTimeout = (req, res, next) => {
-    wf(`${req.session.cookie.expires}, ${moment().tz(timezone).toDate()}`)
-    if (req.session.cookie.expires < moment().tz(timezone).toDate()) {
-        wf(`Timed Out, Expire Timing: ${req.session.cookie.expires}`)
-        req.session.destroy(); // destroy session and log user out
-        return res.redirect('/admins/');
-    }
-    next(); // session is still active, continue with request processing
-};
+// // middleware to check session timeout
+// const checkSessionTimeout = (req, res, next) => {
+//     wf(`${req.session.cookie.expires}, ${moment().tz(timezone).toDate()}`)
+//     if (req.session.cookie.expires < moment().tz(timezone).toDate()) {
+//         wf(`Timed Out, Expire Timing: ${req.session.cookie.expires}`)
+//         req.session.destroy(); // destroy session and log user out
+//         return res.redirect('/admins/');
+//     }
+//     next(); // session is still active, continue with request processing
+// };
 
-// middleware to apply setSessionTimeout and checkSessionTimeout for each incoming request
-route.use((req, res, next) => {
-    checkSessionTimeout(req, res, next);
-    setSessionTimeout(req);
-});
+// // middleware to apply setSessionTimeout and checkSessionTimeout for each incoming request
+// route.use((req, res, next) => {
+//     checkSessionTimeout(req, res, next);
+//     setSessionTimeout(req);
+// });
 
 // Swimperceptors page
 // route.get('/', function (req, res) {
@@ -139,6 +139,7 @@ route.get('/admins/error', function (req, res) {
 })
 
 route.post('/admins/logout', function (req, res) {
+    req.session.destroy()
     res.redirect('/admins/')
 })
 
