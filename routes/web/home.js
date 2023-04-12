@@ -120,8 +120,13 @@ function checkSessionTimeout(req, res, next) {
 
 // middleware to apply setSessionTimeout and checkSessionTimeout for each incoming request
 route.use((req, res, next) => {
-    checkSessionTimeout(req, res, next);
-    setSessionTimeout(req);
+    if (req.session.views) {
+        checkSessionTimeout(req, res, next);
+    }
+    else{
+        setSessionTimeout(req);
+        req.session.views++
+    }  
 });
 
 
@@ -153,7 +158,6 @@ route.post("/admins/login", function (req, res) {
     let name = req.body.email
     let pass = req.body.password
     req.session.user = name
-    setSessionTimeout(req);
     wf(`input: ${name}, ${pass}`)
     let sql = `Select * from admin`
     con.query(sql, function (err, result) {
