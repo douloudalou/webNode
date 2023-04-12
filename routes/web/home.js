@@ -106,7 +106,7 @@ const setSessionTimeout = (req) => {
 };
 
 // middleware to check session timeout
-const checkSessionTimeout = (req, res, next) => {
+function checkSessionTimeout(req, res, next) {
     wf(`${req.session.cookie.expires}, ${moment().tz(timezone).toDate()}`)
     if (req.session.cookie.expires < moment().tz(timezone).toDate()) {
         wf(`Timed Out, Expire Timing: ${req.session.cookie.expires}`, `${req.session.user}`)
@@ -121,6 +121,7 @@ const checkSessionTimeout = (req, res, next) => {
 // middleware to apply setSessionTimeout and checkSessionTimeout for each incoming request
 route.use((req, res, next) => {
     checkSessionTimeout(req, res, next);
+    setSessionTimeout(req);
 });
 
 
@@ -134,7 +135,6 @@ route.use((req, res, next) => {
 // login page
 route.get("/admins", function (req, res) {
     wf('Current: Login Page')
-    setSessionTimeout(req);
     login(0, req, res)
 })
 
