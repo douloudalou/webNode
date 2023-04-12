@@ -125,7 +125,7 @@ route.use((req, res, next) => {
     if (req.session.views >= 1) {
         checkSessionTimeout(req, res, next);
     }
-    else{
+    else if (req.session.views == 0) {
         req.session.views += 1
         setSessionTimeout(req, next);
     }  
@@ -142,7 +142,7 @@ route.use((req, res, next) => {
 // login page
 route.get("/admins", function (req, res) {
     wf('Current: Login Page')
-    
+    req.session.views = 0
     login(0, req, res)
 })
 
