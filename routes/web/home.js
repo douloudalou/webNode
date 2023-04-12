@@ -102,6 +102,7 @@ const timezone = 'Asia/Singapore';
 // middleware to set session timeout
 const setSessionTimeout = (req) => {
     req.session.cookie.expires = moment().tz(timezone).add(1, 'minutes').toDate()
+    wf(`${req.session.cookie.expires}`)
 };
 
 // middleware to check session timeout
@@ -116,10 +117,7 @@ const checkSessionTimeout = (req, res, next) => {
 };
   
 // middleware to apply setSessionTimeout and checkSessionTimeout for each incoming request
-route.use((req, res, next) => {
-    checkSessionTimeout(req, res, next);
-    setSessionTimeout(req);
-});
+route.use(checkSessionTimeout())
 
 // Swimperceptors page
 // route.get('/', function (req, res) {
@@ -152,6 +150,7 @@ route.post("/admins/login", function (req, res) {
             wf(`admin: ${admin_name}, ${admin_password}`)
             if (name == admin_name && pass == admin_password) {
                 req.session.user = name
+                setSessionTimeout(req);
                 load(req, res)
             }
             else {
