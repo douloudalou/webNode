@@ -121,7 +121,7 @@ function checkSessionTimeout(req, res, next) {
 
 // middleware to apply setSessionTimeout and checkSessionTimeout for each incoming request
 route.use((req, res, next) => {
-    if (req.session.views) {
+    if (req.session.views >= 1) {
         wf(`${req.session.views}`, `${req.session.user}`)
         checkSessionTimeout(req, res, next);
     }
