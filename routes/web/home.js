@@ -82,9 +82,8 @@ function login(err, req, res) {
 }
 
 let now = ''
-function wf(content, req) {
+function wf(content, user) {
     let date = new Date();
-    let user = req.session.user
 
     now  = (new Intl.DateTimeFormat('en-GB', { dateStyle: 'short', timeStyle: 'medium', timeZone: 'Singapore' }).format(date));
 
@@ -102,19 +101,21 @@ route.use(express.json())
 const timezone = 'Asia/Singapore';
 // middleware to set session timeout
 const setSessionTimeout = (req) => {
-    wf(`setSessionTimeout: ${req.session.cookie.expires}`, req)
+    wf(`setSessionTimeout: ${req.session.cookie.expires}`, `${req.session.user}`)
 };
 
 // middleware to check session timeout
-const checkSessionTimeout = (req, res, next) => {
+function checkSessionTimeout(req, res, next) {
     wf(`${req.session.cookie.expires}, ${moment().tz(timezone).toDate()}`)
     if (req.session.cookie.expires < moment().tz(timezone).toDate()) {
-        wf(`Timed Out, Expire Timing: ${req.session.cookie.expires}`, req)
+        wf(`Timed Out, Expire Timing: ${req.session.cookie.expires}`, `${req.session.user}`)
         req.session.destroy(); // destroy session and log user out
-        return res.redirect('/admins/');
+        res.redirect('/admins/');
     }
-    next(); // session is still active, continue with request processing
-};
+    else {
+        next()
+    }
+}
 
 // middleware to apply setSessionTimeout and checkSessionTimeout for each incoming request
 route.use((req, res, next) => {
