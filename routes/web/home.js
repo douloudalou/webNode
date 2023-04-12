@@ -142,6 +142,7 @@ route.use((req, res, next) => {
 // login page
 route.get("/admins", function (req, res) {
     wf('Current: Login Page')
+    req.session.views = 0
     login(0, req, res)
 })
 
