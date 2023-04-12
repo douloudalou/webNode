@@ -82,8 +82,9 @@ function login(err, req, res) {
 }
 
 let now = ''
-function wf(content, user) {
+function wf(content, req) {
     let date = new Date();
+    let user = req.session.user
 
     now  = (new Intl.DateTimeFormat('en-GB', { dateStyle: 'short', timeStyle: 'medium', timeZone: 'Singapore' }).format(date));
 
@@ -101,19 +102,21 @@ route.use(express.json())
 const timezone = 'Asia/Singapore';
 // middleware to set session timeout
 const setSessionTimeout = (req) => {
-    wf(`setSessionTimeout: ${req.session.cookie.expires}`, `${req.session.user}`)
+    wf(`setSessionTimeout: ${req.session.cookie.expires}`, req)
 };
 
 // middleware to check session timeout
-const checkSessionTimeout = (req, res, next) => {
+function checkSessionTimeout(req, res, next) {
     wf(`${req.session.cookie.expires}, ${moment().tz(timezone).toDate()}`)
     if (req.session.cookie.expires < moment().tz(timezone).toDate()) {
-        wf(`Timed Out, Expire Timing: ${req.session.cookie.expires}`, req.session.user)
+        wf(`Timed Out, Expire Timing: ${req.session.cookie.expires}`, req)
         req.session.destroy(); // destroy session and log user out
-        return res.redirect('/admins/');
+        res.redirect('/admins/');
     }
-    next(); // session is still active, continue with request processing
-};
+    else {
+        next()
+    }
+}
 
 // middleware to apply setSessionTimeout and checkSessionTimeout for each incoming request
 route.use((req, res, next) => {
@@ -158,7 +161,7 @@ route.post("/admins/login", function (req, res) {
         for (let i = 0; i < Admins_results.length; i++) {
             let admin_name = JSON.stringify(Admins_results[i]['User_name']).slice(1, JSON.stringify(Admins_results[i]['User_name']).length-1)
             let admin_password = JSON.stringify(Admins_results[i]['Password']).slice(1, JSON.stringify(Admins_results[i]['Password']).length-1)
-            wf(`admin: ${admin_name}, ${admin_password}`)
+            // wf(`admin: ${admin_name}, ${admin_password}`)
             if (name == admin_name && pass == admin_password) {
                 load(req, res)
             }
