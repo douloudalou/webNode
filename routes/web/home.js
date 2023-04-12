@@ -148,6 +148,7 @@ route.post('/admins/logout', function (req, res) {
 route.post("/admins/login", function (req, res) {
     let name = req.body.email
     let pass = req.body.password
+    req.session.user = name
     wf(`input: ${name}, ${pass}`)
     let sql = `Select * from admin`
     con.query(sql, function (err, result) {
@@ -158,7 +159,6 @@ route.post("/admins/login", function (req, res) {
             let admin_password = JSON.stringify(Admins_results[i]['Password']).slice(1, JSON.stringify(Admins_results[i]['Password']).length-1)
             wf(`admin: ${admin_name}, ${admin_password}`)
             if (name == admin_name && pass == admin_password) {
-                req.session.user = name
                 load(req, res)
             }
             else {
