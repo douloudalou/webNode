@@ -106,17 +106,15 @@ const setSessionTimeout = (req) => {
 };
 
 // middleware to check session timeout
-function checkSessionTimeout(req, res, next) {
+const checkSessionTimeout = (req, res, next) => {
     wf(`${req.session.cookie.expires}, ${moment().tz(timezone).toDate()}`)
     if (req.session.cookie.expires < moment().tz(timezone).toDate()) {
         wf(`Timed Out, Expire Timing: ${req.session.cookie.expires}`, req)
         req.session.destroy(); // destroy session and log user out
-        res.redirect('/admins/');
+        return res.redirect('/admins/');
     }
-    else {
-        next()
-    }
-}
+    next(); // session is still active, continue with request processing
+};
 
 // middleware to apply setSessionTimeout and checkSessionTimeout for each incoming request
 route.use((req, res, next) => {
