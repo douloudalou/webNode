@@ -116,7 +116,7 @@ const checkSessionTimeout = (req, res, next) => {
 };
   
 // middleware to apply setSessionTimeout and checkSessionTimeout for each incoming request
-route.use(checkSessionTimeout(req, res, next));
+route.use(checkSessionTimeout(req, res, next()));
 
 // Swimperceptors page
 // route.get('/', function (req, res) {
@@ -149,7 +149,7 @@ route.post("/admins/login", function (req, res) {
             wf(`admin: ${admin_name}, ${admin_password}`)
             if (name == admin_name && pass == admin_password) {
                 req.session.user = name
-                setSessionTimeout(req)
+                // setSessionTimeout(req)
                 load(req, res)
             }
             else {
