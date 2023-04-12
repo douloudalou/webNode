@@ -103,6 +103,7 @@ const timezone = 'Asia/Singapore';
 const setSessionTimeout = (req) => {
     req.session.cookie.expires = moment().tz('Asia/Singapore').add(30, 'minutes').toDate()
     wf(`setSessionTimeout: ${req.session.cookie.expires}`, `${req.session.user}`)
+    next()
 };
 
 // middleware to check session timeout
@@ -125,7 +126,7 @@ route.use((req, res, next) => {
         checkSessionTimeout(req, res, next);
     }
     else{
-        setSessionTimeout(req);
+        setSessionTimeout(req, next);
         req.session.views++
     }  
 });
