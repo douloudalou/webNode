@@ -134,6 +134,7 @@ route.use((req, res, next) => {
 // login page
 route.get("/admins", function (req, res) {
     wf('Current: Login Page')
+    setSessionTimeout(req);
     login(0, req, res)
 })
 
