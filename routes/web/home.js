@@ -141,6 +141,7 @@ route.get('/admins/error', function (req, res) {
 })
 
 route.post('/admins/logout', function (req, res) {
+    wf(`Logout`, `${req.session.user}`)
     req.session.destroy()
     res.redirect('/admins/')
 })
