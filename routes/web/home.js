@@ -101,6 +101,7 @@ route.use(express.json())
 const timezone = 'Asia/Singapore';
 // middleware to set session timeout
 const setSessionTimeout = (req) => {
+    req.session.cookie.expires = moment().tz('Asia/Singapore').add(30, 'minutes').toDate()
     wf(`setSessionTimeout: ${req.session.cookie.expires}`, `${req.session.user}`)
 };
 
@@ -120,7 +121,6 @@ function checkSessionTimeout(req, res, next) {
 // middleware to apply setSessionTimeout and checkSessionTimeout for each incoming request
 route.use((req, res, next) => {
     checkSessionTimeout(req, res, next);
-    setSessionTimeout(req);
 });
 
 
@@ -162,6 +162,7 @@ route.post("/admins/login", function (req, res) {
             let admin_password = JSON.stringify(Admins_results[i]['Password']).slice(1, JSON.stringify(Admins_results[i]['Password']).length-1)
             // wf(`admin: ${admin_name}, ${admin_password}`)
             if (name == admin_name && pass == admin_password) {
+                setSessionTimeout(req);
                 load(req, res)
             }
             else {

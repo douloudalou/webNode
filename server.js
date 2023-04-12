@@ -34,8 +34,7 @@ app.use(session({
     secret: 'Aiss2017b536442.',
     resave: false,
     saveUninitialized: false,
-    cookie: { 
-        maxAge: 60000,
+    cookie: {
         rolling: false,
         secure: true
     }
