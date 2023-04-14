@@ -81,12 +81,13 @@ td {
 }
 
 .details_list {
-    padding: 0 8vw 2vh 8vw;
+    padding: 0 8vw 0 8vw;
 }
 
 .details_box {
     width: 20vw;
     height: 50vh;
+    padding-bottom: 2vh;
 }
 
 #emergency_contact {
