@@ -322,8 +322,8 @@ route.post('/admins/transfer_newceptees', function (req, res) {
         data = JSON.stringify(result)
         wf(data)
     })
-    let tsql = `INSERT INTO \`parents\` (\`Parents\`, \`Perceptees\`, \`Parent DOB\`, \`Parent NRIC\`, \`Relation\`, \`Venue of lesson\`, \`Contact number\`, \`Email\`, \`Preferred day and time\`, \`Address\`, \`Perceptees NRIC\`, \`Perceptees DOB\`, \`Medical Conditions\`, \`Remarks\`, \`emergency name\`, \`emergency contact\`, \`emergency relation\`, \`Sremarks\`) 
-    SELECT \`Parents\`, \`Perceptees\`, \`Parent DOB\`, \`Parent NRIC\`, \`Relation\`, \`Venue of lesson\`, \`Contact number\`, \`Email\`, \`Preferred day and time\`, \`Address\`, \`Perceptees NRIC\`, \`Perceptees DOB\`, \`Medical Conditions\`, \`Remarks\`, \`emergency name\`, \`emergency contact\`, \`emergency relation\`, \`Sremarks\` FROM \`new perceptees\` 
+    let tsql = `INSERT INTO \`parents\` (\`Parents\`, \`Perceptees\`, \`Parent DOB\`, \`Parent NRIC\`, \`Relation\`, \`Residence Type\`, \`Contact number\`, \`Email\`, \`Preferred day and time\`, \`Address\`, \`Perceptees NRIC\`, \`Perceptees DOB\`, \`Medical Conditions\`, \`Remarks\`, \`emergency name\`, \`emergency contact\`, \`emergency relation\`, \`Sremarks\`) 
+    SELECT \`Parents\`, \`Perceptees\`, \`Parent DOB\`, \`Parent NRIC\`, \`Relation\`, \`Residence Type\`, \`Contact number\`, \`Email\`, \`Preferred day and time\`, \`Address\`, \`Perceptees NRIC\`, \`Perceptees DOB\`, \`Medical Conditions\`, \`Remarks\`, \`emergency name\`, \`emergency contact\`, \`emergency relation\`, \`Sremarks\` FROM \`new perceptees\` 
     WHERE \`Parents\`='${parent}' AND \`Perceptees\`='${student}' AND \`Contact number\`='${contact}' AND \`Email\`='${email}';`
     con.query(tsql, function (err, result) {
         if (err) wf(`err: ${err}`)
@@ -365,8 +365,8 @@ route.post('/admins/transfer_newceptors', function (req, res) {
         data = JSON.stringify(result)
         wf(data)
     })
-    let tsql = `INSERT INTO \`perceptors\` (\`Perceptors\`, \`DOB\`, \`NRIC\`, \`register date\`, \`Address\`, \`Venue of lesson\`, \`Contact number\`, \`Email\`, \`Medical Conditions\`, \`Swimming/Coaching experience\`, \`Preferred day and time\`, \`Remarks\`, \`Emergency Contact\`, \`Emergency Name\`, \`Emergency Relation\`) 
-    SELECT \`Perceptors\`, \`DOB\`, \`NRIC\`, \`register date\`, \`Address\`, \`Venue of lesson\`, \`Contact number\`, \`Email\`, \`Medical Conditions\`, \`Swimming/Coaching experience\`, \`Preferred day and time\`, \`Remarks\`, \`Emergency Contact\`, \`Emergency Name\`, \`Emergency Relation\` FROM \`new perceptors\` 
+    let tsql = `INSERT INTO \`perceptors\` (\`Perceptors\`, \`DOB\`, \`NRIC\`, \`register date\`, \`Address\`, \`Residence Type\`, \`Contact number\`, \`Email\`, \`Medical Conditions\`, \`Swimming/Coaching experience\`, \`Preferred day and time\`, \`Remarks\`, \`Emergency Contact\`, \`Emergency Name\`, \`Emergency Relation\`) 
+    SELECT \`Perceptors\`, \`DOB\`, \`NRIC\`, \`register date\`, \`Address\`, \`Residence Type\`, \`Contact number\`, \`Email\`, \`Medical Conditions\`, \`Swimming/Coaching experience\`, \`Preferred day and time\`, \`Remarks\`, \`Emergency Contact\`, \`Emergency Name\`, \`Emergency Relation\` FROM \`new perceptors\` 
     WHERE \`Perceptors\`='${perceptor}' AND \`Email\`='${email}' AND \`Contact number\`='${contact}';`
     con.query(tsql, function (err, result) {
         if (err) wf(`err: ${err}`)
