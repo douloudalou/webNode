@@ -96,7 +96,7 @@
                             <br>
                             NRIC: <%= JSON.stringify(results[i]['Parent NRIC']).slice(1, JSON.stringify(results[i]['Parent NRIC']).length-1) %>
                             <br>
-                            Relation: <%= JSON.stringify(results[i]['Relation']).slice(1, JSON.stringify(results[i]['Relation']).length-1) %>
+                            <!-- Relation: <%= JSON.stringify(results[i]['Relation']).slice(1, JSON.stringify(results[i]['Relation']).length-1) %> -->
                         </div>
                         <div id="childs_name">
                             Childs details
@@ -120,17 +120,17 @@
                                 <input type="text" name="new_password" placeholder="Change Perceptor">
                                 <input type="submit" value="Update">
                             </form>
-                            <!-- lessons completed: <%= JSON.stringify(results[i]['Number of lesson completed']) %>
+                            lessons completed: <%= JSON.stringify(results[i]['Number of lesson completed']) %>
                             <br>
                             Day of the week for lesson: <%= JSON.stringify(results[i]['Lesson day']).slice(1, JSON.stringify(results[i]['Lesson day']).length-1) %>
-                            <br> -->
+                            <br>
                             Preferred day and time: <%= JSON.stringify(results[i]['Preferred day and time']).slice(1, JSON.stringify(results[i]['Preferred day and time']).length-1) %>
                             <br>
                             Payment status: <%= JSON.stringify(results[i]['payment']).slice(1, JSON.stringify(results[i]['payment']).length-1) %>
                             <br>
                             Register date: <%= JSON.stringify(results[i]['register date']).slice(1, JSON.stringify(results[i]['register date']).length-15) %>
                         </div>
-                        <div id="emergency_contact">
+                        <!-- <div id="emergency_contact">
                             Emergency Contact
                         </div>
                         <div id="emergency_details">
@@ -139,7 +139,7 @@
                             Contact: <%= JSON.stringify(results[i]['emergency contact']).slice(1, JSON.stringify(results[i]['emergency contact']).length-1) %>
                             <br>
                             Relation: <%= JSON.stringify(results[i]['emergency relation']).slice(1, JSON.stringify(results[i]['emergency relation']).length-1) %>
-                        </div>
+                        </div> -->
                         <div class="Special Remarks">
                             Special Remarks: 
                             <form action="/admins/special_remarks" method="post">
