@@ -58,6 +58,8 @@
                             Remarks: <%= JSON.stringify(results[i]['Remarks']).slice(1, JSON.stringify(results[i]['Remarks']).length-1) %>
                             <br>
                             Preferred day and time: <%= JSON.stringify(results[i]['Preferred day and time']).slice(1, JSON.stringify(results[i]['Preferred day and time']).length-1) %>
+                            <br>
+                            Register date: <%= JSON.stringify(results[i]['register date']).slice(1, JSON.stringify(results[i]['register date']).length-15) %>
                         </div>
                         <div class="Special Remarks">
                             Special Remarks: <%= JSON.stringify(results[i]['Sremarks']).slice(1, JSON.stringify(results[i]['Sremarks']).length-1) %>
