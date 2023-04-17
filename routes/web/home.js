@@ -322,8 +322,8 @@ route.post('/admins/transfer_newceptees', function (req, res) {
         data = JSON.stringify(result)
         wf(data)
     })
-    let tsql = `INSERT INTO \`parents\` (\`Parents\`, \`Perceptees\`, \`Parent DOB\`, \`Parent NRIC\`,   \`Residence Type\`, \`Contact number\`, \`Email\`, \`Preferred day and time\`, \`Address\`, \`Perceptees NRIC\`, \`Perceptees DOB\`, \`Medical Conditions\`, \`Remarks\`,       \`Sremarks\`) 
-    SELECT \`Parents\`, \`Perceptees\`, \`Parent DOB\`, \`Parent NRIC\`,   \`Residence Type\`, \`Contact number\`, \`Email\`, \`Preferred day and time\`, \`Address\`, \`Perceptees NRIC\`, \`Perceptees DOB\`, \`Medical Conditions\`, \`Remarks\`,       \`Sremarks\` FROM \`new perceptees\` 
+    let tsql = `INSERT INTO \`parents\` (\`Parents\`, \`Perceptees\`, \`Parent DOB\`, \`Parent NRIC\`,   \`Residence Type\`, \`Contact number\`, \`Email\`, \`Preferred day and time\`, \`Address\`, \`Perceptees NRIC\`, \`Perceptees DOB\`, \`Medical Conditions\`, \`Remarks\`, \`register date\`, \`Sremarks\`) 
+    SELECT \`Parents\`, \`Perceptees\`, \`Parent DOB\`, \`Parent NRIC\`,   \`Residence Type\`, \`Contact number\`, \`Email\`, \`Preferred day and time\`, \`Address\`, \`Perceptees NRIC\`, \`Perceptees DOB\`, \`Medical Conditions\`, \`Remarks\`, \`register date\`, \`Sremarks\` FROM \`new perceptees\` 
     WHERE \`Parents\`='${parent}' AND \`Perceptees\`='${student}' AND \`Contact number\`='${contact}' AND \`Email\`='${email}';`
     con.query(tsql, function (err, result) {
         if (err) wf(`err: ${err}`)
