@@ -134,6 +134,7 @@ route.use(express.json())
 
 route.use(function(req, res, next) {
     res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+    wf(`used`)
     next();
   });
 
