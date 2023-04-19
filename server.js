@@ -30,15 +30,9 @@ const con = sql.createConnection(params.SQLconnection)
 wf(`Starting server...`)
 app.set('port', process.env.PORT || 3000)
 
-// app.use(session({
-//     secret: 'Aiss2017b536442.',
-//     resave: false,
-//     saveUninitialized: false,
-//     cookie: {
-//         rolling: false,
-//         secure: true
-//     }
-// }));
+app.use(session({
+    secret: 'Aiss2017b536442.',
+}));
 
 
 app.use(flash())
