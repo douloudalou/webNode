@@ -97,40 +97,45 @@ function wf(content, user) {
 route.use(express.urlencoded())
 route.use(express.json())
 
-// session 
-const timezone = 'Asia/Singapore';
-// middleware to set session timeout
-const setSessionTimeout = (req, next) => {
-    req.session.cookie.expires = moment().tz('Asia/Singapore').add(30, 'minutes').toDate()
-    wf(`setSessionTimeout: ${req.session.cookie.expires}`, `${req.session.user}`)
-    next()
-};
+// // session 
+// const timezone = 'Asia/Singapore';
+// // middleware to set session timeout
+// const setSessionTimeout = (req, next) => {
+//     req.session.cookie.expires = moment().tz('Asia/Singapore').add(30, 'minutes').toDate()
+//     wf(`setSessionTimeout: ${req.session.cookie.expires}`, `${req.session.user}`)
+//     next()
+// };
 
-// middleware to check session timeout
-function checkSessionTimeout(req, res, next) {
-    wf(`${req.session.cookie.expires}, ${moment().tz(timezone).toDate()}`)
-    if (req.session.cookie.expires < moment().tz(timezone).toDate()) {
-        wf(`Timed Out, Expire Timing: ${req.session.cookie.expires}`, `${req.session.user}`)
-        req.session.destroy(); // destroy session and log user out
-        res.redirect('/admins/');
-    }
-    else {
-        next()
-    }
-}
+// // middleware to check session timeout
+// function checkSessionTimeout(req, res, next) {
+//     wf(`${req.session.cookie.expires}, ${moment().tz(timezone).toDate()}`)
+//     if (req.session.cookie.expires < moment().tz(timezone).toDate()) {
+//         wf(`Timed Out, Expire Timing: ${req.session.cookie.expires}`, `${req.session.user}`)
+//         req.session.destroy(); // destroy session and log user out
+//         res.redirect('/admins/');
+//     }
+//     else {
+//         next()
+//     }
+// }
 
-// middleware to apply setSessionTimeout and checkSessionTimeout for each incoming request
-route.use((req, res, next) => {
-    wf(`${req.session.views}`, `${req.session.user}`)
-    if (req.session.views >= 1) {
-        req.session.views ++
-        checkSessionTimeout(req, res, next);
-    }
-    else{
-        req.session.views = 1
-        setSessionTimeout(req, next);
-    }  
-});
+// // middleware to apply setSessionTimeout and checkSessionTimeout for each incoming request
+// route.use((req, res, next) => {
+//     wf(`${req.session.views}`, `${req.session.user}`)
+//     if (req.session.views >= 1) {
+//         req.session.views ++
+//         checkSessionTimeout(req, res, next);
+//     }
+//     else{
+//         req.session.views = 1
+//         setSessionTimeout(req, next);
+//     }  
+// });
+
+route.use(function(req, res, next) {
+    res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+    next();
+  });
 
 
 
@@ -635,6 +640,7 @@ route.post('/admins/update_perceptor', function(req, res) {
 
 // reload
 route.post('/admins/reload', function(req, res) {
+    wf(`Reload`, `${req.session.user}`)
     load(req, res)  
 })
 
