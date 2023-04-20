@@ -160,7 +160,7 @@ route.get('/admins/error', function (req, res) {
 
 route.post('/admins/logout', function (req, res) {
     wf(`Logout`, `${req.session.user}`)
-    req.logout() 
+    // req.logout() 
     res.redirect('/admins/')
 })
 
