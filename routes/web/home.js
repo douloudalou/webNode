@@ -160,52 +160,52 @@ route.post('/admins/logout', function (req, res) {
     res.redirect('/admins/')
 })
 
-// route.post("/admins/login", function (req, res) {
-//     let name = req.body.email
-//     let pass = req.body.password
-//     req.session.user = name
-//     wf(`input: ${name}, ${pass}`)
-//     let sql = `Select * from admin`
-//     con.query(sql, function (err, result) {
-//         if (err) wf(`err: ${err}`)
-//         Admins_results = result
-//         for (let i = 0; i < Admins_results.length; i++) {
-//             let admin_name = JSON.stringify(Admins_results[i]['User_name']).slice(1, JSON.stringify(Admins_results[i]['User_name']).length-1)
-//             let admin_password = JSON.stringify(Admins_results[i]['Password']).slice(1, JSON.stringify(Admins_results[i]['Password']).length-1)
-//             // wf(`admin: ${admin_name}, ${admin_password}`)
-//             if (name == admin_name && pass == admin_password) {
-//                 load(req, res)
-//             }
-//             else {
-//                 res.redirect('/admins/error')
-//             }
-//         }
-//     })
-// })
-
 route.post("/admins/login", function (req, res) {
     let name = req.body.email
     let pass = req.body.password
     req.session.user = name
     wf(`input: ${name}, ${pass}`)
-    let sql = `SELECT * FROM admin WHERE User_name = ?`
-    con.query(sql, [name], function (err, result) {
-        if (err) {
-            wf(`error querying database: ${err}`)
-            return res.redirect('/admins/error')
-        }
-        if (result.length == 0) {
-            return res.redirect('/admins/error')
-        }
-        let admin_password = result[0]['Password']
-        bcrypt.compare(pass, admin_password, function(err, match) {
-            if (err || !match) {
-                return res.redirect('/admins/error')
+    let sql = `Select * from admin`
+    con.query(sql, function (err, result) {
+        if (err) wf(`err: ${err}`)
+        Admins_results = result
+        for (let i = 0; i < Admins_results.length; i++) {
+            let admin_name = JSON.stringify(Admins_results[i]['User_name']).slice(1, JSON.stringify(Admins_results[i]['User_name']).length-1)
+            let admin_password = JSON.stringify(Admins_results[i]['Password']).slice(1, JSON.stringify(Admins_results[i]['Password']).length-1)
+            // wf(`admin: ${admin_name}, ${admin_password}`)
+            if (name == admin_name && pass == admin_password) {
+                load(req, res)
             }
-            load(req, res)
-        })
+            else {
+                res.redirect('/admins/error')
+            }
+        }
     })
 })
+
+// route.post("/admins/login", function (req, res) {
+//     let name = req.body.email
+//     let pass = req.body.password
+//     req.session.user = name
+//     wf(`input: ${name}, ${pass}`)
+//     let sql = `SELECT * FROM admin WHERE User_name = ?`
+//     con.query(sql, [name], function (err, result) {
+//         if (err) {
+//             wf(`error querying database: ${err}`)
+//             return res.redirect('/admins/error')
+//         }
+//         if (result.length == 0) {
+//             return res.redirect('/admins/error')
+//         }
+//         let admin_password = result[0]['Password']
+//         bcrypt.compare(pass, admin_password, function(err, match) {
+//             if (err || !match) {
+//                 return res.redirect('/admins/error')
+//             }
+//             load(req, res)
+//         })
+//     })
+// })
 
 // main page
 route.post('/admins/search', function (req, res) {
