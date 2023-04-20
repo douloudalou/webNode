@@ -204,8 +204,10 @@ route.post("/admins/login", function (req, res) {
                 return res.redirect('/admins/error')
             }
             if (match) {
+                wf(`loading...`, `${req.session.user}`)
                 load(req, res)
             } else {
+                wf(`wrong input`)
                 return res.redirect('/admins/error')
             }
         })
