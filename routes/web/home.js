@@ -105,7 +105,7 @@ function wf(content, user) {
 
 function isAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
-        return next()
+        next()
     }
     res.redirect('/admins')
 }
@@ -123,14 +123,14 @@ passport.use(new LocalStrategy({
         wf(`${username}, ${password}`)
         let sql = `SELECT * FROM admin WHERE User_name = ?`
         con.query(sql, [username], function(err, results) {
-            if (err) { return done(err) }
-            if (results.length == 0) { return done(null, false, { message: 'Incorrect username.' }) }
+            if (err) { done(err) }
+            if (results.length == 0) { done(null, false, { message: 'Incorrect username.' }) }
             // results[0]['Password']
             let admin_password = '$2b$10$bfv9YdFopAI7QmwAShSWD.zxzzAugun1lP7Tlq7EyfgCjFhCT5HI6'
             bcrypt.compare(password, admin_password, function(err, match) {
-                if (err) { return done(err) }
-                if (!match) { return done(null, false, { message: 'Incorrect password.' }) }
-                return done(null, results[0])
+                if (err) { done(err) }
+                if (!match) { done(null, false, { message: 'Incorrect password.' }) }
+                done(null, results[0])
             })
         })
     }
@@ -143,7 +143,7 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(id, done) {
     let sql = `SELECT * FROM admin WHERE User_name = ?`
     con.query(sql, [id], function(err, results) {
-        if (err) { return done(err) }
+        if (err) { done(err) }
         done(null, results[0])
     })
 })
