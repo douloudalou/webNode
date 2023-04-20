@@ -568,7 +568,7 @@ route.post('/admins/After/newceptors_detail', function(req, res) {
 })
 
 // Invoice
-let n=parseInt('001')
+let n=1
 route.post('/admins/invoice', function(req, res) {
     // import
     let {savePageAsPDF} = require('./invoice.js')
@@ -577,7 +577,7 @@ route.post('/admins/invoice', function(req, res) {
     // var
     let date = new Date()
     DOI  = (new Intl.DateTimeFormat('en-GB', { dateStyle: 'short', timeZone: 'Singapore' }).format(date));
-    month = date.getMonth()
+    month = DOI.slice(4, 6)
     year = date.getFullYear()
     var invoice_num = `SP${year}${month+1}${n}`
     
