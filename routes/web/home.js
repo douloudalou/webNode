@@ -192,20 +192,21 @@ route.post("/admins/login", function (req, res) {
     con.query(sql, [name], function (err, result) {
         if (err) {
             wf(`error querying database: ${err}`)
-            res.redirect('/admins/error')
+            return res.redirect('/admins/error')
         }
         if (result.length == 0) {
-            wf(`zero matches: ${name}`)
-            res.redirect('/admins/error')
+            return res.redirect('/admins/error')
         }
         let admin_password = result[0]['Password']
         bcrypt.compare(pass, admin_password, function(err, match) {
-            if (err || !match) {
-                wf(`wrong input: ${admin_password}`)
-                res.redirect('/admins/error')
+            if (err) {
+                wf(`bcrypt error: ${err}`)
+                return res.redirect('/admins/error')
             }
-            else {
+            if (match) {
                 load(req, res)
+            } else {
+                return res.redirect('/admins/error')
             }
         })
     })
