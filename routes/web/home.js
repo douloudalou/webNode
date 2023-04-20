@@ -32,7 +32,7 @@ con.connect(function (err) {
 
 // Functions
 
-function encrypt(pass)
+function encrypt(pass) {
     const bcrypt = require('bcrypt')
         const saltRounds = 10 // number of salt rounds to use
         const plaintextPassword = pass
@@ -40,6 +40,7 @@ function encrypt(pass)
         bcrypt.hash(plaintextPassword, saltRounds, function(err, hash) {
         wf(`${hash}`)
         })
+}
 
 function load(req, res) {
     wf("Current: Dashboard") 
@@ -113,38 +114,38 @@ function isAuthenticated(req, res, next) {
 // App
 route.use(express.urlencoded())
 route.use(express.json())
-route.use(passport.initialize());
-route.use(passport.session());
+// route.use(passport.initialize());
+// route.use(passport.session());
 
-passport.use(new LocalStrategy(
-    function(username, password, done) {
-        wf(`${username}, ${password}`)
-        let sql = `SELECT * FROM admin WHERE User_name = ?`
-        con.query(sql, [username], function(err, results) {
-            if (err) { done(err) }
-            if (results.length == 0) { done(null, false, { message: 'Incorrect username.' }) }
-            // results[0]['Password']
-            let admin_password = '$2b$10$bfv9YdFopAI7QmwAShSWD.zxzzAugun1lP7Tlq7EyfgCjFhCT5HI6'
-            bcrypt.compare(password, admin_password, function(err, match) {
-                if (err) { done(err) }
-                if (!match) { done(null, false, { message: 'Incorrect password.' }) }
-                done(null, results[0])
-            })
-        })
-    }
-));
+// passport.use(new LocalStrategy(
+//     function(username, password, done) {
+//         wf(`${username}, ${password}`)
+//         let sql = `SELECT * FROM admin WHERE User_name = ?`
+//         con.query(sql, [username], function(err, results) {
+//             if (err) { done(err) }
+//             if (results.length == 0) { done(null, false, { message: 'Incorrect username.' }) }
+//             // results[0]['Password']
+//             let admin_password = '$2b$10$bfv9YdFopAI7QmwAShSWD.zxzzAugun1lP7Tlq7EyfgCjFhCT5HI6'
+//             bcrypt.compare(password, admin_password, function(err, match) {
+//                 if (err) { done(err) }
+//                 if (!match) { done(null, false, { message: 'Incorrect password.' }) }
+//                 done(null, results[0])
+//             })
+//         })
+//     }
+// ));
 
-passport.serializeUser(function(user, done) {
-    done(null, user.User_name)
-})
+// passport.serializeUser(function(user, done) {
+//     done(null, user.User_name)
+// })
 
-passport.deserializeUser(function(id, done) {
-    let sql = `SELECT * FROM admin WHERE User_name = ?`
-    con.query(sql, [id], function(err, results) {
-        if (err) { done(err) }
-        done(null, results[0])
-    })
-})
+// passport.deserializeUser(function(id, done) {
+//     let sql = `SELECT * FROM admin WHERE User_name = ?`
+//     con.query(sql, [id], function(err, results) {
+//         if (err) { done(err) }
+//         done(null, results[0])
+//     })
+// })
 
 // login page
 route.get("/admins", function (req, res) {
@@ -195,10 +196,10 @@ route.post("/admins/login", function (req, res) {
 })
 
 // main page
-route.post('/admins/dashboard', isAuthenticated, function (req,res) {
-    wf(`loading...`, `${req.session.user}`)
-    load(req, res)
-})
+// route.post('/admins/dashboard', isAuthenticated, function (req,res) {
+//     wf(`loading...`, `${req.session.user}`)
+//     load(req, res)
+// })
 
 route.post('/admins/search', function (req, res) {
     let tab = req.body.search_tab
