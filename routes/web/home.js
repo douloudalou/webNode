@@ -568,7 +568,7 @@ route.post('/admins/After/newceptors_detail', function(req, res) {
 })
 
 // Invoice
-let n=001
+let n=parseInt('001')
 route.post('/admins/invoice', function(req, res) {
     // import
     let {savePageAsPDF} = require('./invoice.js')
