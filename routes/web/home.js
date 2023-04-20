@@ -81,7 +81,6 @@ function login(err, req, res) {
     }
 }
 
-let now = ''
 function wf(content, user) {
     let date = new Date();
 
@@ -569,20 +568,26 @@ route.post('/admins/After/newceptors_detail', function(req, res) {
 })
 
 // Invoice
-let n=0
+let n=001
 route.post('/admins/invoice', function(req, res) {
     // import
     let {savePageAsPDF} = require('./invoice.js')
     const fs = require('fs').promises;
 
+    // var
+    let date = new Date()
+    DOI  = (new Intl.DateTimeFormat('en-GB', { dateStyle: 'short', timeZone: 'Singapore' }).format(date));
+    month = date.getFullYear()
+    year = date.getMonth()
+    var invoice_num = `SP${year}${month}${n}`
+    
     // details
-    var invoice_num = `SP${n}`
     invoice_details = {
         rents_name: req.body.rents_name,
         ceptees_name: req.body.ceptees_name,
         address: req.body.address,
         invoice_num: invoice_num,
-        DOI: now
+        DOI: DOI
     }
     res.render('After_login/invoice/invoice.ejs', {
         invoice_details
