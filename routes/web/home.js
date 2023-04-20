@@ -163,37 +163,6 @@ route.post('/admins/logout', function (req, res) {
     res.redirect('/admins/')
 })
 
-// route.post("/admins/login", function (req, res) {
-//     let name = req.body.email
-//     let pass = req.body.password
-//     req.session.user = name
-//     wf(`input: ${name}, ${pass}`)
-//     let sql = `SELECT * FROM admin WHERE User_name = ?`
-//     con.query(sql, [name], function (err, result) {
-//         if (err) {
-//             wf(`error querying database: ${err}`)
-//             return res.redirect('/admins/error')
-//         }
-//         if (result.length == 0) {
-//             return res.redirect('/admins/error')
-//         }
-//         let admin_password = result[0]['Password']
-//         bcrypt.compare(pass, admin_password, function(err, match) {
-//             if (err) {
-//                 wf(`bcrypt error: ${err}`)
-//                 return res.redirect('/admins/error')
-//             }
-//             if (match) {
-//                 wf(`loading...`, `${req.session.user}`)
-//                 load(req, res)
-//             }
-//             else {
-//                 res.redirect('/admins/error')
-//             }
-//         }
-//     })
-// })
-
 route.post("/admins/login", function (req, res) {
     let name = req.body.email
     let pass = req.body.password
