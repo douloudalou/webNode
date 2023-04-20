@@ -21,6 +21,8 @@
         "express-session": "^1.17.3",
         "moment-timezone": "^0.5.43",
         "mysql": "^2.18.1",
+        "passport": "^0.6.0",
+        "passport-local": "^1.0.0",
         "pdf-creator-node": "^2.3.5",
         "puppeteer": "^19.8.3"
     }

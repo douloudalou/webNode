@@ -7,6 +7,8 @@ const params = require('../../params/params')
 const url = require('url')
 const {writeFile} = require('fs')
 const bcrypt = require('bcrypt')
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 
 // Var
 const route = express.Router()
@@ -29,24 +31,17 @@ con.connect(function (err) {
 })
 
 // Functions
-function load(req, res) {
+
+function encrypt(pass)
     const bcrypt = require('bcrypt')
-    const saltRounds = 10 // number of salt rounds to use
-
-    function wf(content, user) {
-        let date = new Date();
-
-        now  = (new Intl.DateTimeFormat('en-GB', { dateStyle: 'short', timeStyle: 'medium', timeZone: 'Singapore' }).format(date));
-
-        writeFile(`NodeConsole.txt`, `{${now}} {${user||""}} ${content}\n`, { flag: 'a+' }, err => {
-            if (err) throw `err: ${err}`
+        const saltRounds = 10 // number of salt rounds to use
+        const plaintextPassword = pass
+        
+        bcrypt.hash(plaintextPassword, saltRounds, function(err, hash) {
+        wf(`${hash}`)
         })
-    }
 
-    const plaintextPassword = 'Aiss2017b'
-    bcrypt.hash(plaintextPassword, saltRounds, function(err, hash) {
-    wf(`${hash}`)
-    })
+function load(req, res) {
     wf("Current: Dashboard") 
     let Parents_sql = 'SELECT * FROM \`parents\`;'
     con.query(Parents_sql, function (err, result) {
@@ -108,57 +103,50 @@ function wf(content, user) {
     })
 }
 
+function isAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next()
+    }
+    res.redirect('/admins')
+}
 
 // App
 route.use(express.urlencoded())
 route.use(express.json())
+route.use(passport.initialize());
+route.use(passport.session());
 
-// // session 
-// const timezone = 'Asia/Singapore';
-// // middleware to set session timeout
-// const setSessionTimeout = (req, next) => {
-//     req.session.cookie.expires = moment().tz('Asia/Singapore').add(30, 'minutes').toDate()
-//     wf(`setSessionTimeout: ${req.session.cookie.expires}`, `${req.session.user}`)
-//     next()
-// };
+passport.use(new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password'
+    },function(username, password, done) {
+        wf(`${username}, ${password}`)
+        let sql = `SELECT * FROM admin WHERE User_name = ?`
+        con.query(sql, [username], function(err, results) {
+            if (err) { return done(err) }
+            if (results.length == 0) { return done(null, false, { message: 'Incorrect username.' }) }
+            // results[0]['Password']
+            let admin_password = '$2b$10$bfv9YdFopAI7QmwAShSWD.zxzzAugun1lP7Tlq7EyfgCjFhCT5HI6'
+            bcrypt.compare(password, admin_password, function(err, match) {
+                if (err) { return done(err) }
+                if (!match) { return done(null, false, { message: 'Incorrect password.' }) }
+                return done(null, results[0])
+            })
+        })
+    }
+));
 
-// // middleware to check session timeout
-// function checkSessionTimeout(req, res, next) {
-//     wf(`${req.session.cookie.expires}, ${moment().tz(timezone).toDate()}`)
-//     if (req.session.cookie.expires < moment().tz(timezone).toDate()) {
-//         wf(`Timed Out, Expire Timing: ${req.session.cookie.expires}`, `${req.session.user}`)
-//         req.session.destroy(); // destroy session and log user out
-//         res.redirect('/admins/');
-//     }
-//     else {
-//         next()
-//     }
-// }
+passport.serializeUser(function(user, done) {
+    done(null, user.User_name)
+})
 
-// // middleware to apply setSessionTimeout and checkSessionTimeout for each incoming request
-// route.use((req, res, next) => {
-//     wf(`${req.session.views}`, `${req.session.user}`)
-//     if (req.session.views >= 1) {
-//         req.session.views ++
-//         checkSessionTimeout(req, res, next);
-//     }
-//     else{
-//         req.session.views = 1
-//         setSessionTimeout(req, next);
-//     }  
-// });
-
-// route.use(function(req, res, next) {
-//     res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
-//     wf(`used`)
-//     next();
-//   });
-
-// Swimperceptors page
-// route.get('/', function (req, res) {
-//     wf('Current: Swimperceptors Page')
-//     res.render('index.ejs')
-// })
+passport.deserializeUser(function(id, done) {
+    let sql = `SELECT * FROM admin WHERE User_name = ?`
+    con.query(sql, [id], function(err, results) {
+        if (err) { return done(err) }
+        done(null, results[0])
+    })
+})
 
 // login page
 route.get("/admins", function (req, res) {
@@ -173,7 +161,7 @@ route.get('/admins/error', function (req, res) {
 
 route.post('/admins/logout', function (req, res) {
     wf(`Logout`, `${req.session.user}`)
-    req.session.destroy()
+    req.logout() 
     res.redirect('/admins/')
 })
 
@@ -182,59 +170,45 @@ route.post('/admins/logout', function (req, res) {
 //     let pass = req.body.password
 //     req.session.user = name
 //     wf(`input: ${name}, ${pass}`)
-//     let sql = `Select * from admin`
-//     con.query(sql, function (err, result) {
-//         if (err) wf(`err: ${err}`)
-//         Admins_results = result
-//         for (let i = 0; i < Admins_results.length; i++) {
-//             let admin_name = JSON.stringify(Admins_results[i]['User_name']).slice(1, JSON.stringify(Admins_results[i]['User_name']).length-1)
-//             let admin_password = JSON.stringify(Admins_results[i]['Password']).slice(1, JSON.stringify(Admins_results[i]['Password']).length-1)
-//             // wf(`admin: ${admin_name}, ${admin_password}`)
-//             if (name == admin_name && pass == admin_password) {
-//                 load(req, res)
-//             }
-//             else {
-//                 res.redirect('/admins/error')
-//             }
+//     let sql = `SELECT * FROM admin WHERE User_name = ?`
+//     con.query(sql, [name], function (err, result) {
+//         if (err) {
+//             wf(`error querying database: ${err}`)
+//             return res.redirect('/admins/error')
 //         }
+//         if (result.length == 0) {
+//             return res.redirect('/admins/error')
+//         }
+//         // result[0]['Password']
+//         let admin_password = '$2b$10$bfv9YdFopAI7QmwAShSWD.zxzzAugun1lP7Tlq7EyfgCjFhCT5HI6'
+//         bcrypt.compare(pass, admin_password, function(err, match) {
+//             if (err) {
+//                 wf(`bcrypt error: ${err}`)
+//                 return res.redirect('/admins/error')
+//             }
+//             if (match) {
+//                 wf(`loading...`, `${req.session.user}`)
+//                 load(req, res)
+//             } else {
+//                 wf(`wrong input`)
+//                 return res.redirect('/admins/error')
+//             }
+//         })
 //     })
 // })
 
-// $2b$10$bfv9YdFopAI7QmwAShSWD.zxzzAugun1lP7Tlq7EyfgCjFhCT5HI6
-
-route.post("/admins/login", function (req, res) {
-    let name = req.body.email
-    let pass = req.body.password
-    req.session.user = name
-    wf(`input: ${name}, ${pass}`)
-    let sql = `SELECT * FROM admin WHERE User_name = ?`
-    con.query(sql, [name], function (err, result) {
-        if (err) {
-            wf(`error querying database: ${err}`)
-            return res.redirect('/admins/error')
-        }
-        if (result.length == 0) {
-            return res.redirect('/admins/error')
-        }
-        // result[0]['Password']
-        let admin_password = '$2b$10$bfv9YdFopAI7QmwAShSWD.zxzzAugun1lP7Tlq7EyfgCjFhCT5HI6'
-        bcrypt.compare(pass, admin_password, function(err, match) {
-            if (err) {
-                wf(`bcrypt error: ${err}`)
-                return res.redirect('/admins/error')
-            }
-            if (match) {
-                wf(`loading...`, `${req.session.user}`)
-                load(req, res)
-            } else {
-                wf(`wrong input`)
-                return res.redirect('/admins/error')
-            }
-        })
-    })
-})
+route.post("/admins/login", passport.authenticate('local', {
+    successRedirect: '/admins/dashboard',
+    failureRedirect: '/admins/error',
+    failureFlash: true
+}));
 
 // main page
+route.post('/admins/dashboard', isAuthenticated, function (req,res) {
+    wf(`loading...`, `${req.session.user}`)
+    load(req, res)
+})
+
 route.post('/admins/search', function (req, res) {
     let tab = req.body.search_tab
     let col = req.body.search_title

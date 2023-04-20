@@ -32,6 +32,8 @@ app.set('port', process.env.PORT || 3000)
 
 app.use(session({
     secret: 'Aiss2017b536442.',
+    resave: false,
+    saveUninitialized: false
 }));
 
 
