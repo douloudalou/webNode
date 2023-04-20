@@ -204,7 +204,9 @@ route.post("/admins/login", function (req, res) {
                 wf(`wrong input: ${admin_password}`)
                 res.redirect('/admins/error')
             }
-            load(req, res)
+            else {
+                load(req, res)
+            }
         })
     })
 })
