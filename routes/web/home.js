@@ -177,8 +177,7 @@ route.post('/admins/logout', function (req, res) {
 //         if (result.length == 0) {
 //             return res.redirect('/admins/error')
 //         }
-//         // result[0]['Password']
-//         let admin_password = '$2b$10$bfv9YdFopAI7QmwAShSWD.zxzzAugun1lP7Tlq7EyfgCjFhCT5HI6'
+//         let admin_password = result[0]['Password']
 //         bcrypt.compare(pass, admin_password, function(err, match) {
 //             if (err) {
 //                 wf(`bcrypt error: ${err}`)
@@ -187,19 +186,44 @@ route.post('/admins/logout', function (req, res) {
 //             if (match) {
 //                 wf(`loading...`, `${req.session.user}`)
 //                 load(req, res)
-//             } else {
-//                 wf(`wrong input`)
-//                 return res.redirect('/admins/error')
 //             }
-//         })
+//             else {
+//                 res.redirect('/admins/error')
+//             }
+//         }
 //     })
 // })
 
-route.post("/admins/login", passport.authenticate('local', {
-    successRedirect: '/admins/dashboard',
-    failureRedirect: '/admins/error',
-    failureFlash: true
-}));
+route.post("/admins/login", function (req, res) {
+    let name = req.body.email
+    let pass = req.body.password
+    req.session.user = name
+    wf(`input: ${name}, ${pass}`)
+    let sql = `SELECT * FROM admin WHERE User_name = ?`
+    con.query(sql, [name], function (err, result) {
+        if (err) {
+            wf(`error querying database: ${err}`)
+            return res.redirect('/admins/error')
+        }
+        if (result.length == 0) {
+            return res.redirect('/admins/error')
+        }
+        let admin_password = result[0]['Password']
+        bcrypt.compare(pass, admin_password, function(err, match) {
+            if (err) {
+                wf(`bcrypt error: ${err}`)
+                return res.redirect('/admins/error')
+            }
+            if (match) {
+                wf(`loading...`, `${req.session.user}`)
+                load(req, res)
+            } else {
+                wf(`wrong input`)
+                return res.redirect('/admins/error')
+            }
+        })
+    })
+})
 
 // main page
 route.post('/admins/dashboard', isAuthenticated, function (req,res) {
