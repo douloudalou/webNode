@@ -116,10 +116,8 @@ route.use(express.json())
 route.use(passport.initialize());
 route.use(passport.session());
 
-passport.use(new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'password'
-    },function(username, password, done) {
+passport.use(new LocalStrategy(
+    function(username, password, done) {
         wf(`${username}, ${password}`)
         let sql = `SELECT * FROM admin WHERE User_name = ?`
         con.query(sql, [username], function(err, results) {
@@ -197,11 +195,11 @@ route.post('/admins/logout', function (req, res) {
 //     })
 // })
 
-// route.post("/admins/login", passport.authenticate('local', {
-//     successRedirect: '/admins/dashboard',
-//     failureRedirect: '/admins/error',
-//     failureFlash: true
-// }));
+route.post("/admins/login", passport.authenticate('local', {
+    successRedirect: '/admins/dashboard',
+    failureRedirect: '/admins/error',
+    failureFlash: true
+}));
 
 // main page
 route.post('/admins/dashboard', isAuthenticated, function (req,res) {
