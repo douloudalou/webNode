@@ -579,7 +579,7 @@ route.post('/admins/invoice', function(req, res) {
     DOI  = (new Intl.DateTimeFormat('en-GB', { dateStyle: 'short', timeZone: 'Singapore' }).format(date));
     month = date.getMonth()
     year = date.getFullYear()
-    var invoice_num = `SP${year}${month}${n}`
+    var invoice_num = `SP${year}${month+1}${n}`
     
     // details
     invoice_details = {
