@@ -116,25 +116,25 @@ route.use(express.json())
 route.use(passport.initialize());
 route.use(passport.session());
 
-// passport.use(new LocalStrategy({
-//     usernameField: 'email',
-//     passwordField: 'password'
-//     },function(username, password, done) {
-//         wf(`${username}, ${password}`)
-//         let sql = `SELECT * FROM admin WHERE User_name = ?`
-//         con.query(sql, [username], function(err, results) {
-//             if (err) { return done(err) }
-//             if (results.length == 0) { return done(null, false, { message: 'Incorrect username.' }) }
-//             // results[0]['Password']
-//             let admin_password = '$2b$10$bfv9YdFopAI7QmwAShSWD.zxzzAugun1lP7Tlq7EyfgCjFhCT5HI6'
-//             bcrypt.compare(password, admin_password, function(err, match) {
-//                 if (err) { return done(err) }
-//                 if (!match) { return done(null, false, { message: 'Incorrect password.' }) }
-//                 return done(null, results[0])
-//             })
-//         })
-//     }
-// ));
+passport.use(new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password'
+    },function(username, password, done) {
+        wf(`${username}, ${password}`)
+        let sql = `SELECT * FROM admin WHERE User_name = ?`
+        con.query(sql, [username], function(err, results) {
+            if (err) { return done(err) }
+            if (results.length == 0) { return done(null, false, { message: 'Incorrect username.' }) }
+            // results[0]['Password']
+            let admin_password = '$2b$10$bfv9YdFopAI7QmwAShSWD.zxzzAugun1lP7Tlq7EyfgCjFhCT5HI6'
+            bcrypt.compare(password, admin_password, function(err, match) {
+                if (err) { return done(err) }
+                if (!match) { return done(null, false, { message: 'Incorrect password.' }) }
+                return done(null, results[0])
+            })
+        })
+    }
+));
 
 passport.serializeUser(function(user, done) {
     done(null, user.User_name)
