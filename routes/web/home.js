@@ -153,6 +153,10 @@ route.get("/admins", function (req, res) {
     login(0, req, res)
 })
 
+route.post('/admins/return', function (req, res) {
+    res.redirect("/index.php/aboutus")
+})
+
 route.get('/admins/error', function (req, res) {
     req.flash('error', 'Wrong Name or Password! Contact admins@12345 if you require assistance')
     login(1, req, res)
