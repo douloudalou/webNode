@@ -603,7 +603,7 @@ route.post('/admins/invoice', function(req, res) {
         if (err) {wf(`invoice num err`)}
         n = num
     })
-    let invoice_num = `SP${year}${toString(month)+1}${n}`
+    let invoice_num = `SP${year}${month}${n}`
     
     // details
     invoice_details = {
