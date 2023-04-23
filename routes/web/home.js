@@ -594,15 +594,16 @@ route.post('/admins/invoice', function(req, res) {
     const fs = require('fs').promises;
 
     // var
+    let n = 0
     let date = new Date()
     DOI  = (new Intl.DateTimeFormat('en-GB', { dateStyle: 'short', timeZone: 'Singapore' }).format(date));
     month = DOI.slice(3, 5)
     year = date.getFullYear()
-    let invoice_num = `SP${year}${toString(month)+1}${n}`
     fs.readfile('invoice.txt', 'utf-8', function (err, num) {
         if (err) {wf(`invoice num err`)}
         n = num
     })
+    let invoice_num = `SP${year}${toString(month)+1}${n}`
     
     // details
     invoice_details = {
