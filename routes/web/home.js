@@ -599,7 +599,7 @@ route.post('/admins/invoice', function(req, res) {
     DOI  = (new Intl.DateTimeFormat('en-GB', { dateStyle: 'short', timeZone: 'Singapore' }).format(date));
     month = DOI.slice(3, 5)
     year = date.getFullYear()
-    writeFile('invoice.txt', {encoding:'utf-8', flag:"r"}, function (err, num) {
+    fs.readFile('invoice.txt', {encoding:'utf-8', flag:"r"}, function (err, num) {
         if (err) {wf(`invoice num err`)}
         n = num
     })
