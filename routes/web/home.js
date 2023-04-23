@@ -604,7 +604,7 @@ route.post('/admins/invoice', function(req, res) {
         n = num
     })
     wf(`${n}`)
-    let invoice_num = `SP${year}${month}${n}`
+    var invoice_num = `SP${year}${month}${n}`
     
     // details
     invoice_details = {
