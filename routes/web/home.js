@@ -587,7 +587,7 @@ route.post('/admins/After/newceptors_detail', function(req, res) {
 })
 
 // Invoice
-let n=1
+
 route.post('/admins/invoice', function(req, res) {
     // import
     let {savePageAsPDF} = require('./invoice.js')
@@ -598,7 +598,11 @@ route.post('/admins/invoice', function(req, res) {
     DOI  = (new Intl.DateTimeFormat('en-GB', { dateStyle: 'short', timeZone: 'Singapore' }).format(date));
     month = DOI.slice(3, 5)
     year = date.getFullYear()
-    let invoice_num = `SP${year}${month+1}${n}`
+    let invoice_num = `SP${year}${toString(month)+1}${n}`
+    fs.readfile('invoice.txt', 'utf-8', function (err, num) {
+        if (err) {wf(`invoice num err`)}
+        n = num
+    })
     
     // details
     invoice_details = {
@@ -618,7 +622,9 @@ route.post('/admins/invoice', function(req, res) {
     // Generate the PDF and save it to disk
     savePageAsPDF(html, 'invoice.pdf');
 
-    n += 1
+    writeFile(`invoice.txt`, `${n+1}`, err => {
+        if (err) throw `err: ${err}`
+    })
 
     wf(`${JSON.stringify(invoice_details)}`)
 })
