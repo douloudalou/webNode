@@ -602,8 +602,9 @@ route.post('/admins/invoice', function(req, res) {
     fs.readFile('invoice.txt', {encoding:'utf-8', flag:"r"}, function (err, num) {
         if (err) {wf(`invoice num err`)}
         n = num
+        wf(`${n}`)
     })
-    wf(`${n}`)
+    
     var invoice_num = `SP${year}${month}${n}`
     
     // details
