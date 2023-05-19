@@ -50,6 +50,22 @@ function load(req, res) {
         Parents_results = result
         // wf(JSON.stringify(Parents_results))
     })
+    let trail_sql = "select * from \`Trail\`;"
+    let col;
+    let details = []
+    con.query(trail_sql, (err, result)=>{
+        console.log(`result:${result}`)
+        if (result.length==0) {
+            col=0
+        }
+        else {
+            col = Object.keys(result[0])
+            result.forEach(row=>{
+                details.push(Object.values(row))
+            })    
+        }
+    })
+
     let Perceptors_sql = 'SELECT * FROM \`perceptors\`;'
     con.query(Perceptors_sql, function (err, result) {
         if (err) throw err
@@ -76,6 +92,8 @@ function load(req, res) {
         
         // Render
         res.render('After_login/index.ejs', {
+            column: col,
+            trailDetails: details,
             Newceptees_results: Newceptees_results,
             Newceptors_results: Newceptors_results,
             Admins_results: Admins_results,
@@ -182,7 +200,7 @@ route.post("/admins/login", function (req, res) {
         if (result.length == 0) {
             return res.redirect('/admins/error')
         }
-        result[0]['Password']
+//        result[0]['Password']
         let admin_password = `$2b$10$bfv9YdFopAI7QmwAShSWD.zxzzAugun1lP7Tlq7EyfgCjFhCT5HI6`
         bcrypt.compare(pass, admin_password, function(err, match) {
             if (err) {

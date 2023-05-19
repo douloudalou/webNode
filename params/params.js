@@ -2,7 +2,7 @@
 const SQLconnection = {
     host: 'localhost',
     user: 'root',
-    password: 'Aiss2017b.',
+    password: 'Ryunanika536442.',
     database: 'login_trailrun_db'
   }
 

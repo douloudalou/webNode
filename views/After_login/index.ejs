@@ -3,7 +3,29 @@
     <div class="tab-content" id="nav-tabContent">
         <!-- Profile -->
         <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">Profile</div>
-        <!-- New Perceptess -->
+        <!-- Trail -->
+        <div class="tab-pane fade" id="nav-trail" role="tabpanel" aria-labelledby="nav-trail-tab" tabindex="0">
+            <table class="table table-dark">
+                <tr>
+                    <% for( let index = 0; index < column.length; index++ ) { %>
+                        <th scope="col">
+                            <%= column[index] %> 
+                        </th>
+                    <% } %>
+                </tr>
+                <% for( let detailsIndex = 0; detailsIndex < trailDetails.length; detailsIndex++ ) { %>
+                    <tr>
+                        <% for( let index = 0; index < column.length; index++ ) { %>
+                            <td>
+                                <%= trailDetails[detailsIndex][index] %>
+                            </td>  
+                        <% } %>
+                    </tr>
+                <% } %> 
+                </tbody>    
+            </table>
+        </div>
+        <!-- Leads -->
         <div class="tab-pane fade" id="nav-newceptees" role="tabpanel" aria-labelledby="nav-newceptees-tab" tabindex="0">
             <table class="table table-dark">
                 <thead>
